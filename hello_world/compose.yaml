@@ -1,0 +1,16 @@
+services:
+  app:
+    build: .
+    ports:
+      - '8080:8080'
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: 'mongo:latest'
+    environment:
+      - 'MONGO_INITDB_DATABASE=fantasy_catalog'
+      - 'MONGO_INITDB_ROOT_PASSWORD=secret'
+      - 'MONGO_INITDB_ROOT_USERNAME=root'
+    ports:
+      - '27017:27017'
