@@ -1,0 +1,39 @@
+<header tuiNavigationHeader>
+
+  <div tuiNavigationLogo>
+    <img src="assets/FMDb.svg" alt="Logo" width="100" height="50"/>
+  </div>
+
+  <div tuiNavigationSegments>
+    <a
+      class="header-btn"
+      tuiButton type="button"
+    >
+      <span>Movies</span>
+    </a>
+    <a
+      class="header-btn"
+      tuiButton type="button"
+    >
+      <span>TV Shows</span>
+    </a>
+    <a
+      class="header-btn"
+      tuiButton type="button"
+    >
+      <span>Books</span>
+    </a>
+  </div>
+
+
+  <tui-textfield
+    iconEnd="@tui.search"
+    class="header__textfield"
+  >
+    <input
+      tuiTextfield
+      [(ngModel)]="value"
+    />
+    <tui-icon icon="@tui.equal" />
+  </tui-textfield>
+</header>
