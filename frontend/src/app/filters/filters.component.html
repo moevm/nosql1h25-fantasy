@@ -152,4 +152,65 @@
       />
     </fieldset>
   </div>
+
+  <div class="filters-wrapper">
+    <fieldset tuiTextfieldSize="m" class="filter-block">
+      <div class="filter-header">
+        <h3 tuiTitle>Author</h3>
+      </div>
+      <tui-textfield iconEnd="@tui.search" class="search-input" style="min-width: 8rem;">
+        <input
+          formControlName="author"
+          placeholder="Enter author"
+          tuiTextfield
+        />
+      </tui-textfield>
+    </fieldset>
+
+    <fieldset tuiTextfieldSize="m" class="filter-block">
+      <div class="filter-header">
+        <h3 tuiTitle>Director</h3>
+      </div>
+      <tui-textfield iconEnd="@tui.search" class="search-input" style="min-width: 8rem;">
+        <input
+          formControlName="director"
+          placeholder="Enter director"
+          tuiTextfield
+        />
+      </tui-textfield>
+    </fieldset>
+
+
+    <fieldset tuiTextfieldSize="m" class="filter-block">
+      <div class="filter-header">
+        <h3 tuiTitle>Actors</h3>
+      </div>
+      <tui-textfield iconEnd="@tui.search" class="search-input" style="min-width: 8rem;">
+        <input
+          formControlName="actors"
+          placeholder="Enter actors"
+          tuiTextfield
+        />
+      </tui-textfield>
+    </fieldset>
+
+
+    <fieldset tuiTextfieldSize="m" class="filter-block">
+      <div class="filter-header">
+        <h3 tuiTitle>Country</h3>
+      </div>
+      <tui-textfield tuiChevron style="min-width: 8rem;">
+        <select
+          formControlName="country"
+          placeholder="Select country"
+          tuiTextfield
+        ></select>
+        <tui-data-list-wrapper
+          *tuiTextfieldDropdown
+          [items]="items"
+        />
+      </tui-textfield>
+    </fieldset>
+
+  </div>
 </form>

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { TuiGroup, TuiLink } from '@taiga-ui/core';
+import { TuiButton, TuiGroup } from '@taiga-ui/core';
 
 @Component({
   selector: 'app-footer',
-  imports: [TuiGroup, TuiLink],
+  imports: [TuiGroup, TuiButton],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.less',
 })
