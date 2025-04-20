@@ -1,6 +1,10 @@
-import { createActionGroup } from '@ngrx/store';
+import { createActionGroup, emptyProps, props } from '@ngrx/store';
+import { Movie } from '../../data-access/movie.service';
 
 export const rootActions = createActionGroup({
   source: 'root-actions',
-  events: {},
+  events: {
+    moviesFetched: props<{ content: Movie[] }>(),
+    movieInit: emptyProps(),
+  },
 });
