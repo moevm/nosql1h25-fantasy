@@ -1,4 +1,35 @@
-<p>movies works!</p>
-@if(movies()) {
-  <p>works</p>
-}
+<div class="movies">
+  @for(movie of movies(); track movie.id) {
+    <div
+      tuiAppearance="neutral"
+      tuiCardMedium
+    >
+      <tui-avatar
+        src="@tui.star"
+        class="star"
+      />
+
+      <h2 tuiTitle class="movie__title">
+        {{movie.title}}
+      </h2>
+
+      <div class="movie-rating">
+        <tui-icon
+          icon="@tui.star"
+          [style.color]="'var(--tui-background-accent-2)'"
+          class="rating-icon"
+        ></tui-icon>
+        <span class="rating-value">{{ movie.rating }}</span>
+
+        <button
+          tuiButton
+          appearance="flat-grayscale"
+          class="rate-button"
+          size="xs"
+        >
+          <tui-icon icon="@tui.star" class="rate-icon"></tui-icon> Rate
+        </button>
+      </div>
+    </div>
+  }
+</div>

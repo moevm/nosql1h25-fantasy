@@ -37,4 +37,8 @@ export class AppHeaderComponent {
   protected goToFilters(): void {
     this.store.dispatch(routerActions.navigateToFilter());
   }
+
+  protected navigateToMovies(): void {
+    this.store.dispatch(routerActions.navigateToMovies());
+  }
 }

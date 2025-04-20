@@ -7,10 +7,25 @@ import {
 import { Store } from '@ngrx/store';
 import { rootActions } from '../store/root-store/root.actions';
 import { selectMovies } from '../store/root-store/root.selectors';
+import { TuiAvatar } from '@taiga-ui/kit';
+import {
+  TuiAppearance,
+  TuiButton,
+  TuiIcon,
+  TuiTitle,
+} from '@taiga-ui/core';
+import { TuiCard } from '@taiga-ui/layout';
 
 @Component({
   selector: 'app-movies',
-  imports: [],
+  imports: [
+    TuiAvatar,
+    TuiAppearance,
+    TuiCard,
+    TuiTitle,
+    TuiIcon,
+    TuiButton,
+  ],
   templateUrl: './movies.component.html',
   styleUrl: './movies.component.less',
   changeDetection: ChangeDetectionStrategy.OnPush,

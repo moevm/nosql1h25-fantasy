@@ -13,3 +13,13 @@ export const navigateToFilter$ = createEffect(
   },
   { functional: true, dispatch: false }
 );
+
+export const navigateToMovies$ = createEffect(
+  (actions$ = inject(Actions), router = inject(Router)) => {
+    return actions$.pipe(
+      ofType(routerActions.navigateToMovies),
+      tap(() => router.navigate(['/']))
+    );
+  },
+  { functional: true, dispatch: false }
+);

@@ -5,5 +5,6 @@ export const routerActions = createActionGroup({
   events: {
     navigateTo: emptyProps(),
     navigateToFilter: emptyProps(),
+    navigateToMovies: emptyProps(),
   },
 });
