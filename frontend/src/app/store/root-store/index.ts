@@ -4,4 +4,6 @@ import { provideEffects } from '@ngrx/effects';
 import { provideStore } from '@ngrx/store';
 
 export const rootEffectProvider = provideEffects(rootEffect);
-export const rootReducerProvider = provideStore(rootReducers);
+export const rootReducerProvider = provideStore({
+  rootStore: rootReducers,
+});

@@ -1,14 +1,20 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
 
 export interface Movie {
-  id: number;
+  id: string;
   title: string;
-  director: string;
-  year: number;
-  genre: string;
+  description: string;
+  country: string;
+  duration: number;
+  startYear: number;
+  endYear: number;
+  rating: number;
+  tags: string[];
+  type: string;
+  persons: { name: string; role: string }[];
+  reviews: { rating: number; reviewerName: string; text: string }[];
 }
 
 @Injectable({
@@ -20,14 +26,6 @@ export class MovieService {
   private http = inject(HttpClient);
 
   getMovies(): Observable<Movie[]> {
-    return this.http
-      .get<{ content: Movie[] }>(`${this.apiUrl}?page=0&size=0`)
-      .pipe(
-        map(response => response.content),
-        catchError(error => {
-          console.error('Error fetching movies:', error);
-          throw error;
-        })
-      );
+    return this.http.get<Movie[]>(`${this.apiUrl}?page=0&size=0`);
   }
 }

@@ -6,6 +6,7 @@ import {
 } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { rootActions } from '../store/root-store/root.actions';
+import { selectMovies } from '../store/root-store/root.selectors';
 
 @Component({
   selector: 'app-movies',
@@ -16,6 +17,8 @@ import { rootActions } from '../store/root-store/root.actions';
 })
 export class MoviesComponent implements OnInit {
   private store = inject(Store);
+
+  protected movies = this.store.selectSignal(selectMovies);
 
   ngOnInit() {
     this.store.dispatch(rootActions.movieInit());
