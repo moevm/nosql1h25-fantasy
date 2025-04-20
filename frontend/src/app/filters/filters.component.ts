@@ -9,7 +9,9 @@ import { TuiButton, TuiTextfield, TuiTitle } from '@taiga-ui/core';
 import { TuiFilter } from '@taiga-ui/kit';
 import {
   TuiInputDateModule,
+  TuiInputDateRangeModule,
   TuiInputPhoneModule,
+  TuiInputRangeModule,
   TuiSelectModule,
   TuiTextfieldControllerModule,
 } from '@taiga-ui/legacy';
@@ -28,6 +30,8 @@ import {
     TuiSelectModule,
     TuiInputPhoneModule,
     TuiFilter,
+    TuiInputDateRangeModule,
+    TuiInputRangeModule,
   ],
   templateUrl: './filters.component.html',
   styleUrl: './filters.component.less',
@@ -37,6 +41,11 @@ export class FiltersComponent {
     search: new FormControl(),
     tagFilter: new FormControl(),
     typeFilter: new FormControl(),
+    rating: new FormControl([0, 10]),
+    yearRange: new FormControl([1950, 2025]),
+    duration: new FormControl([0, 300]),
+    quantity: new FormControl([0, 2000]),
+    seasons: new FormControl([0, 20]),
   });
 
   protected readonly tagFilters = [

@@ -70,4 +70,86 @@
       </div>
     </fieldset>
   </div>
+
+  <div class="filters-wrapper">
+    <fieldset class="filter-block">
+      <div class="filter-header">
+        <h3 tuiTitle>Rating</h3>
+      </div>
+      <tui-input-range
+        formControlName="rating"
+        [max]="10"
+        [min]="0"
+        [steps]="10"
+        [quantum]="0.00001"
+        [tuiTextfieldSize]="'m'"
+        [tuiTextfieldLabelOutside]="true"
+        style="min-width: 7rem;"
+      />
+    </fieldset>
+
+    <fieldset class="filter-block">
+      <div class="filter-header">
+        <h3 tuiTitle>Year</h3>
+      </div>
+      <tui-input-range
+        formControlName="yearRange"
+        [min]="1950"
+        [max]="2025"
+        [steps]="76"
+        [quantum]="1"
+        [tuiTextfieldSize]="'m'"
+        [tuiTextfieldLabelOutside]="true"
+        style="min-width: 7rem;"
+      />
+    </fieldset>
+
+    <fieldset class="filter-block">
+      <div class="filter-header">
+        <h3 tuiTitle>Duration (min)</h3>
+      </div>
+      <tui-input-range
+        formControlName="duration"
+        [min]="0"
+        [max]="300"
+        [steps]="30"
+        [quantum]="1"
+        [tuiTextfieldSize]="'m'"
+        [tuiTextfieldLabelOutside]="true"
+        style="min-width: 7rem;"
+      />
+    </fieldset>
+
+    <fieldset class="filter-block">
+      <div class="filter-header">
+        <h3 tuiTitle>Quantity pages</h3>
+      </div>
+      <tui-input-range
+        formControlName="quantity"
+        [min]="0"
+        [max]="2000"
+        [steps]="20"
+        [quantum]="10"
+        [tuiTextfieldSize]="'m'"
+        [tuiTextfieldLabelOutside]="true"
+        style="min-width: 7rem;"
+      />
+    </fieldset>
+
+    <fieldset class="filter-block">
+      <div class="filter-header">
+        <h3 tuiTitle>Seasons</h3>
+      </div>
+      <tui-input-range
+        formControlName="seasons"
+        [min]="0"
+        [max]="20"
+        [steps]="20"
+        [quantum]="1"
+        [tuiTextfieldSize]="'m'"
+        [tuiTextfieldLabelOutside]="true"
+        style="min-width: 7rem;"
+      />
+    </fieldset>
+  </div>
 </form>
