@@ -1,12 +1,17 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  computed,
   inject,
   OnInit,
 } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { rootActions } from '../store/root-store/root.actions';
-import { selectMovies } from '../store/root-store/root.selectors';
+import {
+  selectFilteredMovies,
+  selectMovies,
+  selectSearchQuery,
+} from '../store/root-store/root.selectors';
 import { TuiAvatar } from '@taiga-ui/kit';
 import {
   TuiAppearance,
@@ -33,7 +38,20 @@ import { TuiCard } from '@taiga-ui/layout';
 export class MoviesComponent implements OnInit {
   private store = inject(Store);
 
-  protected movies = this.store.selectSignal(selectMovies);
+  protected filteredMovies = this.store.selectSignal(
+    selectFilteredMovies
+  );
+
+  protected allMovies = this.store.selectSignal(selectMovies);
+
+  protected searchQuery = this.store.selectSignal(selectSearchQuery);
+
+  protected movies = computed(() => {
+    return this.filteredMovies().length === 0 &&
+      this.searchQuery().length === 0
+      ? this.allMovies()
+      : this.filteredMovies();
+  });
 
   ngOnInit() {
     this.store.dispatch(rootActions.movieInit());

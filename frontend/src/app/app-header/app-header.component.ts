@@ -12,6 +12,7 @@ import {
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { routerActions } from '../store/router-store/router.actions';
+import { rootActions } from '../store/root-store/root.actions';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -32,7 +33,7 @@ import { routerActions } from '../store/router-store/router.actions';
 export class AppHeaderComponent {
   private store = inject(Store);
 
-  protected value = '';
+  protected searchQuery = '';
 
   protected goToFilters(): void {
     this.store.dispatch(routerActions.navigateToFilter());
@@ -40,5 +41,9 @@ export class AppHeaderComponent {
 
   protected navigateToMovies(): void {
     this.store.dispatch(routerActions.navigateToMovies());
+  }
+
+  protected onSearchChange(query: string) {
+    this.store.dispatch(rootActions.filteredCards({ query }));
   }
 }

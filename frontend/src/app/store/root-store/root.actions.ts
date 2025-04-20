@@ -6,5 +6,6 @@ export const rootActions = createActionGroup({
   events: {
     moviesFetched: props<{ content: Movie[] }>(),
     movieInit: emptyProps(),
+    filteredCards: props<{ query: string }>(),
   },
 });

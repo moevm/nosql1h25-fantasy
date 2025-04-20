@@ -4,10 +4,12 @@ import { rootActions } from './root.actions';
 
 export interface MovieState {
   movies: Movie[];
+  searchQuery: string;
 }
 
 export const initialState: MovieState = {
   movies: [],
+  searchQuery: '',
 };
 
 export const rootReducers = createReducer(
@@ -15,5 +17,11 @@ export const rootReducers = createReducer(
   on(rootActions.moviesFetched, (state, { content }) => ({
     ...state,
     movies: content,
-  }))
+  })),
+  on(rootActions.filteredCards, (state, { query }) => {
+    return {
+      ...state,
+      searchQuery: query,
+    };
+  })
 );

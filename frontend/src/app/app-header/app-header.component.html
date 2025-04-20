@@ -33,7 +33,8 @@
   >
     <input
       tuiTextfield
-      [(ngModel)]="value"
+      [(ngModel)]="searchQuery"
+      (ngModelChange)="onSearchChange($event)"
     />
     <tui-icon icon="@tui.equal" (click)="goToFilters()"/>
   </tui-textfield>
