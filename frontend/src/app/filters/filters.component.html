@@ -1,0 +1,73 @@
+<form
+  tuiForm="l"
+  [formGroup]="form"
+  [style.max-width.rem]="50"
+>
+  <header tuiHeader>
+    <h3 tuiTitle>
+      Advanced search
+    </h3>
+  </header>
+
+  <fieldset tuiTextfieldSize="s" class="search-row">
+    <tui-textfield iconEnd="@tui.search" class="search-input">
+      <label tuiLabel for="search_input">Search</label>
+      <input
+        id="search_input"
+        formControlName="search"
+        placeholder="Enter title"
+        tuiTextfield
+      />
+    </tui-textfield>
+
+    <button
+      size="s"
+      tuiButton
+      type="button"
+      appearance="secondary-grayscale"
+      class="search-button"
+    >
+      Search
+    </button>
+  </fieldset>
+
+  <div class="filters-wrapper">
+    <fieldset class="filter-block">
+      <div class="filter-header">
+        <h3 tuiTitle>Tags</h3>
+        <div class="filter-actions">
+          <button
+            appearance="flat-grayscale"
+            size="xs"
+            tuiButton
+            type="button"
+            (click)="selectAllTags()"
+          >
+            Select all tags
+          </button>
+          <button
+            appearance="flat-grayscale"
+            size="xs"
+            tuiButton
+            type="button"
+            iconEnd="@tui.chevron-right"
+          >
+            See all
+          </button>
+        </div>
+      </div>
+      <div class="filter-controls">
+        <tui-filter formControlName="tagFilter" size="s" [items]="tagFilters" />
+      </div>
+    </fieldset>
+
+    <fieldset class="filter-block">
+      <div class="filter-header">
+        <h3 tuiTitle>Type</h3>
+      </div>
+      <div class="filter-controls">
+        <tui-filter formControlName="typeFilter" size="s" [items]="typeFilters" />
+      </div>
+    </fieldset>
+  </div>
+</form>

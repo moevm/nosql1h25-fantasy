@@ -6,6 +6,8 @@ import {
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
+import { provideStore } from '@ngrx/store';
+import { routerEffectsProvider } from './store/router-store';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -13,5 +15,7 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: false }),
     provideRouter(routes),
     NG_EVENT_PLUGINS,
+    provideStore(),
+    routerEffectsProvider,
   ],
 };

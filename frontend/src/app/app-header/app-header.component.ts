@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+} from '@angular/core';
 import { TuiNavigation } from '@taiga-ui/layout';
 import { TuiButton, TuiIcon, TuiTextfield } from '@taiga-ui/core';
 import {
@@ -6,7 +10,8 @@ import {
   TuiTextfieldControllerModule,
 } from '@taiga-ui/legacy';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { TuiTooltip } from '@taiga-ui/kit';
+import { Store } from '@ngrx/store';
+import { routerActions } from '../store/router-store/router.actions';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -18,7 +23,6 @@ import { TuiTooltip } from '@taiga-ui/kit';
     TuiTextfield,
     TuiTextfieldControllerModule,
     TuiIcon,
-    TuiTooltip,
     FormsModule,
   ],
   selector: 'app-header',
@@ -26,5 +30,11 @@ import { TuiTooltip } from '@taiga-ui/kit';
   templateUrl: './app-header.component.html',
 })
 export class AppHeaderComponent {
+  private store = inject(Store);
+
   protected value = '';
+
+  protected goToFilters(): void {
+    this.store.dispatch(routerActions.navigateToFilter());
+  }
 }
