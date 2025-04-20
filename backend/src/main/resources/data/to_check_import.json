@@ -1,0 +1,84 @@
+[
+  {
+    "title": "Breaking Bad",
+    "type": "SERIES",
+    "description": "A high school chemistry teacher turned methamphetamine producer navigates the dangers of the criminal underworld.",
+    "startYear": 2008,
+    "endYear": 2013,
+    "tags": ["MYSTERY"],
+    "rating": 9.5,
+    "country": "USA",
+    "duration": null,
+    "quantityPages": null,
+    "seasons": 5,
+    "persons": [
+      {
+        "name": "Vince Gilligan",
+        "role": "DIRECTOR"
+      },
+      {
+        "name": "Bryan Cranston",
+        "role": "ACTOR"
+      },
+      {
+        "name": "Aaron Paul",
+        "role": "ACTOR"
+      }
+    ],
+    "reviews": [
+      {
+        "reviewerName": "TV Critic",
+        "text": "A groundbreaking series with intense storytelling.",
+        "rating": 9.7
+      },
+      {
+        "reviewerName": "Fan",
+        "text": "An unforgettable journey into the dark side of human nature.",
+        "rating": 9.5
+      }
+    ]
+  },
+  {
+    "title": "Game of Thrones",
+    "type": "SERIES",
+    "description": "Noble families vie for control of the Iron Throne and the fate of Westeros in this epic fantasy series.",
+    "startYear": 2011,
+    "endYear": 2019,
+    "tags": ["FANTASY"],
+    "rating": 9.3,
+    "country": "USA",
+    "duration": null,
+    "quantityPages": null,
+    "seasons": 8,
+    "persons": [
+      {
+        "name": "David Benioff",
+        "role": "DIRECTOR"
+      },
+      {
+        "name": "D.B. Weiss",
+        "role": "DIRECTOR"
+      },
+      {
+        "name": "Emilia Clarke",
+        "role": "ACTOR"
+      },
+      {
+        "name": "Kit Harington",
+        "role": "ACTOR"
+      }
+    ],
+    "reviews": [
+      {
+        "reviewerName": "Critic One",
+        "text": "An epic saga with stunning visuals and complex characters.",
+        "rating": 9.4
+      },
+      {
+        "reviewerName": "Viewer",
+        "text": "A rollercoaster of emotions and unexpected twists.",
+        "rating": 9.2
+      }
+    ]
+  }
+]

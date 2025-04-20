@@ -1,0 +1,181 @@
+[
+  {
+    "title": "The Lord of the Rings: The Fellowship of the Ring",
+    "type": "FILM",
+    "description": "A meek hobbit embarks on a journey to destroy a powerful ring and save Middle-earth from the dark lord Sauron.",
+    "startYear": 2001,
+    "endYear": 2001,
+    "tags": ["FANTASY"],
+    "rating": 8.8,
+    "country": "UK",
+    "duration": 178,
+    "quantityPages": null,
+    "seasons": null,
+    "persons": [
+      {
+        "name": "Peter Jackson",
+        "role": "DIRECTOR"
+      },
+      {
+        "name": "Elijah Wood",
+        "role": "ACTOR"
+      }
+    ],
+    "reviews": [
+      {
+        "reviewerName": "Reviewer One",
+        "text": "A breathtaking journey in a richly imagined world.",
+        "rating": 9.0
+      },
+      {
+        "reviewerName": "Reviewer Two",
+        "text": "A timeless epic of adventure and bravery.",
+        "rating": 8.8
+      }
+    ]
+  },
+  {
+    "title": "Star Wars: Episode IV - A New Hope",
+    "type": "FILM",
+    "description": "A young farm boy embarks on a quest with rebels to defeat an oppressive empire and restore freedom to the galaxy.",
+    "startYear": 1977,
+    "endYear": 1977,
+    "tags": ["SCIENCE_FICTION"],
+    "rating": 8.6,
+    "country": "USA",
+    "duration": 121,
+    "quantityPages": null,
+    "seasons": null,
+    "persons": [
+      {
+        "name": "George Lucas",
+        "role": "DIRECTOR"
+      },
+      {
+        "name": "Mark Hamill",
+        "role": "ACTOR"
+      },
+      {
+        "name": "Harrison Ford",
+        "role": "ACTOR"
+      }
+    ],
+    "reviews": [
+      {
+        "reviewerName": "SciFi Fan",
+        "text": "A revolutionary film that redefined the space opera genre.",
+        "rating": 8.7
+      },
+      {
+        "reviewerName": "Film Critic",
+        "text": "An imaginative and exciting start to a legendary saga.",
+        "rating": 8.5
+      }
+    ]
+  },
+  {
+    "title": "Harry Potter and the Sorcerer's Stone",
+    "type": "BOOK",
+    "description": "A young boy discovers his magical heritage and begins his journey at Hogwarts School of Witchcraft and Wizardry.",
+    "startYear": 1997,
+    "endYear": 1997,
+    "tags": ["FANTASY"],
+    "rating": 4.8,
+    "country": "UK",
+    "duration": null,
+    "quantityPages": 223,
+    "seasons": null,
+    "persons": [
+      {
+        "name": "J.K. Rowling",
+        "role": "AUTHOR"
+      }
+    ],
+    "reviews": [
+      {
+        "reviewerName": "Book Lover",
+        "text": "A magical beginning to an extraordinary series.",
+        "rating": 5.0
+      },
+      {
+        "reviewerName": "Critic A",
+        "text": "Enchanting and full of wonder.",
+        "rating": 4.8
+      }
+    ]
+  },
+  {
+    "title": "Blade Runner",
+    "type": "FILM",
+    "description": "In a dystopian future, a blade runner is tasked with hunting down bioengineered beings known as replicants.",
+    "startYear": 1982,
+    "endYear": 1982,
+    "tags": ["SCIENCE_FICTION"],
+    "rating": 8.1,
+    "country": "USA",
+    "duration": 117,
+    "quantityPages": null,
+    "seasons": null,
+    "persons": [
+      {
+        "name": "Ridley Scott",
+        "role": "DIRECTOR"
+      },
+      {
+        "name": "Harrison Ford",
+        "role": "ACTOR"
+      }
+    ],
+    "reviews": [
+      {
+        "reviewerName": "SciFi Enthusiast",
+        "text": "A visually stunning and thought-provoking film.",
+        "rating": 8.2
+      },
+      {
+        "reviewerName": "Film Buff",
+        "text": "A timeless classic of the science fiction genre.",
+        "rating": 8.0
+      }
+    ]
+  },
+  {
+    "title": "The Matrix",
+    "type": "FILM",
+    "description": "A computer hacker learns that his reality is a simulated construct and joins a rebellion against its controllers.",
+    "startYear": 1999,
+    "endYear": 1999,
+    "tags": ["SCIENCE_FICTION"],
+    "rating": 8.7,
+    "country": "USA",
+    "duration": 136,
+    "quantityPages": null,
+    "seasons": null,
+    "persons": [
+      {
+        "name": "The Wachowskis",
+        "role": "DIRECTOR"
+      },
+      {
+        "name": "Keanu Reeves",
+        "role": "ACTOR"
+      },
+      {
+        "name": "Laurence Fishburne",
+        "role": "ACTOR"
+      }
+    ],
+    "reviews": [
+      {
+        "reviewerName": "Tech Lover",
+        "text": "An innovative blend of philosophy and action.",
+        "rating": 8.8
+      },
+      {
+        "reviewerName": "Movie Critic",
+        "text": "A groundbreaking film that redefined reality.",
+        "rating": 8.6
+      }
+    ]
+  }
+]
