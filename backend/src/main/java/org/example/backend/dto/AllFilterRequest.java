@@ -1,9 +1,9 @@
-package org.example.nosql_backend.dto;
+package org.example.backend.dto;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.example.nosql_backend.model.Country;
-import org.example.nosql_backend.model.Tag;
+import org.example.backend.model.Country;
+import org.example.backend.model.Tag;
 
 import java.util.List;
 

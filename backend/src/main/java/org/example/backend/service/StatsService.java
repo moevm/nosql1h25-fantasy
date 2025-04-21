@@ -1,10 +1,10 @@
-package org.example.nosql_backend.service;
+package org.example.backend.service;
 
 import lombok.RequiredArgsConstructor;
 import org.bson.Document;
-import org.example.nosql_backend.dto.StatGroupField;
-import org.example.nosql_backend.dto.StatMetric;
-import org.example.nosql_backend.dto.StatsResult;
+import org.example.backend.dto.StatGroupField;
+import org.example.backend.dto.StatMetric;
+import org.example.backend.dto.StatsResult;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.Aggregation;
 import org.springframework.data.mongodb.core.aggregation.AggregationOperation;
