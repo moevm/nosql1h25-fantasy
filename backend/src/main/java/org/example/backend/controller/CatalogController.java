@@ -29,7 +29,7 @@ public class CatalogController {
     }
 
     @GetMapping("/{id}")
-    public CatalogItemDto findCatalogItemById(@PathVariable String id) {
+    public CatalogItemDto findCatalogItemById(@PathVariable("id") String id) {
         CatalogItem item = catalogItemService.getItemById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Catalog item not found"));
         return catalogItemMapper.toDto(item);
