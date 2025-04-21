@@ -1,11 +1,12 @@
-package org.example.nosql_backend.service;
+package org.example.backend.service;
 
 import lombok.RequiredArgsConstructor;
-import org.example.nosql_backend.dto.BookFilterRequest;
-import org.example.nosql_backend.dto.MovieFilterRequest;
-import org.example.nosql_backend.dto.SeriesFilterRequest;
-import org.example.nosql_backend.model.*;
-import org.example.nosql_backend.repository.CatalogItemRepository;
+import org.example.backend.dto.BookFilterRequest;
+import org.example.backend.dto.MovieFilterRequest;
+import org.example.backend.dto.SeriesFilterRequest;
+import org.example.backend.dto.AllFilterRequest;
+import org.example.backend.model.*;
+import org.example.backend.repository.CatalogItemRepository;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -24,6 +25,15 @@ public class CatalogItemService {
 
     private final CatalogItemRepository catalogItemRepository;
     private final MongoTemplate mongoTemplate;
+
+    public List<CatalogItem> searchAlls(AllFilterRequest filter, int page, int size) {
+        return searchCatalogItems(null, filter.getTitle(), filter.getTags(),
+                filter.getRatingFrom(), filter.getRatingTo(),
+                filter.getStartYearFrom(), filter.getStartYearTo(),
+                filter.getCountry(),
+                null, 
+                page, size);
+    }
 
     public List<CatalogItem> searchBooks(BookFilterRequest filter, int page, int size) {
         return searchCatalogItems(ItemType.BOOK, filter.getTitle(), filter.getTags(),
@@ -99,7 +109,10 @@ public class CatalogItemService {
                                                  Consumer<List<Criteria>> extraCriteria,
                                                  Integer page, Integer size) {
         List<Criteria> criteriaList = new ArrayList<>();
-        criteriaList.add(Criteria.where("type").is(itemType));
+
+        if(itemType!=null) {
+            criteriaList.add(Criteria.where("type").is(itemType));
+        }
 
         addCommonCriteria(criteriaList, title, tags, country);
         addRangeCriteria(criteriaList, "rating", ratingFrom, ratingTo);
@@ -109,8 +122,11 @@ public class CatalogItemService {
             extraCriteria.accept(criteriaList);
         }
 
-        Criteria combinedCriteria = new Criteria().andOperator(criteriaList.toArray(new Criteria[0]));
-        Query query = new Query(combinedCriteria);
+        Query query = new Query();
+        if(!criteriaList.isEmpty()) {
+            Criteria combinedCriteria = new Criteria().andOperator(criteriaList.toArray(new Criteria[0]));
+            query.addCriteria(combinedCriteria);
+        }
 
         if (page != null && size != null && size > 0 && page >= 0) {
             query.with(PageRequest.of(page, size));
