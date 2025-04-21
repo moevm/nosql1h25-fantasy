@@ -8,13 +8,13 @@ on:
 jobs:
   check_prototype_store_and_view:
     name: "Проверка наличия тега 0.5, работоспособности docker compose и наличия сервиса db"
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         name: Check out current commit
         with:
           fetch-depth: 0
-
+       
       - name: Check docker-compose.yml
         run: |
           set -e
@@ -41,7 +41,7 @@ jobs:
       - name: Run docker-compose
         run: |
           docker compose up -d
-
+      
       - name: check
         run: |
           TAG="0.5"
