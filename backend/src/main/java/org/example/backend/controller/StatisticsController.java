@@ -1,10 +1,10 @@
-package org.example.nosql_backend.controller;
+package org.example.backend.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.example.nosql_backend.dto.StatGroupField;
-import org.example.nosql_backend.dto.StatMetric;
-import org.example.nosql_backend.dto.StatsResult;
-import org.example.nosql_backend.service.StatsService;
+import org.example.backend.dto.StatGroupField;
+import org.example.backend.dto.StatMetric;
+import org.example.backend.dto.StatsResult;
+import org.example.backend.service.StatsService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
