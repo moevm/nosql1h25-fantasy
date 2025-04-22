@@ -1,0 +1,18 @@
+<div class="details">
+  <h1>{{ object?.title }}</h1>
+  <ul>
+    <li>ID: {{ object?.id }}</li>
+    <li>Type: {{ object?.type }}</li>
+    <li>Description: {{ object?.description }}</li>
+    <li>Start year: {{ object?.startYear }} </li>
+    <li>End year: {{ object?.endYear }} </li>
+    <li>Tags: {{ object?.tags }}</li>
+    <li>Rating: {{ object?.rating }} </li>
+    <li>Country: {{ object?.country }} </li>
+    <li *ngIf="getBook()">Number of pages: {{ getBook()?.quantityPages }}</li>
+    <li *ngIf="getMovie()">Duration: {{ getMovie()?.duration }}</li>
+    <li *ngIf="getSeries()">Seasons: {{ getSeries()?.seasons }}</li>
+    <li>Persons: {{ object?.persons }} </li>
+  </ul>
+  <button (click)="goBack()">Back to list</button>
+</div>
