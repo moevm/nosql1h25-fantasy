@@ -2,9 +2,10 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { inject } from '@angular/core';
 import { rootActions } from './root.actions';
 import { switchMap } from 'rxjs';
-import { MovieService } from '../../data-access/movie.service';
 import { map } from 'rxjs/operators';
+import { MovieService } from '../../data-access/movie.service';
 import { BookService } from '../../data-access/book.service';
+import { SeriesService } from '../../data-access/series.service';
 
 export const moviesInit$ = createEffect(
   (
@@ -40,6 +41,27 @@ export const booksInit$ = createEffect(
           .pipe(
             map(response =>
               rootActions.booksFetched({ content: response })
+            )
+          )
+      )
+    );
+  },
+  { functional: true }
+);
+
+export const seriesInit$ = createEffect(
+  (
+    actions$ = inject(Actions),
+    seriesService = inject(SeriesService)
+  ) => {
+    return actions$.pipe(
+      ofType(rootActions.bookInit),
+      switchMap(() =>
+        seriesService
+          .getSeries()
+          .pipe(
+            map(response =>
+              rootActions.seriesFetched({ content: response })
             )
           )
       )

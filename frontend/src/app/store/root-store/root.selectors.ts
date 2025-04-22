@@ -48,3 +48,23 @@ export const selectFilteredBooks = createSelector(
     );
   }
 );
+
+export const selectSeries = createSelector(
+  selectRootState,
+  state => state.series
+);
+
+export const selectFilteredSeries = createSelector(
+  selectSeries,
+  selectSearchQuery,
+  (series, query) => {
+    if (!query.trim()) {
+      return series;
+    }
+
+    const lowerQuery = query.toLowerCase();
+    return series.filter(show =>
+      show.title.toLowerCase().includes(lowerQuery)
+    );
+  }
+);
