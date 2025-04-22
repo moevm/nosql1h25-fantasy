@@ -1,0 +1,35 @@
+<div class="books">
+  @for(book of books(); track book.id) {
+    <div
+      tuiAppearance="neutral"
+      tuiCardMedium
+    >
+      <tui-avatar
+        src="@tui.star"
+        class="star"
+      />
+
+      <h2 tuiTitle class="book__title">
+        {{book.title}}
+      </h2>
+
+      <div class="book-rating">
+        <tui-icon
+          icon="@tui.star"
+          [style.color]="'var(--tui-background-accent-2)'"
+          class="rating-icon"
+        ></tui-icon>
+        <span class="rating-value">{{ book.rating }}</span>
+
+        <button
+          tuiButton
+          appearance="flat-grayscale"
+          class="rate-button"
+          size="xs"
+        >
+          <tui-icon icon="@tui.star" class="rate-icon"></tui-icon> Rate
+        </button>
+      </div>
+    </div>
+  }
+</div>
