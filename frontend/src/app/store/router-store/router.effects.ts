@@ -23,3 +23,13 @@ export const navigateToMovies$ = createEffect(
   },
   { functional: true, dispatch: false }
 );
+
+export const navigateToBooks$ = createEffect(
+  (actions$ = inject(Actions), router = inject(Router)) => {
+    return actions$.pipe(
+      ofType(routerActions.navigateToBooks),
+      tap(() => router.navigate(['/books']))
+    );
+  },
+  { functional: true, dispatch: false }
+);

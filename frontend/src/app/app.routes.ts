@@ -15,4 +15,11 @@ export const routes: Routes = [
         m => m.FiltersComponent
       ),
   },
+  {
+    path: 'books',
+    loadComponent: () =>
+      import('./books/books.component').then(
+        m => m.BooksComponent
+      ),
+  },
 ];

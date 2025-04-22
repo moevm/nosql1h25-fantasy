@@ -43,6 +43,10 @@ export class AppHeaderComponent {
     this.store.dispatch(routerActions.navigateToMovies());
   }
 
+  protected navigateToBooks(): void {
+    this.store.dispatch(routerActions.navigateToBooks());
+  }
+
   protected onSearchChange(query: string) {
     this.store.dispatch(rootActions.filteredCards({ query }));
   }
