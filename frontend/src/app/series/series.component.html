@@ -1,8 +1,9 @@
-<div class="books">
+<div class="series" *ngIf="!selectedShow">
   @for(show of series(); track show.id) {
-    <div
+    <button
       tuiAppearance="neutral"
       tuiCardMedium
+      (click)="selectShow(show)"
     >
       <tui-avatar
         src="@tui.star"
@@ -30,6 +31,10 @@
           <tui-icon icon="@tui.star" class="rate-icon"></tui-icon> Rate
         </button>
       </div>
-    </div>
+    </button>
   }
+</div>
+
+<div *ngIf="selectedShow">
+  <app-details [object]="selectedShow" (back)="backToList()"></app-details>
 </div>

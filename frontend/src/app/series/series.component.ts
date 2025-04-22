@@ -14,6 +14,9 @@ import {
   TuiTitle,
 } from '@taiga-ui/core';
 import { TuiCard } from '@taiga-ui/layout';
+import { Series } from '../data-access/series.service';
+import { DetailsComponent } from '../details/details.component';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-series',
@@ -24,12 +27,17 @@ import { TuiCard } from '@taiga-ui/layout';
     TuiTitle,
     TuiIcon,
     TuiButton,
+    DetailsComponent,
+    NgIf,
   ],
   templateUrl: './series.component.html',
   styleUrl: './series.component.less',
+  standalone: true,
 })
 export class SeriesComponent implements OnInit {
   private store = inject(Store);
+
+  selectedShow: Series | null = null;
 
   protected filteredSeries = this.store.selectSignal(
     selectFilteredSeries
@@ -48,5 +56,13 @@ export class SeriesComponent implements OnInit {
 
   ngOnInit() {
     this.store.dispatch(rootActions.seriesInit());
+  }
+
+  protected selectShow(show: Series) {
+    this.selectedShow = show;
+  }
+
+  protected backToList() {
+    this.selectedShow = null;
   }
 }

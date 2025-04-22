@@ -20,6 +20,9 @@ import {
   TuiTitle,
 } from '@taiga-ui/core';
 import { TuiCard } from '@taiga-ui/layout';
+import { Movie } from '../data-access/movie.service';
+import { DetailsComponent } from '../details/details.component';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-movies',
@@ -30,13 +33,18 @@ import { TuiCard } from '@taiga-ui/layout';
     TuiTitle,
     TuiIcon,
     TuiButton,
+    DetailsComponent,
+    NgIf,
   ],
   templateUrl: './movies.component.html',
   styleUrl: './movies.component.less',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
 })
 export class MoviesComponent implements OnInit {
   private store = inject(Store);
+
+  selectedMovie: Movie | null = null;
 
   protected filteredMovies = this.store.selectSignal(
     selectFilteredMovies
@@ -55,5 +63,13 @@ export class MoviesComponent implements OnInit {
 
   ngOnInit() {
     this.store.dispatch(rootActions.movieInit());
+  }
+
+  protected selectMovie(movie: Movie) {
+    this.selectedMovie = movie;
+  }
+
+  protected backToList() {
+    this.selectedMovie = null;
   }
 }

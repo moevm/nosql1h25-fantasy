@@ -1,8 +1,9 @@
-<div class="movies">
+<div class="movies" *ngIf="!selectedMovie">
   @for(movie of movies(); track movie.id) {
-    <div
+    <button
       tuiAppearance="neutral"
       tuiCardMedium
+      (click)="selectMovie(movie)"
     >
       <tui-avatar
         src="@tui.star"
@@ -30,6 +31,10 @@
           <tui-icon icon="@tui.star" class="rate-icon"></tui-icon> Rate
         </button>
       </div>
-    </div>
+    </button>
   }
+</div>
+
+<div *ngIf="selectedMovie">
+  <app-details [object]="selectedMovie" (back)="backToList()"></app-details>
 </div>
