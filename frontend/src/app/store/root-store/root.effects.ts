@@ -4,6 +4,7 @@ import { rootActions } from './root.actions';
 import { switchMap } from 'rxjs';
 import { MovieService } from '../../data-access/movie.service';
 import { map } from 'rxjs/operators';
+import { BookService } from '../../data-access/book.service';
 
 export const moviesInit$ = createEffect(
   (
@@ -18,6 +19,27 @@ export const moviesInit$ = createEffect(
           .pipe(
             map(response =>
               rootActions.moviesFetched({ content: response })
+            )
+          )
+      )
+    );
+  },
+  { functional: true }
+);
+
+export const booksInit$ = createEffect(
+  (
+    actions$ = inject(Actions),
+    booksService = inject(BookService)
+  ) => {
+    return actions$.pipe(
+      ofType(rootActions.bookInit),
+      switchMap(() =>
+        booksService
+          .getBooks()
+          .pipe(
+            map(response =>
+              rootActions.booksFetched({ content: response })
             )
           )
       )

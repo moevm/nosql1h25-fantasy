@@ -1,17 +1,17 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { MovieState } from './root.reducer';
+import { RootState } from './root.reducer';
 
 export const selectRootState =
-  createFeatureSelector<MovieState>('rootStore');
-
-export const selectMovies = createSelector(
-  selectRootState,
-  state => state.movies
-);
+  createFeatureSelector<RootState>('rootStore');
 
 export const selectSearchQuery = createSelector(
   selectRootState,
   state => state.searchQuery
+);
+
+export const selectMovies = createSelector(
+  selectRootState,
+  state => state.movies
 );
 
 export const selectFilteredMovies = createSelector(
@@ -25,6 +25,26 @@ export const selectFilteredMovies = createSelector(
     const lowerQuery = query.toLowerCase();
     return movies.filter(movie =>
       movie.title.toLowerCase().includes(lowerQuery)
+    );
+  }
+);
+
+export const selectBooks = createSelector(
+  selectRootState,
+  state => state.books
+);
+
+export const selectFilteredBooks = createSelector(
+  selectBooks,
+  selectSearchQuery,
+  (books, query) => {
+    if (!query.trim()) {
+      return books;
+    }
+
+    const lowerQuery = query.toLowerCase();
+    return books.filter(book =>
+      book.title.toLowerCase().includes(lowerQuery)
     );
   }
 );

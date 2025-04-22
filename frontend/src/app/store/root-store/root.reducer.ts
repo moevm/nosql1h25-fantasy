@@ -1,14 +1,17 @@
 import { createReducer, on } from '@ngrx/store';
 import { Movie } from '../../data-access/movie.service';
 import { rootActions } from './root.actions';
+import { Book } from '../../data-access/book.service';
 
-export interface MovieState {
+export interface RootState {
   movies: Movie[];
+  books: Book[];
   searchQuery: string;
 }
 
-export const initialState: MovieState = {
+export const initialState: RootState = {
   movies: [],
+  books: [],
   searchQuery: '',
 };
 
@@ -17,6 +20,10 @@ export const rootReducers = createReducer(
   on(rootActions.moviesFetched, (state, { content }) => ({
     ...state,
     movies: content,
+  })),
+  on(rootActions.booksFetched, (state, { content }) => ({
+    ...state,
+    books: content,
   })),
   on(rootActions.filteredCards, (state, { query }) => {
     return {
