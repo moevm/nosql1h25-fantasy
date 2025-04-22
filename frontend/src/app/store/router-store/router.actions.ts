@@ -7,5 +7,6 @@ export const routerActions = createActionGroup({
     navigateToFilter: emptyProps(),
     navigateToMovies: emptyProps(),
     navigateToBooks: emptyProps(),
+    navigateToSeries: emptyProps(),
   },
 });

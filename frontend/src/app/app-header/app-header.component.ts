@@ -47,6 +47,10 @@ export class AppHeaderComponent {
     this.store.dispatch(routerActions.navigateToBooks());
   }
 
+  protected navigateToSeries(): void {
+    this.store.dispatch(routerActions.navigateToSeries());
+  }
+
   protected onSearchChange(query: string) {
     this.store.dispatch(rootActions.filteredCards({ query }));
   }

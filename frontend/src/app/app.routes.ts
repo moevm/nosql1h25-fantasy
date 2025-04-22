@@ -22,4 +22,11 @@ export const routes: Routes = [
         m => m.BooksComponent
       ),
   },
+  {
+    path: 'series',
+    loadComponent: () =>
+      import('./series/series.component').then(
+        m => m.SeriesComponent
+      ),
+  },
 ];

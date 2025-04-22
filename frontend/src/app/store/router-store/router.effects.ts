@@ -33,3 +33,13 @@ export const navigateToBooks$ = createEffect(
   },
   { functional: true, dispatch: false }
 );
+
+export const navigateToSeries$ = createEffect(
+  (actions$ = inject(Actions), router = inject(Router)) => {
+    return actions$.pipe(
+      ofType(routerActions.navigateToSeries),
+      tap(() => router.navigate(['/series']))
+    );
+  },
+  { functional: true, dispatch: false }
+);
