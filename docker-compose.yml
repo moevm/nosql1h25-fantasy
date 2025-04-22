@@ -23,6 +23,13 @@ services:
       - 'MONGO_INITDB_ROOT_USERNAME=$MONGODB_USER'
     volumes:
       - mongo_data:/data/db
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "127.0.0.1:4200:4200"
+    depends_on:
+      - app
 volumes:
   mongo_data:
 
