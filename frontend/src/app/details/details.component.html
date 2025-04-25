@@ -12,7 +12,13 @@
     <li *ngIf="getBook()">Number of pages: {{ getBook()?.quantityPages }}</li>
     <li *ngIf="getMovie()">Duration: {{ getMovie()?.duration }}</li>
     <li *ngIf="getSeries()">Seasons: {{ getSeries()?.seasons }}</li>
-    <li>Persons: {{ object?.persons }} </li>
+    <li class="li-wo-dot">
+      <ul>
+        @for(person of object?.persons; track person.name) {
+          <li>{{ person.role }}: {{ person.name }}</li>
+        }
+      </ul>
+    </li>
   </ul>
   <button (click)="goBack()">Back to list</button>
 </div>
