@@ -1,216 +1,261 @@
-<form
-  tuiForm="l"
-  [formGroup]="form"
-  [style.max-width.rem]="50"
->
-  <header tuiHeader>
-    <h3 tuiTitle>
-      Advanced search
-    </h3>
-  </header>
+<div class="main__filter_results">
+  <form
+    *ngIf="!selectedResult"
+    tuiForm="l"
+    [formGroup]="form"
+    [style.max-width.rem]="50"
+  >
+    <header tuiHeader>
+      <h3 tuiTitle>
+        Advanced search
+      </h3>
+    </header>
 
-  <fieldset tuiTextfieldSize="s" class="search-row">
-    <tui-textfield iconEnd="@tui.search" class="search-input">
-      <label tuiLabel for="search_input">Search</label>
-      <input
-        id="search_input"
-        formControlName="search"
-        placeholder="Enter title"
-        tuiTextfield
-      />
-    </tui-textfield>
+    <fieldset tuiTextfieldSize="s" class="search-row">
+      <tui-textfield iconEnd="@tui.search" class="search-input">
+        <label tuiLabel for="search_input">Search</label>
+        <input
+          id="search_input"
+          formControlName="search"
+          placeholder="Enter title"
+          tuiTextfield
+        />
+      </tui-textfield>
 
-    <button
-      size="s"
-      tuiButton
-      type="button"
-      appearance="secondary-grayscale"
-      class="search-button"
-    >
-      Search
-    </button>
-  </fieldset>
+      <button
+        size="s"
+        tuiButton
+        type="button"
+        appearance="secondary-grayscale"
+        class="search-button"
+        (click)="search()"
+      >
+        Search
+      </button>
+    </fieldset>
 
-  <div class="filters-wrapper">
-    <fieldset class="filter-block">
-      <div class="filter-header">
-        <h3 tuiTitle>Tags</h3>
-        <div class="filter-actions">
+    <div class="filters-wrapper">
+      <fieldset class="filter-block">
+        <div class="filter-header">
+          <h3 tuiTitle>Tags</h3>
+          <div class="filter-actions">
+            <button
+              appearance="flat-grayscale"
+              size="xs"
+              tuiButton
+              type="button"
+              (click)="selectAllTags()"
+            >
+              Select all tags
+            </button>
+            <button
+              appearance="flat-grayscale"
+              size="xs"
+              tuiButton
+              type="button"
+              iconEnd="@tui.chevron-right"
+            >
+              See all
+            </button>
+          </div>
+        </div>
+        <div class="filter-controls">
+          <tui-filter formControlName="tagFilter" size="s" [items]="tagFilters" />
+        </div>
+      </fieldset>
+
+      <fieldset class="filter-block">
+        <div class="filter-header">
+          <h3 tuiTitle>Type</h3>
+        </div>
+        <div class="filter-controls">
+          <tui-filter formControlName="typeFilter" size="s" [items]="typeFilters" />
+        </div>
+      </fieldset>
+    </div>
+
+    <div class="filters-wrapper">
+      <fieldset class="filter-block">
+        <div class="filter-header">
+          <h3 tuiTitle>Rating</h3>
+        </div>
+        <tui-input-range
+          formControlName="rating"
+          [max]="10"
+          [min]="0"
+          [steps]="10"
+          [quantum]="0.00001"
+          [tuiTextfieldSize]="'m'"
+          [tuiTextfieldLabelOutside]="true"
+          style="min-width: 7rem;"
+        />
+      </fieldset>
+
+      <fieldset class="filter-block">
+        <div class="filter-header">
+          <h3 tuiTitle>Year</h3>
+        </div>
+        <tui-input-range
+          formControlName="yearRange"
+          [min]="1950"
+          [max]="2025"
+          [steps]="76"
+          [quantum]="1"
+          [tuiTextfieldSize]="'m'"
+          [tuiTextfieldLabelOutside]="true"
+          style="min-width: 7rem;"
+        />
+      </fieldset>
+
+      <fieldset class="filter-block">
+        <div class="filter-header">
+          <h3 tuiTitle>Duration (min)</h3>
+        </div>
+        <tui-input-range
+          formControlName="duration"
+          [min]="0"
+          [max]="300"
+          [steps]="30"
+          [quantum]="1"
+          [tuiTextfieldSize]="'m'"
+          [tuiTextfieldLabelOutside]="true"
+          style="min-width: 7rem;"
+        />
+      </fieldset>
+
+      <fieldset class="filter-block">
+        <div class="filter-header">
+          <h3 tuiTitle>Quantity pages</h3>
+        </div>
+        <tui-input-range
+          formControlName="quantity"
+          [min]="0"
+          [max]="2000"
+          [steps]="20"
+          [quantum]="10"
+          [tuiTextfieldSize]="'m'"
+          [tuiTextfieldLabelOutside]="true"
+          style="min-width: 7rem;"
+        />
+      </fieldset>
+
+      <fieldset class="filter-block">
+        <div class="filter-header">
+          <h3 tuiTitle>Seasons</h3>
+        </div>
+        <tui-input-range
+          formControlName="seasons"
+          [min]="0"
+          [max]="20"
+          [steps]="20"
+          [quantum]="1"
+          [tuiTextfieldSize]="'m'"
+          [tuiTextfieldLabelOutside]="true"
+          style="min-width: 7rem;"
+        />
+      </fieldset>
+    </div>
+
+    <div class="filters-wrapper">
+      <fieldset tuiTextfieldSize="m" class="filter-block">
+        <div class="filter-header">
+          <h3 tuiTitle>Author</h3>
+        </div>
+        <tui-textfield iconEnd="@tui.search" class="search-input" style="min-width: 8rem;">
+          <input
+            formControlName="author"
+            placeholder="Enter author"
+            tuiTextfield
+          />
+        </tui-textfield>
+      </fieldset>
+
+      <fieldset tuiTextfieldSize="m" class="filter-block">
+        <div class="filter-header">
+          <h3 tuiTitle>Director</h3>
+        </div>
+        <tui-textfield iconEnd="@tui.search" class="search-input" style="min-width: 8rem;">
+          <input
+            formControlName="director"
+            placeholder="Enter director"
+            tuiTextfield
+          />
+        </tui-textfield>
+      </fieldset>
+
+
+      <fieldset tuiTextfieldSize="m" class="filter-block">
+        <div class="filter-header">
+          <h3 tuiTitle>Actors</h3>
+        </div>
+        <tui-textfield iconEnd="@tui.search" class="search-input" style="min-width: 8rem;">
+          <input
+            formControlName="actors"
+            placeholder="Enter actors"
+            tuiTextfield
+          />
+        </tui-textfield>
+      </fieldset>
+
+
+      <fieldset tuiTextfieldSize="m" class="filter-block">
+        <div class="filter-header">
+          <h3 tuiTitle>Country</h3>
+        </div>
+        <tui-textfield tuiChevron style="min-width: 8rem;">
+          <select
+            formControlName="country"
+            placeholder="Select country"
+            tuiTextfield
+          ></select>
+          <tui-data-list-wrapper
+            *tuiTextfieldDropdown
+            [items]="items"
+          />
+        </tui-textfield>
+      </fieldset>
+
+    </div>
+  </form>
+
+  <div class="results" *ngIf="!selectedResult">
+    @for(res of this.result; track res.id) {
+      <button
+        tuiAppearance="neutral"
+        tuiCardMedium
+        (click)="selectResult(res)"
+      >
+        <tui-avatar
+          src="@tui.star"
+          class="star"
+        />
+
+        <h2 tuiTitle class="result__title">
+          {{res.title}}
+        </h2>
+
+        <div class="result-rating">
+          <tui-icon
+            icon="@tui.star"
+            [style.color]="'var(--tui-background-accent-2)'"
+            class="rating-icon"
+          ></tui-icon>
+          <span class="rating-value">{{ res.rating }}</span>
+
           <button
-            appearance="flat-grayscale"
-            size="xs"
             tuiButton
-            type="button"
-            (click)="selectAllTags()"
-          >
-            Select all tags
-          </button>
-          <button
             appearance="flat-grayscale"
+            class="rate-button"
             size="xs"
-            tuiButton
-            type="button"
-            iconEnd="@tui.chevron-right"
           >
-            See all
+            <tui-icon icon="@tui.star" class="rate-icon"></tui-icon> Rate
           </button>
         </div>
-      </div>
-      <div class="filter-controls">
-        <tui-filter formControlName="tagFilter" size="s" [items]="tagFilters" />
-      </div>
-    </fieldset>
-
-    <fieldset class="filter-block">
-      <div class="filter-header">
-        <h3 tuiTitle>Type</h3>
-      </div>
-      <div class="filter-controls">
-        <tui-filter formControlName="typeFilter" size="s" [items]="typeFilters" />
-      </div>
-    </fieldset>
+      </button>
+    }
   </div>
 
-  <div class="filters-wrapper">
-    <fieldset class="filter-block">
-      <div class="filter-header">
-        <h3 tuiTitle>Rating</h3>
-      </div>
-      <tui-input-range
-        formControlName="rating"
-        [max]="10"
-        [min]="0"
-        [steps]="10"
-        [quantum]="0.00001"
-        [tuiTextfieldSize]="'m'"
-        [tuiTextfieldLabelOutside]="true"
-        style="min-width: 7rem;"
-      />
-    </fieldset>
-
-    <fieldset class="filter-block">
-      <div class="filter-header">
-        <h3 tuiTitle>Year</h3>
-      </div>
-      <tui-input-range
-        formControlName="yearRange"
-        [min]="1950"
-        [max]="2025"
-        [steps]="76"
-        [quantum]="1"
-        [tuiTextfieldSize]="'m'"
-        [tuiTextfieldLabelOutside]="true"
-        style="min-width: 7rem;"
-      />
-    </fieldset>
-
-    <fieldset class="filter-block">
-      <div class="filter-header">
-        <h3 tuiTitle>Duration (min)</h3>
-      </div>
-      <tui-input-range
-        formControlName="duration"
-        [min]="0"
-        [max]="300"
-        [steps]="30"
-        [quantum]="1"
-        [tuiTextfieldSize]="'m'"
-        [tuiTextfieldLabelOutside]="true"
-        style="min-width: 7rem;"
-      />
-    </fieldset>
-
-    <fieldset class="filter-block">
-      <div class="filter-header">
-        <h3 tuiTitle>Quantity pages</h3>
-      </div>
-      <tui-input-range
-        formControlName="quantity"
-        [min]="0"
-        [max]="2000"
-        [steps]="20"
-        [quantum]="10"
-        [tuiTextfieldSize]="'m'"
-        [tuiTextfieldLabelOutside]="true"
-        style="min-width: 7rem;"
-      />
-    </fieldset>
-
-    <fieldset class="filter-block">
-      <div class="filter-header">
-        <h3 tuiTitle>Seasons</h3>
-      </div>
-      <tui-input-range
-        formControlName="seasons"
-        [min]="0"
-        [max]="20"
-        [steps]="20"
-        [quantum]="1"
-        [tuiTextfieldSize]="'m'"
-        [tuiTextfieldLabelOutside]="true"
-        style="min-width: 7rem;"
-      />
-    </fieldset>
+  <div *ngIf="selectedResult">
+    <app-details [object]="selectedResult" (back)="backToList()"></app-details>
   </div>
-
-  <div class="filters-wrapper">
-    <fieldset tuiTextfieldSize="m" class="filter-block">
-      <div class="filter-header">
-        <h3 tuiTitle>Author</h3>
-      </div>
-      <tui-textfield iconEnd="@tui.search" class="search-input" style="min-width: 8rem;">
-        <input
-          formControlName="author"
-          placeholder="Enter author"
-          tuiTextfield
-        />
-      </tui-textfield>
-    </fieldset>
-
-    <fieldset tuiTextfieldSize="m" class="filter-block">
-      <div class="filter-header">
-        <h3 tuiTitle>Director</h3>
-      </div>
-      <tui-textfield iconEnd="@tui.search" class="search-input" style="min-width: 8rem;">
-        <input
-          formControlName="director"
-          placeholder="Enter director"
-          tuiTextfield
-        />
-      </tui-textfield>
-    </fieldset>
-
-
-    <fieldset tuiTextfieldSize="m" class="filter-block">
-      <div class="filter-header">
-        <h3 tuiTitle>Actors</h3>
-      </div>
-      <tui-textfield iconEnd="@tui.search" class="search-input" style="min-width: 8rem;">
-        <input
-          formControlName="actors"
-          placeholder="Enter actors"
-          tuiTextfield
-        />
-      </tui-textfield>
-    </fieldset>
-
-
-    <fieldset tuiTextfieldSize="m" class="filter-block">
-      <div class="filter-header">
-        <h3 tuiTitle>Country</h3>
-      </div>
-      <tui-textfield tuiChevron style="min-width: 8rem;">
-        <select
-          formControlName="country"
-          placeholder="Select country"
-          tuiTextfield
-        ></select>
-        <tui-data-list-wrapper
-          *tuiTextfieldDropdown
-          [items]="items"
-        />
-      </tui-textfield>
-    </fieldset>
-
-  </div>
-</form>
+</div>

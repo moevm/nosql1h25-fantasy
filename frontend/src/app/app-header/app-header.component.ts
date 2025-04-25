@@ -29,6 +29,7 @@ import { rootActions } from '../store/root-store/root.actions';
   selector: 'app-header',
   styleUrl: './app-header.component.less',
   templateUrl: './app-header.component.html',
+  standalone: true,
 })
 export class AppHeaderComponent {
   private store = inject(Store);

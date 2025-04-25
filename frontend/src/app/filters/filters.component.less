@@ -58,3 +58,39 @@ form {
     }
   }
 }
+
+.results {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+
+  .result__title {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    display: block;
+    width: 100%;
+  }
+
+  .result-rating {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Расстояние между иконкой, рейтингом и кнопкой */
+    margin-top: 10px;
+
+    .rating-icon {
+      color: var(--tui-background-accent-2);
+    }
+
+    .rating-value {
+      font-size: 14px;
+      font-weight: 500;
+    }
+  }
+}
+
+.main__filter_results {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
