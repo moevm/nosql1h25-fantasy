@@ -28,6 +28,22 @@ public class CatalogController {
         return catalogItemMapper.toDto(saved);
     }
 
+    @PutMapping("/{id}")
+    public CatalogItemDto updateCatalogItem(@PathVariable String id,
+                                            @RequestBody CatalogItemDto catalogItemDto) {
+
+        CatalogItem existing = catalogItemService.getItemById(id)
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND, "Catalog item not found"));
+
+        CatalogItem updated = catalogItemMapper.toEntity(catalogItemDto);
+        updated.setId(existing.getId());
+
+        CatalogItem saved = catalogItemService.saveItem(updated);
+
+        return catalogItemMapper.toDto(saved);
+    }
+
     @GetMapping("/{id}")
     public CatalogItemDto findCatalogItemById(@PathVariable("id") String id) {
         CatalogItem item = catalogItemService.getItemById(id)
