@@ -29,8 +29,61 @@
       appearance="flat-grayscale"
       iconEnd="@tui.external-link"
       [style.color]="'var(--tui-text-primary)'"
+      (click)="showDialog()"
     >
       <span>Import/Export</span>
     </button>
   </nav>
 </footer>
+
+<ng-template
+  [tuiDialogOptions]="{label: 'Импорт/Экспорт', size: 's'}"
+  [(tuiDialog)]="open"
+>
+  <div class="dialog__elements">
+    <label
+      *ngIf="!control.value"
+      tuiInputFiles
+      class="dialog__elements"
+    >
+      <input
+        tuiInputFiles
+        [formControl]="control"
+      />
+    </label>
+
+    <tui-files>
+      <tui-file
+        *ngIf="failedFiles$ | async as file"
+        state="error"
+        [file]="file"
+        (remove)="removeFile()"
+      >
+        <span tuiLabel tuiAppearance="warning">Файл должен быть в формате JSON</span>
+      </tui-file>
+
+      <tui-file
+        *ngIf="loadedFiles$ | async as file"
+        [file]="file"
+        (remove)="removeFile()"
+      />
+
+      <tui-file
+        *ngIf="loadingFiles$ | async as file"
+        state="loading"
+        [file]="file"
+        (remove)="removeFile()"
+      />
+    </tui-files>
+
+    <button
+      tuiButton
+      appearance="flat-grayscale"
+      iconStart="@tui.download"
+      [style.color]="'var(--tui-text-primary)'"
+      (click)="exportData()"
+    >
+      <span>Download data</span>
+    </button>
+  </div>
+</ng-template>
