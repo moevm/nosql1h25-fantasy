@@ -71,7 +71,7 @@ export class FiltersComponent {
     tagFilter: new FormControl(),
     typeFilter: new FormControl(),
     rating: new FormControl([0, 10]),
-    yearRange: new FormControl([1950, 2025]),
+    yearRange: new FormControl([1800, 2025]),
     duration: new FormControl([0, 300]),
     quantity: new FormControl([0, 2000]),
     seasons: new FormControl([0, 20]),
@@ -150,7 +150,7 @@ export class FiltersComponent {
           startYearTo: year[1],
           country: country ? country : '',
           page: 0,
-          size: 10,
+          size: 0,
         },
       })
       .subscribe(res => {
