@@ -1,3 +1,22 @@
 .li-wo-dot {
   list-style-type: none;
 }
+
+.edit-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  align-items: start;
+
+  .form-field {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form-actions {
+    grid-column: span 2;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+  }
+}

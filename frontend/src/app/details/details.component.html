@@ -1,24 +1,106 @@
 <div class="details">
-  <h1>{{ object?.title }}</h1>
+  <h1>{{ object()?.title }}</h1>
   <ul>
-    <li>ID: {{ object?.id }}</li>
-    <li>Type: {{ object?.type }}</li>
-    <li>Description: {{ object?.description }}</li>
-    <li>Start year: {{ object?.startYear }} </li>
-    <li>End year: {{ object?.endYear }} </li>
-    <li>Tags: {{ object?.tags }}</li>
-    <li>Rating: {{ object?.rating }} </li>
-    <li>Country: {{ object?.country }} </li>
+    <li>Type: {{ object()?.type }}</li>
+    <li>Description: {{ object()?.description }}</li>
+    <li>Start year: {{ object()?.startYear }}</li>
+    <li>End year: {{ object()?.endYear }}</li>
+    <li>Tags: {{ object()?.tags }}</li>
+    <li>Rating: {{ object()?.rating }}</li>
+    <li>Country: {{ object()?.country }}</li>
     <li *ngIf="getBook()">Number of pages: {{ getBook()?.quantityPages }}</li>
     <li *ngIf="getMovie()">Duration: {{ getMovie()?.duration }}</li>
     <li *ngIf="getSeries()">Seasons: {{ getSeries()?.seasons }}</li>
     <li class="li-wo-dot">
       <ul>
-        @for(person of object?.persons; track person.name) {
+        @for (person of object()?.persons; track person.name) {
           <li>{{ person.role }}: {{ person.name }}</li>
         }
       </ul>
     </li>
   </ul>
   <button (click)="goBack()">Back to list</button>
+  <button (click)="showDialog()">Edit</button>
 </div>
+
+<ng-template
+  let-observer
+  [tuiDialogOptions]="{label: 'Редактирование элемента', size: 'l'}"
+  [(tuiDialog)]="open"
+>
+  <form
+    class="edit-form"
+    [formGroup]="editForm"
+    (ngSubmit)="observer.complete()"
+  >
+    <div class="form-field">
+      <tui-input formControlName="editTitle" tuiAutoFocus>Title</tui-input>
+    </div>
+
+    <div class="form-field">
+      <tui-input formControlName="editDescription">Description</tui-input>
+    </div>
+
+
+    <div class="form-field">
+      <tui-input formControlName="editStartYear">Start Year</tui-input>
+    </div>
+
+    <div class="form-field">
+      <tui-input formControlName="editEndYear">End Year</tui-input>
+    </div>
+
+    <div class="form-field">
+      <tui-input formControlName="editType">Type</tui-input>
+    </div>
+
+    <div class="form-field">
+      <tui-input formControlName="editTags">Tags</tui-input>
+    </div>
+
+    <div class="form-field">
+      <tui-input formControlName="editRating">Rating</tui-input>
+    </div>
+    <div class="form-field">
+      <tui-input formControlName="editCountry">Country</tui-input>
+    </div>
+
+    @if(getBook()) {
+      <div class="form-field">
+        <tui-input formControlName="editQuantityPages">Pages</tui-input>
+      </div>
+    }
+
+    @if(getSeries()) {
+      <div class="form-field">
+        <tui-input formControlName="editSeasons">Seasons</tui-input>
+      </div>
+    }
+
+    @if(getMovie()) {
+      <div class="form-field">
+        <tui-input formControlName="editDuration">Duration</tui-input>
+      </div>
+    }
+
+    <div formArrayName="editPersons" class="edit-form">
+      @for(personGroup of editPersons.controls; let i = $index; track personGroup.value){
+        <div formGroupName="{{i}}">
+          <tui-input formControlName="name">{{personGroup.value.role}}</tui-input>
+        </div>
+      }
+    </div>
+
+
+    <div class="form-actions">
+      <button
+        tuiButton
+        type="submit"
+        (click)="submitEdit()"
+      >
+        Ok
+      </button>
+    </div>
+  </form>
+</ng-template>
+

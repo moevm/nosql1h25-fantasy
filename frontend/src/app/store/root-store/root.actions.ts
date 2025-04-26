@@ -13,5 +13,6 @@ export const rootActions = createActionGroup({
     bookInit: emptyProps(),
     seriesFetched: props<{ content: Series[] }>(),
     seriesInit: emptyProps(),
+    objectUpdated: props<{ updatedObject: Book | Series | Movie }>(),
   },
 });

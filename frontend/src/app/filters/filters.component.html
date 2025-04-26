@@ -256,6 +256,10 @@
   </div>
 
   <div *ngIf="selectedResult">
-    <app-details [object]="selectedResult" (back)="backToList()"></app-details>
+    <app-details
+      [inputObject]="selectedResult"
+      (back)="backToList()"
+      (updated)="handleUpdated($event)"
+    ></app-details>
   </div>
 </div>

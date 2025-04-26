@@ -37,5 +37,41 @@ export const rootReducers = createReducer(
       ...state,
       searchQuery: query,
     };
+  }),
+  on(rootActions.objectUpdated, (state, { updatedObject }) => {
+    if (updatedObject.type === 'FILM') {
+      return {
+        ...state,
+        movies: state.movies.map(movie =>
+          movie.id === updatedObject.id
+            ? (updatedObject as Movie)
+            : movie
+        ),
+      };
+    }
+
+    if (updatedObject.type === 'BOOK') {
+      return {
+        ...state,
+        books: state.books.map(book =>
+          book.id === updatedObject.id
+            ? (updatedObject as Book)
+            : book
+        ),
+      };
+    }
+
+    if (updatedObject.type === 'SERIES') {
+      return {
+        ...state,
+        series: state.series.map(series =>
+          series.id === updatedObject.id
+            ? (updatedObject as Series)
+            : series
+        ),
+      };
+    }
+
+    return state;
   })
 );

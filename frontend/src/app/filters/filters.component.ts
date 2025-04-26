@@ -205,4 +205,12 @@ export class FiltersComponent {
   protected backToList() {
     this.selectedResult = null;
   }
+
+  protected handleUpdated(updated: Book | Movie | Series) {
+    if (this.result) {
+      this.result = this.result.map(item =>
+        item.id === updated.id ? updated : item
+      );
+    }
+  }
 }
