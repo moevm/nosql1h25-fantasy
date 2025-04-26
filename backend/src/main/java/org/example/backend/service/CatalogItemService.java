@@ -102,7 +102,7 @@ public class CatalogItemService {
     }
 
     private List<CatalogItem> searchCatalogItems(ItemType itemType,
-                                                 String title, List<Tag> tags,
+                                                 String title, List<String> tags,
                                                  Double ratingFrom, Double ratingTo,
                                                  Integer startYearFrom, Integer startYearTo,
                                                  Country country,
@@ -135,7 +135,7 @@ public class CatalogItemService {
         return mongoTemplate.find(query, CatalogItem.class);
     }
 
-    private void addCommonCriteria(List<Criteria> criteriaList, String title, List<Tag> tags, Country country) {
+    private void addCommonCriteria(List<Criteria> criteriaList, String title, List<String> tags, Country country) {
         if (title != null && !title.isEmpty()) {
             criteriaList.add(Criteria.where("title").regex(title, "i"));
         }

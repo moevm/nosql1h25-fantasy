@@ -11,7 +11,7 @@ import java.util.List;
 @NoArgsConstructor
 public class BookFilterRequest {
     private String title;
-    private List<Tag> tags;
+    private List<String> tags;
     private Double ratingFrom;
     private Double ratingTo;
     private Integer startYearFrom;

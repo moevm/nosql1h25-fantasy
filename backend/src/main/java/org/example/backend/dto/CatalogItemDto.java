@@ -19,7 +19,7 @@ public class CatalogItemDto {
     private String description;
     private int startYear;
     private int endYear;
-    private List<Tag> tags;
+    private List<String> tags;
     private double rating;
     private Country country;
     private Integer duration;

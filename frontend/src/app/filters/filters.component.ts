@@ -82,8 +82,8 @@ export class FiltersComponent {
   });
 
   protected readonly tagFilters = [
-    'Adventure',
-    'Action',
+    'Fantasy',
+    'Science fiction',
     'Drama',
     'Hollywood',
     'Family',
@@ -137,37 +137,47 @@ export class FiltersComponent {
       .get<(Book | Movie | Series)[]>(this.url + '/alls', {
         params: {
           title: title ? title : '',
-          // tags: tags ? '[' + tags.toString() + ']' : '',
+          tags: tags
+            ? tags
+                .map((tag: string) =>
+                  tag.toUpperCase().replace(/\s+/g, '_')
+                )
+                .join(',')
+            : [],
           ratingFrom: rating[0],
           ratingTo: rating[1],
           startYearFrom: year[0],
           startYearTo: year[1],
           country: country ? country : '',
           page: 0,
-          size: 0,
+          size: 10,
         },
       })
       .subscribe(res => {
         this.result = res.filter(
           el =>
-            (types == null || types.length == 0 ||
+            (types == null ||
+              types.length == 0 ||
               types.some(
                 (t: string) =>
                   t.toLowerCase() === el.type.toLowerCase()
               )) &&
-            (author == null || author == '' ||
+            (author == null ||
+              author == '' ||
               el.persons.some(
                 person =>
                   person.role === 'AUTHOR' &&
                   person.name.match(author)
               )) &&
-            (director == null || director == '' ||
+            (director == null ||
+              director == '' ||
               el.persons.some(
                 person =>
                   person.role === 'DIRECTOR' &&
                   person.name.match(director)
               )) &&
-            (actors == null || actors == '' ||
+            (actors == null ||
+              actors == '' ||
               el.persons.some(
                 person =>
                   person.role === 'ACTOR' && person.name.match(actors)

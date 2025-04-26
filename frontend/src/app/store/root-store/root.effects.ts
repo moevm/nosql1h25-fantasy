@@ -55,7 +55,7 @@ export const seriesInit$ = createEffect(
     seriesService = inject(SeriesService)
   ) => {
     return actions$.pipe(
-      ofType(rootActions.bookInit),
+      ofType(rootActions.seriesInit),
       switchMap(() =>
         seriesService
           .getSeries()
