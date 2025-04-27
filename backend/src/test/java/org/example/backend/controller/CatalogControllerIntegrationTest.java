@@ -69,7 +69,7 @@ public class CatalogControllerIntegrationTest {
         testCatalogItem.setDescription("Integration test description");
         testCatalogItem.setStartYear(2023);
         testCatalogItem.setEndYear(2023);
-        testCatalogItem.setTags(Arrays.asList(Tag.ADVENTURE, Tag.FANTASY));
+        testCatalogItem.setTags(Arrays.asList(Tag.ADVENTURE.toString(), Tag.FANTASY.toString()));
         testCatalogItem.setRating(9.0);
         testCatalogItem.setCountry(Country.USA);
         testCatalogItem.setDuration(140);
@@ -96,7 +96,7 @@ public class CatalogControllerIntegrationTest {
         testCatalogItemDto.setDescription("New integration test description");
         testCatalogItemDto.setStartYear(2024);
         testCatalogItemDto.setEndYear(2024);
-        testCatalogItemDto.setTags(Arrays.asList(Tag.SCIENCE_FICTION));
+        testCatalogItemDto.setTags(Arrays.asList(Tag.SCIENCE_FICTION.toString()));
         testCatalogItemDto.setRating(8.7);
         testCatalogItemDto.setCountry(Country.UK);
         testCatalogItemDto.setDuration(130);

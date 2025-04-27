@@ -2,12 +2,12 @@
   {
     "title": "The Lord of the Rings: The Fellowship of the Ring",
     "type": "FILM",
-    "description": "A meek hobbit embarks on a journey to destroy a powerful ring and save Middle-earth from the dark lord Sauron.",
+    "description": "A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.",
     "startYear": 2001,
     "endYear": 2001,
-    "tags": ["FANTASY"],
-    "rating": 8.8,
-    "country": "UK",
+    "tags": ["FANTASY", "ADVENTURE"],
+    "rating": 8.9,
+    "country": "USA",
     "duration": 178,
     "quantityPages": null,
     "seasons": null,
@@ -19,16 +19,20 @@
       {
         "name": "Elijah Wood",
         "role": "ACTOR"
+      },
+      {
+        "name": "Ian McKellen",
+        "role": "ACTOR"
       }
     ],
     "reviews": [
       {
-        "reviewerName": "Reviewer One",
+        "reviewerName": "IMDb User",
         "text": "A breathtaking journey in a richly imagined world.",
         "rating": 9.0
       },
       {
-        "reviewerName": "Reviewer Two",
+        "reviewerName": "Critic",
         "text": "A timeless epic of adventure and bravery.",
         "rating": 8.8
       }
@@ -37,10 +41,10 @@
   {
     "title": "Star Wars: Episode IV - A New Hope",
     "type": "FILM",
-    "description": "A young farm boy embarks on a quest with rebels to defeat an oppressive empire and restore freedom to the galaxy.",
+    "description": "Luke Skywalker joins forces with a Jedi Knight, a cocky pilot, a Wookiee and two droids to save the galaxy from the Empire's world-destroying battle station, while also attempting to rescue Princess Leia from the mysterious Darth Vader.",
     "startYear": 1977,
     "endYear": 1977,
-    "tags": ["SCIENCE_FICTION"],
+    "tags": ["SCIENCE_FICTION", "ADVENTURE"],
     "rating": 8.6,
     "country": "USA",
     "duration": 121,
@@ -58,11 +62,15 @@
       {
         "name": "Harrison Ford",
         "role": "ACTOR"
+      },
+      {
+        "name": "Carrie Fisher",
+        "role": "ACTOR"
       }
     ],
     "reviews": [
       {
-        "reviewerName": "SciFi Fan",
+        "reviewerName": "IMDb User",
         "text": "A revolutionary film that redefined the space opera genre.",
         "rating": 8.7
       },
@@ -74,40 +82,9 @@
     ]
   },
   {
-    "title": "Harry Potter and the Sorcerer's Stone",
-    "type": "BOOK",
-    "description": "A young boy discovers his magical heritage and begins his journey at Hogwarts School of Witchcraft and Wizardry.",
-    "startYear": 1997,
-    "endYear": 1997,
-    "tags": ["FANTASY"],
-    "rating": 4.8,
-    "country": "UK",
-    "duration": null,
-    "quantityPages": 223,
-    "seasons": null,
-    "persons": [
-      {
-        "name": "J.K. Rowling",
-        "role": "AUTHOR"
-      }
-    ],
-    "reviews": [
-      {
-        "reviewerName": "Book Lover",
-        "text": "A magical beginning to an extraordinary series.",
-        "rating": 5.0
-      },
-      {
-        "reviewerName": "Critic A",
-        "text": "Enchanting and full of wonder.",
-        "rating": 4.8
-      }
-    ]
-  },
-  {
     "title": "Blade Runner",
     "type": "FILM",
-    "description": "In a dystopian future, a blade runner is tasked with hunting down bioengineered beings known as replicants.",
+    "description": "A blade runner must pursue and terminate four replicants who stole a ship in space and have returned to Earth to find their creator.",
     "startYear": 1982,
     "endYear": 1982,
     "tags": ["SCIENCE_FICTION"],
@@ -124,11 +101,15 @@
       {
         "name": "Harrison Ford",
         "role": "ACTOR"
+      },
+      {
+        "name": "Rutger Hauer",
+        "role": "ACTOR"
       }
     ],
     "reviews": [
       {
-        "reviewerName": "SciFi Enthusiast",
+        "reviewerName": "IMDb User",
         "text": "A visually stunning and thought-provoking film.",
         "rating": 8.2
       },
@@ -142,10 +123,10 @@
   {
     "title": "The Matrix",
     "type": "FILM",
-    "description": "A computer hacker learns that his reality is a simulated construct and joins a rebellion against its controllers.",
+    "description": "When a beautiful stranger leads computer hacker Neo to a forbidding underworld, he discovers the shocking truth--the life he knows is the elaborate deception of an evil cyber-intelligence.",
     "startYear": 1999,
     "endYear": 1999,
-    "tags": ["SCIENCE_FICTION"],
+    "tags": ["SCIENCE_FICTION", "ACTION"],
     "rating": 8.7,
     "country": "USA",
     "duration": 136,
@@ -153,7 +134,11 @@
     "seasons": null,
     "persons": [
       {
-        "name": "The Wachowskis",
+        "name": "Lana Wachowski",
+        "role": "DIRECTOR"
+      },
+      {
+        "name": "Lilly Wachowski",
         "role": "DIRECTOR"
       },
       {
@@ -163,11 +148,15 @@
       {
         "name": "Laurence Fishburne",
         "role": "ACTOR"
+      },
+      {
+        "name": "Carrie-Anne Moss",
+        "role": "ACTOR"
       }
     ],
     "reviews": [
       {
-        "reviewerName": "Tech Lover",
+        "reviewerName": "IMDb User",
         "text": "An innovative blend of philosophy and action.",
         "rating": 8.8
       },
@@ -175,6 +164,621 @@
         "reviewerName": "Movie Critic",
         "text": "A groundbreaking film that redefined reality.",
         "rating": 8.6
+      }
+    ]
+  },
+  {
+    "title": "The Lord of the Rings: The Return of the King",
+    "type": "FILM",
+    "description": "Gandalf and Aragorn lead the World of Men against Sauron's army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring.",
+    "startYear": 2003,
+    "endYear": 2003,
+    "tags": ["FANTASY", "ADVENTURE"],
+    "rating": 9.0,
+    "country": "USA",
+    "duration": 201,
+    "quantityPages": null,
+    "seasons": null,
+    "persons": [
+      { "name": "Peter Jackson", "role": "DIRECTOR" },
+      { "name": "Elijah Wood", "role": "ACTOR" },
+      { "name": "Viggo Mortensen", "role": "ACTOR" },
+      { "name": "Ian McKellen", "role": "ACTOR" }
+    ],
+    "reviews": [
+      {
+        "reviewerName": "IMDb User",
+        "text": "A triumphant conclusion to an epic trilogy.",
+        "rating": 9.2
+      },
+      {
+        "reviewerName": "Critic",
+        "text": "A masterpiece of fantasy cinema.",
+        "rating": 9.0
+      }
+    ]
+  },
+  {
+    "title": "The Lord of the Rings: The Two Towers",
+    "type": "FILM",
+    "description": "While Frodo and Sam edge closer to Mordor with the help of the shifty Gollum, the divided fellowship makes a stand against Sauron's new ally, Saruman, and his hordes of Isengard.",
+    "startYear": 2002,
+    "endYear": 2002,
+    "tags": ["FANTASY", "ADVENTURE"],
+    "rating": 8.8,
+    "country": "USA",
+    "duration": 179,
+    "quantityPages": null,
+    "seasons": null,
+    "persons": [
+      { "name": "Peter Jackson", "role": "DIRECTOR" },
+      { "name": "Elijah Wood", "role": "ACTOR" },
+      { "name": "Ian McKellen", "role": "ACTOR" },
+      { "name": "Viggo Mortensen", "role": "ACTOR" }
+    ],
+    "reviews": [
+      {
+        "reviewerName": "IMDb User",
+        "text": "A thrilling middle chapter.",
+        "rating": 8.8
+      },
+      {
+        "reviewerName": "Critic",
+        "text": "Visually stunning and emotionally powerful.",
+        "rating": 8.7
+      }
+    ]
+  },
+  {
+    "title": "Spirited Away",
+    "type": "FILM",
+    "description": "During her family's move to the suburbs, a sullen 10-year-old girl wanders into a world ruled by gods, witches, and spirits, and where humans are changed into beasts.",
+    "startYear": 2001,
+    "endYear": 2001,
+    "tags": ["FANTASY", "ADVENTURE"],
+    "rating": 8.6,
+    "country": "JAPAN",
+    "duration": 125,
+    "quantityPages": null,
+    "seasons": null,
+    "persons": [
+      { "name": "Hayao Miyazaki", "role": "DIRECTOR" },
+      { "name": "Rumi Hiiragi", "role": "ACTOR" },
+      { "name": "Miyu Irino", "role": "ACTOR" }
+    ],
+    "reviews": [
+      {
+        "reviewerName": "IMDb User",
+        "text": "A magical and unforgettable journey.",
+        "rating": 9.0
+      },
+      {
+        "reviewerName": "Critic",
+        "text": "A masterpiece of animation.",
+        "rating": 8.5
+      }
+    ]
+  },
+  {
+    "title": "The Wizard of Oz",
+    "type": "FILM",
+    "description": "Young Dorothy Gale and her dog Toto are swept away by a tornado from their Kansas farm to the magical Land of Oz, and embark on a quest with three new friends to see the Wizard, who can return her to her home and fulfill the others' wishes.",
+    "startYear": 1939,
+    "endYear": 1939,
+    "tags": ["FANTASY", "ADVENTURE"],
+    "rating": 8.1,
+    "country": "USA",
+    "duration": 102,
+    "quantityPages": null,
+    "seasons": null,
+    "persons": [
+      { "name": "Victor Fleming", "role": "DIRECTOR" },
+      { "name": "Judy Garland", "role": "ACTOR" },
+      { "name": "Frank Morgan", "role": "ACTOR" },
+      { "name": "Ray Bolger", "role": "ACTOR" }
+    ],
+    "reviews": [
+      {
+        "reviewerName": "IMDb User",
+        "text": "A timeless classic.",
+        "rating": 8.2
+      },
+      {
+        "reviewerName": "Critic",
+        "text": "Still magical after all these years.",
+        "rating": 8.0
+      }
+    ]
+  },
+  {
+    "title": "The Princess Bride",
+    "type": "FILM",
+    "description": "While home sick in bed, a young boy's grandfather reads him the story of a farmboy-turned-pirate who encounters numerous obstacles, enemies and allies in his quest to be reunited with his true love.",
+    "startYear": 1987,
+    "endYear": 1987,
+    "tags": ["FANTASY", "ADVENTURE"],
+    "rating": 8.0,
+    "country": "USA",
+    "duration": 98,
+    "quantityPages": null,
+    "seasons": null,
+    "persons": [
+      { "name": "Rob Reiner", "role": "DIRECTOR" },
+      { "name": "Cary Elwes", "role": "ACTOR" },
+      { "name": "Robin Wright", "role": "ACTOR" },
+      { "name": "Mandy Patinkin", "role": "ACTOR" }
+    ],
+    "reviews": [
+      {
+        "reviewerName": "IMDb User",
+        "text": "A witty and charming fairy tale.",
+        "rating": 8.1
+      },
+      {
+        "reviewerName": "Critic",
+        "text": "Endlessly quotable and fun.",
+        "rating": 8.0
+      }
+    ]
+  },
+  {
+    "title": "Pan's Labyrinth",
+    "type": "FILM",
+    "description": "In the Falangist Spain of 1944, the bookish young stepdaughter of a sadistic army officer escapes into an eerie but captivating fantasy world.",
+    "startYear": 2006,
+    "endYear": 2006,
+    "tags": ["FANTASY", "HORROR"],
+    "rating": 8.2,
+    "country": "FRANCE",
+    "duration": 118,
+    "quantityPages": null,
+    "seasons": null,
+    "persons": [
+      { "name": "Guillermo del Toro", "role": "DIRECTOR" },
+      { "name": "Ivana Baquero", "role": "ACTOR" },
+      { "name": "Sergi López", "role": "ACTOR" }
+    ],
+    "reviews": [
+      {
+        "reviewerName": "IMDb User",
+        "text": "Dark, beautiful, and moving.",
+        "rating": 8.5
+      },
+      {
+        "reviewerName": "Critic",
+        "text": "A fantasy for adults.",
+        "rating": 8.2
+      }
+    ]
+  },
+  {
+    "title": "The Chronicles of Narnia: The Lion, the Witch and the Wardrobe",
+    "type": "FILM",
+    "description": "Four kids travel through a wardrobe to the land of Narnia and learn of their destiny to free it with the guidance of a mystical lion.",
+    "startYear": 2005,
+    "endYear": 2005,
+    "tags": ["FANTASY", "ADVENTURE"],
+    "rating": 6.9,
+    "country": "USA",
+    "duration": 143,
+    "quantityPages": null,
+    "seasons": null,
+    "persons": [
+      { "name": "Andrew Adamson", "role": "DIRECTOR" },
+      { "name": "Tilda Swinton", "role": "ACTOR" },
+      { "name": "Georgie Henley", "role": "ACTOR" },
+      { "name": "William Moseley", "role": "ACTOR" }
+    ],
+    "reviews": [
+      {
+        "reviewerName": "IMDb User",
+        "text": "A magical adaptation of a classic.",
+        "rating": 7.0
+      },
+      {
+        "reviewerName": "Critic",
+        "text": "Faithful and enchanting.",
+        "rating": 6.8
+      }
+    ]
+  },
+  {
+    "title": "Princess Mononoke",
+    "type": "FILM",
+    "description": "On a journey to find the cure for a Tatarigami's curse, Ashitaka finds himself in the middle of a war between the forest gods and Tatara, a mining colony.",
+    "startYear": 1997,
+    "endYear": 1997,
+    "tags": ["FANTASY", "ADVENTURE"],
+    "rating": 8.3,
+    "country": "JAPAN",
+    "duration": 134,
+    "quantityPages": null,
+    "seasons": null,
+    "persons": [
+      { "name": "Hayao Miyazaki", "role": "DIRECTOR" },
+      { "name": "Yôji Matsuda", "role": "ACTOR" },
+      { "name": "Yuriko Ishida", "role": "ACTOR" }
+    ],
+    "reviews": [
+      {
+        "reviewerName": "IMDb User",
+        "text": "A visually stunning epic.",
+        "rating": 8.5
+      },
+      {
+        "reviewerName": "Critic",
+        "text": "A masterpiece of animation.",
+        "rating": 8.3
+      }
+    ]
+  },
+  {
+    "title": "The NeverEnding Story",
+    "type": "FILM",
+    "description": "A troubled boy dives into a wondrous fantasy world through the pages of a mysterious book.",
+    "startYear": 1984,
+    "endYear": 1984,
+    "tags": ["FANTASY", "ADVENTURE"],
+    "rating": 7.3,
+    "country": "GERMANY",
+    "duration": 102,
+    "quantityPages": null,
+    "seasons": null,
+    "persons": [
+      { "name": "Wolfgang Petersen", "role": "DIRECTOR" },
+      { "name": "Barret Oliver", "role": "ACTOR" },
+      { "name": "Noah Hathaway", "role": "ACTOR" }
+    ],
+    "reviews": [
+      {
+        "reviewerName": "IMDb User",
+        "text": "A childhood favorite for generations.",
+        "rating": 7.5
+      },
+      {
+        "reviewerName": "Critic",
+        "text": "Imaginative and heartfelt.",
+        "rating": 7.2
+      }
+    ]
+  },
+  {
+    "title": "Willow",
+    "type": "FILM",
+    "description": "A reluctant dwarf must play a critical role in protecting a special baby from an evil queen.",
+    "startYear": 1988,
+    "endYear": 1988,
+    "tags": ["FANTASY", "ADVENTURE"],
+    "rating": 7.2,
+    "country": "USA",
+    "duration": 126,
+    "quantityPages": null,
+    "seasons": null,
+    "persons": [
+      { "name": "Ron Howard", "role": "DIRECTOR" },
+      { "name": "Warwick Davis", "role": "ACTOR" },
+      { "name": "Val Kilmer", "role": "ACTOR" }
+    ],
+    "reviews": [
+      {
+        "reviewerName": "IMDb User",
+        "text": "A fun and adventurous fantasy.",
+        "rating": 7.3
+      },
+      {
+        "reviewerName": "Critic",
+        "text": "Classic 80s fantasy.",
+        "rating": 7.0
+      }
+    ]
+  },
+  {
+    "title": "Inception",
+    "type": "FILM",
+    "description": "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.",
+    "startYear": 2010,
+    "endYear": 2010,
+    "tags": ["SCIENCE_FICTION", "MYSTERY"],
+    "rating": 8.8,
+    "country": "USA",
+    "duration": 148,
+    "quantityPages": null,
+    "seasons": null,
+    "persons": [
+      { "name": "Christopher Nolan", "role": "DIRECTOR" },
+      { "name": "Leonardo DiCaprio", "role": "ACTOR" },
+      { "name": "Joseph Gordon-Levitt", "role": "ACTOR" },
+      { "name": "Ellen Page", "role": "ACTOR" }
+    ],
+    "reviews": [
+      {
+        "reviewerName": "IMDb User",
+        "text": "A mind-bending masterpiece.",
+        "rating": 9.0
+      },
+      {
+        "reviewerName": "Critic",
+        "text": "Visually stunning with a complex narrative.",
+        "rating": 8.7
+      }
+    ]
+  },
+  {
+    "title": "Interstellar",
+    "type": "FILM",
+    "description": "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+    "startYear": 2014,
+    "endYear": 2014,
+    "tags": ["SCIENCE_FICTION", "ADVENTURE"],
+    "rating": 8.7,
+    "country": "USA",
+    "duration": 169,
+    "quantityPages": null,
+    "seasons": null,
+    "persons": [
+      { "name": "Christopher Nolan", "role": "DIRECTOR" },
+      { "name": "Matthew McConaughey", "role": "ACTOR" },
+      { "name": "Anne Hathaway", "role": "ACTOR" },
+      { "name": "Jessica Chastain", "role": "ACTOR" }
+    ],
+    "reviews": [
+      {
+        "reviewerName": "IMDb User",
+        "text": "A breathtaking exploration of time, space, and love.",
+        "rating": 8.9
+      },
+      {
+        "reviewerName": "Critic",
+        "text": "Ambitious, visually stunning, and emotionally powerful.",
+        "rating": 8.6
+      }
+    ]
+  },
+  {
+    "title": "The Shining",
+    "type": "FILM",
+    "description": "A family heads to an isolated hotel for the winter where a sinister presence influences the father into violence, while his psychic son sees horrific forebodings from both past and future.",
+    "startYear": 1980,
+    "endYear": 1980,
+    "tags": ["HORROR", "MYSTERY"],
+    "rating": 8.4,
+    "country": "USA",
+    "duration": 146,
+    "quantityPages": null,
+    "seasons": null,
+    "persons": [
+      { "name": "Stanley Kubrick", "role": "DIRECTOR" },
+      { "name": "Jack Nicholson", "role": "ACTOR" },
+      { "name": "Shelley Duvall", "role": "ACTOR" },
+      { "name": "Danny Lloyd", "role": "ACTOR" }
+    ],
+    "reviews": [
+      {
+        "reviewerName": "IMDb User",
+        "text": "A masterclass in psychological horror.",
+        "rating": 8.5
+      },
+      {
+        "reviewerName": "Critic",
+        "text": "A terrifying and visually striking classic.",
+        "rating": 8.3
+      }
+    ]
+  },
+  
+  {
+    "title": "Game of Thrones",
+    "type": "SERIES",
+    "description": "Nine noble families fight for control over the lands of Westeros, while an ancient enemy returns after being dormant for millennia.",
+    "startYear": 2011,
+    "endYear": 2019,
+    "tags": ["FANTASY", "ADVENTURE"],
+    "rating": 9.2,
+    "country": "USA",
+    "duration": null,
+    "quantityPages": null,
+    "seasons": 8,
+    "persons": [
+      { "name": "David Benioff", "role": "DIRECTOR" },
+      { "name": "D.B. Weiss", "role": "DIRECTOR" },
+      { "name": "Emilia Clarke", "role": "ACTOR" },
+      { "name": "Kit Harington", "role": "ACTOR" },
+      { "name": "Peter Dinklage", "role": "ACTOR" }
+    ],
+    "reviews": [
+      {
+        "reviewerName": "IMDb User",
+        "text": "Epic fantasy with complex characters and political intrigue.",
+        "rating": 9.5
+      },
+      {
+        "reviewerName": "Critic",
+        "text": "A groundbreaking series that redefined television.",
+        "rating": 9.0
+      }
+    ]
+  },
+  {
+    "title": "The Witcher",
+    "type": "SERIES",
+    "description": "Geralt of Rivia, a solitary monster hunter, struggles to find his place in a world where people often prove more wicked than beasts.",
+    "startYear": 2019,
+    "endYear": 2023,
+    "tags": ["FANTASY", "ADVENTURE"],
+    "rating": 8.1,
+    "country": "USA",
+    "duration": null,
+    "quantityPages": null,
+    "seasons": 3,
+    "persons": [
+      { "name": "Lauren Schmidt Hissrich", "role": "DIRECTOR" },
+      { "name": "Henry Cavill", "role": "ACTOR" },
+      { "name": "Freya Allan", "role": "ACTOR" },
+      { "name": "Anya Chalotra", "role": "ACTOR" }
+    ],
+    "reviews": [
+      {
+        "reviewerName": "IMDb User",
+        "text": "A captivating adaptation with excellent action sequences.",
+        "rating": 8.3
+      },
+      {
+        "reviewerName": "Critic",
+        "text": "Rich world-building and strong performances.",
+        "rating": 8.0
+      }
+    ]
+  },
+  {
+    "title": "Dark",
+    "type": "SERIES",
+    "description": "A family saga with a supernatural twist, set in a German town where the disappearance of two young children exposes the relationships among four families.",
+    "startYear": 2017,
+    "endYear": 2020,
+    "tags": ["SCIENCE_FICTION", "MYSTERY"],
+    "rating": 8.7,
+    "country": "GERMANY",
+    "duration": null,
+    "quantityPages": null,
+    "seasons": 3,
+    "persons": [
+      { "name": "Baran bo Odar", "role": "DIRECTOR" },
+      { "name": "Louis Hofmann", "role": "ACTOR" },
+      { "name": "Lisa Vicari", "role": "ACTOR" }
+    ],
+    "reviews": [
+      {
+        "reviewerName": "IMDb User",
+        "text": "A mind-bending time travel narrative with impeccable execution.",
+        "rating": 9.0
+      },
+      {
+        "reviewerName": "Critic",
+        "text": "Complex, atmospheric, and brilliantly structured.",
+        "rating": 8.8
+      }
+    ]
+  },
+  {
+    "title": "Stranger Things",
+    "type": "SERIES",
+    "description": "When a young boy disappears, his mother, a police chief, and his friends must confront terrifying supernatural forces in order to get him back.",
+    "startYear": 2016,
+    "endYear": 2022,
+    "tags": ["SCIENCE_FICTION", "HORROR"],
+    "rating": 8.7,
+    "country": "USA",
+    "duration": null,
+    "quantityPages": null,
+    "seasons": 4,
+    "persons": [
+      { "name": "Matt Duffer", "role": "DIRECTOR" },
+      { "name": "Ross Duffer", "role": "DIRECTOR" },
+      { "name": "Millie Bobby Brown", "role": "ACTOR" },
+      { "name": "Finn Wolfhard", "role": "ACTOR" },
+      { "name": "Winona Ryder", "role": "ACTOR" }
+    ],
+    "reviews": [
+      {
+        "reviewerName": "IMDb User",
+        "text": "A perfect blend of 80s nostalgia and supernatural thrills.",
+        "rating": 8.9
+      },
+      {
+        "reviewerName": "Critic",
+        "text": "Compelling characters and a strong sense of atmosphere.",
+        "rating": 8.6
+      }
+    ]
+  },
+  {
+    "title": "Breaking Bad",
+    "type": "SERIES",
+    "description": "A high school chemistry teacher diagnosed with inoperable lung cancer turns to manufacturing and selling methamphetamine in order to secure his family's future.",
+    "startYear": 2008,
+    "endYear": 2013,
+    "tags": ["MYSTERY"],
+    "rating": 9.5,
+    "country": "USA",
+    "duration": null,
+    "quantityPages": null,
+    "seasons": 5,
+    "persons": [
+      { "name": "Vince Gilligan", "role": "DIRECTOR" },
+      { "name": "Bryan Cranston", "role": "ACTOR" },
+      { "name": "Aaron Paul", "role": "ACTOR" }
+    ],
+    "reviews": [
+      {
+        "reviewerName": "IMDb User",
+        "text": "One of the greatest television series of all time.",
+        "rating": 9.6
+      },
+      {
+        "reviewerName": "Critic",
+        "text": "A masterclass in character development and storytelling.",
+        "rating": 9.5
+      }
+    ]
+  },
+  {
+    "title": "The Mandalorian",
+    "type": "SERIES",
+    "description": "The travels of a lone bounty hunter in the outer reaches of the galaxy, far from the authority of the New Republic.",
+    "startYear": 2019,
+    "endYear": 2023,
+    "tags": ["SCIENCE_FICTION", "ADVENTURE"],
+    "rating": 8.7,
+    "country": "USA",
+    "duration": null,
+    "quantityPages": null,
+    "seasons": 3,
+    "persons": [
+      { "name": "Jon Favreau", "role": "DIRECTOR" },
+      { "name": "Pedro Pascal", "role": "ACTOR" }
+    ],
+    "reviews": [
+      {
+        "reviewerName": "IMDb User",
+        "text": "A return to Star Wars' roots with a fresh perspective.",
+        "rating": 8.8
+      },
+      {
+        "reviewerName": "Critic",
+        "text": "Visually stunning with a compelling narrative.",
+        "rating": 8.7
+      }
+    ]
+  },
+  
+  {
+    "title": "Harry Potter and the Philosopher's Stone",
+    "type": "BOOK",
+    "description": "An orphaned boy enrolls in a school of wizardry, where he learns the truth about himself, his family and the terrible evil that haunts the magical world.",
+    "startYear": 1997,
+    "endYear": 1997,
+    "tags": ["FANTASY", "ADVENTURE"],
+    "rating": 4.8,
+    "country": "UK",
+    "duration": null,
+    "quantityPages": 223,
+    "seasons": null,
+    "persons": [
+      {
+        "name": "J.K. Rowling",
+        "role": "AUTHOR"
+      }
+    ],
+    "reviews": [
+      {
+        "reviewerName": "Goodreads User",
+        "text": "A magical beginning to an extraordinary series.",
+        "rating": 5.0
+      },
+      {
+        "reviewerName": "Literary Critic",
+        "text": "Enchanting and full of wonder.",
+        "rating": 4.7
       }
     ]
   }

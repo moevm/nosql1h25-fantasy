@@ -7,5 +7,6 @@ public enum Country {
     FRANCE,
     GERMANY,
     RUSSIA,
-    JAPAN
+    JAPAN,
+    POLAND
 }

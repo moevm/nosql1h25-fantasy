@@ -71,7 +71,7 @@ public class CatalogControllerTest {
         testCatalogItem.setDescription("Test description");
         testCatalogItem.setStartYear(2021);
         testCatalogItem.setEndYear(2021);
-        testCatalogItem.setTags(Arrays.asList(Tag.ADVENTURE));
+        testCatalogItem.setTags(Arrays.asList(Tag.ADVENTURE.toString()));
         testCatalogItem.setRating(8.5);
         testCatalogItem.setCountry(Country.USA);
         testCatalogItem.setDuration(120);
@@ -95,7 +95,7 @@ public class CatalogControllerTest {
         testCatalogItemDto.setDescription("Test description");
         testCatalogItemDto.setStartYear(2021);
         testCatalogItemDto.setEndYear(2021);
-        testCatalogItemDto.setTags(Arrays.asList(Tag.ADVENTURE));
+        testCatalogItemDto.setTags(Arrays.asList(Tag.ADVENTURE.toString()));
         testCatalogItemDto.setRating(8.5);
         testCatalogItemDto.setCountry(Country.USA);
         testCatalogItemDto.setDuration(120);
