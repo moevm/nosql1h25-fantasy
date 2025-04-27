@@ -692,36 +692,6 @@
     ]
   },
   {
-    "title": "Breaking Bad",
-    "type": "SERIES",
-    "description": "A high school chemistry teacher diagnosed with inoperable lung cancer turns to manufacturing and selling methamphetamine in order to secure his family's future.",
-    "startYear": 2008,
-    "endYear": 2013,
-    "tags": ["MYSTERY"],
-    "rating": 9.5,
-    "country": "USA",
-    "duration": null,
-    "quantityPages": null,
-    "seasons": 5,
-    "persons": [
-      { "name": "Vince Gilligan", "role": "DIRECTOR" },
-      { "name": "Bryan Cranston", "role": "ACTOR" },
-      { "name": "Aaron Paul", "role": "ACTOR" }
-    ],
-    "reviews": [
-      {
-        "reviewerName": "IMDb User",
-        "text": "One of the greatest television series of all time.",
-        "rating": 9.6
-      },
-      {
-        "reviewerName": "Critic",
-        "text": "A masterclass in character development and storytelling.",
-        "rating": 9.5
-      }
-    ]
-  },
-  {
     "title": "The Mandalorian",
     "type": "SERIES",
     "description": "The travels of a lone bounty hunter in the outer reaches of the galaxy, far from the authority of the New Republic.",
@@ -747,6 +717,128 @@
         "reviewerName": "Critic",
         "text": "Visually stunning with a compelling narrative.",
         "rating": 8.7
+      }
+    ]
+  },
+  {
+    "title": "Chernobyl",
+    "type": "SERIES",
+    "description": "In April 1986, an explosion at the Chernobyl nuclear power plant in the Union of Soviet Socialist Republics becomes one of the world's worst man-made catastrophes.",
+    "startYear": 2019,
+    "endYear": 2019,
+    "tags": ["MYSTERY"],
+    "rating": 9.3,
+    "country": "USA",
+    "duration": null,
+    "quantityPages": null,
+    "seasons": 1,
+    "persons": [
+      { "name": "Craig Mazin", "role": "DIRECTOR" },
+      { "name": "Jared Harris", "role": "ACTOR" },
+      { "name": "Stellan Skarsgård", "role": "ACTOR" }
+    ],
+    "reviews": [
+      {
+        "reviewerName": "IMDb User",
+        "text": "Harrowing, haunting, and an absolute masterpiece.",
+        "rating": 9.4
+      },
+      {
+        "reviewerName": "Critic",
+        "text": "A powerful examination of the cost of lies.",
+        "rating": 9.3
+      }
+    ]
+  },
+  {
+    "title": "Black Mirror",
+    "type": "SERIES",
+    "description": "An anthology series exploring a twisted, high-tech multiverse where humanity's greatest innovations and darkest instincts collide.",
+    "startYear": 2011,
+    "endYear": 2023,
+    "tags": ["SCIENCE_FICTION"],
+    "rating": 8.7,
+    "country": "UK",
+    "duration": null,
+    "quantityPages": null,
+    "seasons": 6,
+    "persons": [
+      { "name": "Charlie Brooker", "role": "DIRECTOR" },
+      { "name": "Daniel Kaluuya", "role": "ACTOR" },
+      { "name": "Bryce Dallas Howard", "role": "ACTOR" }
+    ],
+    "reviews": [
+      {
+        "reviewerName": "IMDb User",
+        "text": "Thought-provoking and disturbingly plausible.",
+        "rating": 8.8
+      },
+      {
+        "reviewerName": "Critic",
+        "text": "A brilliant examination of technology's impact on society.",
+        "rating": 8.6
+      }
+    ]
+  },
+  {
+    "title": "The Last of Us",
+    "type": "SERIES",
+    "description": "After a global pandemic destroys civilization, a hardened survivor takes charge of a 14-year-old girl who may be humanity's last hope.",
+    "startYear": 2023,
+    "endYear": 2023,
+    "tags": ["HORROR", "SCIENCE_FICTION"],
+    "rating": 8.8,
+    "country": "USA",
+    "duration": null,
+    "quantityPages": null,
+    "seasons": 1,
+    "persons": [
+      { "name": "Craig Mazin", "role": "DIRECTOR" },
+      { "name": "Neil Druckmann", "role": "DIRECTOR" },
+      { "name": "Pedro Pascal", "role": "ACTOR" },
+      { "name": "Bella Ramsey", "role": "ACTOR" }
+    ],
+    "reviews": [
+      {
+        "reviewerName": "IMDb User",
+        "text": "A masterful adaptation that elevates the source material.",
+        "rating": 8.9
+      },
+      {
+        "reviewerName": "Critic",
+        "text": "Emotionally resonant with outstanding performances.",
+        "rating": 8.7
+      }
+    ]
+  },
+  {
+    "title": "Westworld",
+    "type": "SERIES",
+    "description": "At a high-tech amusement park, visitors interact with automatons in scenarios that are developed, overseen and scripted by the park's creative, security and quality assurance departments.",
+    "startYear": 2016,
+    "endYear": 2022,
+    "tags": ["SCIENCE_FICTION", "MYSTERY"],
+    "rating": 8.5,
+    "country": "USA",
+    "duration": null,
+    "quantityPages": null,
+    "seasons": 4,
+    "persons": [
+      { "name": "Jonathan Nolan", "role": "DIRECTOR" },
+      { "name": "Lisa Joy", "role": "DIRECTOR" },
+      { "name": "Evan Rachel Wood", "role": "ACTOR" },
+      { "name": "Thandiwe Newton", "role": "ACTOR" }
+    ],
+    "reviews": [
+      {
+        "reviewerName": "IMDb User",
+        "text": "A philosophical exploration of consciousness and humanity.",
+        "rating": 8.7
+      },
+      {
+        "reviewerName": "Critic",
+        "text": "Visually stunning with complex, layered storytelling.",
+        "rating": 8.4
       }
     ]
   },
@@ -779,6 +871,347 @@
         "reviewerName": "Literary Critic",
         "text": "Enchanting and full of wonder.",
         "rating": 4.7
+      }
+    ]
+  },
+  {
+    "title": "The Hobbit",
+    "type": "BOOK",
+    "description": "A reluctant hobbit, Bilbo Baggins, sets out on an unexpected journey to the Lonely Mountain with a spirited group of dwarves to reclaim their mountain home, and the gold within it, from the dragon Smaug.",
+    "startYear": 1937,
+    "endYear": 1937,
+    "tags": ["FANTASY", "ADVENTURE"],
+    "rating": 4.7,
+    "country": "UK",
+    "duration": null,
+    "quantityPages": 310,
+    "seasons": null,
+    "persons": [
+      {
+        "name": "J.R.R. Tolkien",
+        "role": "AUTHOR"
+      }
+    ],
+    "reviews": [
+      {
+        "reviewerName": "Goodreads User",
+        "text": "A timeless adventure that captivates readers of all ages.",
+        "rating": 4.8
+      },
+      {
+        "reviewerName": "Literary Critic",
+        "text": "The definitive fantasy adventure that started it all.",
+        "rating": 4.7
+      }
+    ]
+  },
+  {
+    "title": "A Game of Thrones",
+    "type": "BOOK",
+    "description": "In a land where summers can last decades and winters a lifetime, trouble is brewing. The cold is returning, and in the frozen wastes to the North of Winterfell, sinister forces are massing beyond the kingdom's protective Wall.",
+    "startYear": 1996,
+    "endYear": 1996,
+    "tags": ["FANTASY"],
+    "rating": 4.5,
+    "country": "USA",
+    "duration": null,
+    "quantityPages": 694,
+    "seasons": null,
+    "persons": [
+      {
+        "name": "George R.R. Martin",
+        "role": "AUTHOR"
+      }
+    ],
+    "reviews": [
+      {
+        "reviewerName": "Goodreads User",
+        "text": "A complex, character-driven fantasy with political intrigue and shocking twists.",
+        "rating": 4.6
+      },
+      {
+        "reviewerName": "Literary Critic",
+        "text": "Redefines fantasy with its moral complexity and brutal realism.",
+        "rating": 4.5
+      }
+    ]
+  },
+  {
+    "title": "1984",
+    "type": "BOOK",
+    "description": "Among the seminal texts of the 20th century, '1984' is a rare work that grows more haunting as its futuristic purgatory becomes more real.",
+    "startYear": 1949,
+    "endYear": 1949,
+    "tags": ["SCIENCE_FICTION"],
+    "rating": 4.6,
+    "country": "UK",
+    "duration": null,
+    "quantityPages": 328,
+    "seasons": null,
+    "persons": [
+      {
+        "name": "George Orwell",
+        "role": "AUTHOR"
+      }
+    ],
+    "reviews": [
+      {
+        "reviewerName": "Goodreads User",
+        "text": "A chilling vision of totalitarianism that remains frighteningly relevant.",
+        "rating": 4.7
+      },
+      {
+        "reviewerName": "Literary Critic",
+        "text": "A masterpiece of political fiction and cautionary tale.",
+        "rating": 4.6
+      }
+    ]
+  },
+  {
+    "title": "To Kill a Mockingbird",
+    "type": "BOOK",
+    "description": "The unforgettable novel of a childhood in a sleepy Southern town and the crisis of conscience that rocked it.",
+    "startYear": 1960,
+    "endYear": 1960,
+    "tags": ["MYSTERY"],
+    "rating": 4.8,
+    "country": "USA",
+    "duration": null,
+    "quantityPages": 281,
+    "seasons": null,
+    "persons": [
+      {
+        "name": "Harper Lee",
+        "role": "AUTHOR"
+      }
+    ],
+    "reviews": [
+      {
+        "reviewerName": "Goodreads User",
+        "text": "A powerful examination of racial injustice and moral growth.",
+        "rating": 4.9
+      },
+      {
+        "reviewerName": "Literary Critic",
+        "text": "A compassionate, dramatic, and deeply moving tale.",
+        "rating": 4.8
+      }
+    ]
+  },
+  {
+    "title": "The Great Gatsby",
+    "type": "BOOK",
+    "description": "The story of the fabulously wealthy Jay Gatsby and his love for the beautiful Daisy Buchanan, of lavish parties on Long Island at a time when The New York Times noted 'gin was the national drink and sex the national obsession.'",
+    "startYear": 1925,
+    "endYear": 1925,
+    "tags": ["MYSTERY"],
+    "rating": 4.3,
+    "country": "USA",
+    "duration": null,
+    "quantityPages": 180,
+    "seasons": null,
+    "persons": [
+      {
+        "name": "F. Scott Fitzgerald",
+        "role": "AUTHOR"
+      }
+    ],
+    "reviews": [
+      {
+        "reviewerName": "Goodreads User",
+        "text": "A portrait of the Jazz Age in all of its decadence and excess.",
+        "rating": 4.4
+      },
+      {
+        "reviewerName": "Literary Critic",
+        "text": "A masterpiece of American literature.",
+        "rating": 4.3
+      }
+    ]
+  },
+  {
+    "title": "The Road",
+    "type": "BOOK",
+    "description": "A father and his son walk alone through burned America. Nothing moves in the ravaged landscape save the ash on the wind.",
+    "startYear": 2006,
+    "endYear": 2006,
+    "tags": ["SCIENCE_FICTION", "HORROR"],
+    "rating": 4.2,
+    "country": "USA",
+    "duration": null,
+    "quantityPages": 287,
+    "seasons": null,
+    "persons": [
+      {
+        "name": "Cormac McCarthy",
+        "role": "AUTHOR"
+      }
+    ],
+    "reviews": [
+      {
+        "reviewerName": "Goodreads User",
+        "text": "A devastating and emotionally powerful post-apocalyptic journey.",
+        "rating": 4.3
+      },
+      {
+        "reviewerName": "Literary Critic",
+        "text": "Bleak, beautiful, and unforgettable.",
+        "rating": 4.2
+      }
+    ]
+  },
+  {
+    "title": "The Name of the Wind",
+    "type": "BOOK",
+    "description": "The tale of Kvothe, from his childhood in a troupe of traveling players, to years spent as a near-feral orphan in a crime-riddled city, to his daringly brazen yet successful bid to enter a legendary school of magic.",
+    "startYear": 2007,
+    "endYear": 2007,
+    "tags": ["FANTASY", "ADVENTURE"],
+    "rating": 4.6,
+    "country": "USA",
+    "duration": null,
+    "quantityPages": 662,
+    "seasons": null,
+    "persons": [
+      {
+        "name": "Patrick Rothfuss",
+        "role": "AUTHOR"
+      }
+    ],
+    "reviews": [
+      {
+        "reviewerName": "Goodreads User",
+        "text": "A masterful and immersive fantasy with beautiful prose.",
+        "rating": 4.7
+      },
+      {
+        "reviewerName": "Literary Critic",
+        "text": "A brilliant debut that reinvigorates the fantasy genre.",
+        "rating": 4.5
+      }
+    ]
+  },
+  {
+    "title": "Dune",
+    "type": "BOOK",
+    "description": "Set on the desert planet Arrakis, Dune is the story of the boy Paul Atreides, heir to a noble family tasked with ruling an inhospitable world where the only thing of value is the 'spice' melange.",
+    "startYear": 1965,
+    "endYear": 1965,
+    "tags": ["SCIENCE_FICTION", "ADVENTURE"],
+    "rating": 4.5,
+    "country": "USA",
+    "duration": null,
+    "quantityPages": 412,
+    "seasons": null,
+    "persons": [
+      {
+        "name": "Frank Herbert",
+        "role": "AUTHOR"
+      }
+    ],
+    "reviews": [
+      {
+        "reviewerName": "Goodreads User",
+        "text": "A monumental achievement of world-building and imagination.",
+        "rating": 4.6
+      },
+      {
+        "reviewerName": "Literary Critic",
+        "text": "The definitive science fiction epic with philosophical depth.",
+        "rating": 4.5
+      }
+    ]
+  },
+  {
+    "title": "The Shining",
+    "type": "BOOK",
+    "description": "Jack Torrance's new job at the Overlook Hotel is the perfect chance for a fresh start. As the off-season caretaker, he'll have plenty of time to spend reconnecting with his family and working on his writing.",
+    "startYear": 1977,
+    "endYear": 1977,
+    "tags": ["HORROR"],
+    "rating": 4.4,
+    "country": "USA",
+    "duration": null,
+    "quantityPages": 447,
+    "seasons": null,
+    "persons": [
+      {
+        "name": "Stephen King",
+        "role": "AUTHOR"
+      }
+    ],
+    "reviews": [
+      {
+        "reviewerName": "Goodreads User",
+        "text": "A terrifying masterpiece of psychological horror.",
+        "rating": 4.5
+      },
+      {
+        "reviewerName": "Literary Critic",
+        "text": "King at his atmospheric and unsettling best.",
+        "rating": 4.3
+      }
+    ]
+  },
+  {
+    "title": "The Martian",
+    "type": "BOOK",
+    "description": "Six days ago, astronaut Mark Watney became one of the first people to walk on Mars. Now, he's sure he'll be the first person to die there.",
+    "startYear": 2011,
+    "endYear": 2011,
+    "tags": ["SCIENCE_FICTION", "ADVENTURE"],
+    "rating": 4.4,
+    "country": "USA",
+    "duration": null,
+    "quantityPages": 369,
+    "seasons": null,
+    "persons": [
+      {
+        "name": "Andy Weir",
+        "role": "AUTHOR"
+      }
+    ],
+    "reviews": [
+      {
+        "reviewerName": "Goodreads User",
+        "text": "A thrilling survival story with scientific accuracy and humor.",
+        "rating": 4.5
+      },
+      {
+        "reviewerName": "Literary Critic",
+        "text": "An ingenious blend of science and storytelling.",
+        "rating": 4.3
+      }
+    ]
+  },
+  {
+    "title": "The Night Circus",
+    "type": "BOOK",
+    "description": "The circus arrives without warning. No announcements precede it. It is simply there, when yesterday it was not.",
+    "startYear": 2011,
+    "endYear": 2011,
+    "tags": ["FANTASY"],
+    "rating": 4.3,
+    "country": "USA",
+    "duration": null,
+    "quantityPages": 391,
+    "seasons": null,
+    "persons": [
+      {
+        "name": "Erin Morgenstern",
+        "role": "AUTHOR"
+      }
+    ],
+    "reviews": [
+      {
+        "reviewerName": "Goodreads User",
+        "text": "A magical and dreamlike experience with beautiful prose.",
+        "rating": 4.4
+      },
+      {
+        "reviewerName": "Literary Critic",
+        "text": "An enchanting and imaginative tale of wonder.",
+        "rating": 4.2
       }
     ]
   }
