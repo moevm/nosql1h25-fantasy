@@ -1,5 +1,3 @@
-// /backend/src/test/java/org/example/backend/controller/CatalogControllerIntegrationTest.java
-
 package org.example.backend.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -59,10 +57,8 @@ public class CatalogControllerIntegrationTest {
 
     @BeforeEach
     void setUp() {
-        // Очистка базы данных перед каждым тестом
         catalogItemRepository.deleteAll();
 
-        // Подготовка тестовых данных
         testCatalogItem = new CatalogItem();
         testCatalogItem.setTitle("Integration Test Movie");
         testCatalogItem.setType(ItemType.FILM);
@@ -86,10 +82,8 @@ public class CatalogControllerIntegrationTest {
         testCatalogItem.setPersons(Collections.singletonList(director));
         testCatalogItem.setReviews(Collections.singletonList(review));
 
-        // Сохранить тестовый элемент в базу для тестов get запросов
         testCatalogItem = catalogItemRepository.save(testCatalogItem);
 
-        // Создаем DTO для тестов post запросов
         testCatalogItemDto = new CatalogItemDto();
         testCatalogItemDto.setTitle("New Integration Test Movie");
         testCatalogItemDto.setType(ItemType.FILM);

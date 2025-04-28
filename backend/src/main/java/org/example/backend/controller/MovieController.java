@@ -23,8 +23,8 @@ public class MovieController {
 
     @GetMapping
     public List<CatalogItemDto> searchMovies(MovieFilterRequest filter,
-                                             @RequestParam int page,
-                                             @RequestParam int size) {
+                                             @RequestParam(name = "page") int page,
+                                             @RequestParam(name = "size") int size) {
         List<CatalogItem> movies = catalogItemService.searchMovies(filter, page, size);
         return catalogItemMapper.toDtoList(movies);
     }
