@@ -23,8 +23,8 @@ public class SeriesController {
 
     @GetMapping
     public List<CatalogItemDto> searchSeries(SeriesFilterRequest filter,
-                                             @RequestParam int page,
-                                             @RequestParam int size) {
+                                             @RequestParam(name = "page") int page,
+                                             @RequestParam(name = "size") int size) {
         List<CatalogItem> series = catalogItemService.searchSeries(filter, page, size);
         return catalogItemMapper.toDtoList(series);
     }

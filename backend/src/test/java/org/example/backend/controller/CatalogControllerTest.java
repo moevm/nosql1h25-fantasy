@@ -115,7 +115,6 @@ public class CatalogControllerTest {
         testCatalogItems = Arrays.asList(testCatalogItem);
         testCatalogItemDtos = Arrays.asList(testCatalogItemDto);
 
-        // Настройка поведения моков
         when(catalogItemMapper.toEntity(any(CatalogItemDto.class))).thenReturn(testCatalogItem);
         when(catalogItemMapper.toDto(any(CatalogItem.class))).thenReturn(testCatalogItemDto);
         when(catalogItemMapper.toDtoList(any())).thenReturn(testCatalogItemDtos);
