@@ -1,6 +1,5 @@
 package org.example.backend.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.example.backend.model.*;
 import org.example.backend.repository.CatalogItemRepository;
 import org.junit.jupiter.api.BeforeEach;

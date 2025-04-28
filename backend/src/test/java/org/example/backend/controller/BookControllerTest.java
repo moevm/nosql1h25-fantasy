@@ -1,6 +1,5 @@
 package org.example.backend.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.example.backend.dto.BookFilterRequest;
 import org.example.backend.dto.CatalogItemDto;
 import org.example.backend.mapper.CatalogItemMapper;
@@ -42,8 +41,6 @@ public class BookControllerTest {
 
     @InjectMocks
     private BookController bookController;
-
-    private ObjectMapper objectMapper = new ObjectMapper();
     
     private CatalogItem testBook;
     private CatalogItemDto testBookDto;

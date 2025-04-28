@@ -1,6 +1,5 @@
 package org.example.backend.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.example.backend.dto.CatalogItemDto;
 import org.example.backend.dto.SeriesFilterRequest;
 import org.example.backend.mapper.CatalogItemMapper;
@@ -43,7 +42,6 @@ public class SeriesControllerTest {
     @InjectMocks
     private SeriesController seriesController;
 
-    private ObjectMapper objectMapper = new ObjectMapper();
     
     private CatalogItem testSeries;
     private CatalogItemDto testSeriesDto;
