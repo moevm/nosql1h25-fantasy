@@ -38,7 +38,6 @@ public class CatalogItemMapperTest {
 
     @BeforeEach
     void setUp() {
-        // Create test person data
         person = new EmbeddedPerson();
         person.setName("Christopher Nolan");
         person.setRole(Role.DIRECTOR);
@@ -47,7 +46,6 @@ public class CatalogItemMapperTest {
         personDto.setName("Christopher Nolan");
         personDto.setRole(Role.DIRECTOR);
 
-        // Create test review data
         review = new Review();
         review.setReviewerName("John Doe");
         review.setText("Amazing movie!");
@@ -58,7 +56,6 @@ public class CatalogItemMapperTest {
         reviewDto.setText("Amazing movie!");
         reviewDto.setRating(5);
 
-        // Create test catalog item data
         catalogItem = new CatalogItem();
         catalogItem.setId("1");
         catalogItem.setTitle("Inception");
@@ -83,13 +80,10 @@ public class CatalogItemMapperTest {
     @Test
     @DisplayName("Should convert CatalogItem to CatalogItemDto")
     void shouldConvertCatalogItemToDto() {
-        // Given
         when(catalogItemMapper.toDto(catalogItem)).thenReturn(catalogItemDto);
         
-        // When
         CatalogItemDto result = catalogItemMapper.toDto(catalogItem);
 
-        // Then
         assertEquals(catalogItem.getId(), result.getId());
         assertEquals(catalogItem.getTitle(), result.getTitle());
         assertEquals(catalogItem.getType(), result.getType());
@@ -105,13 +99,10 @@ public class CatalogItemMapperTest {
     @Test
     @DisplayName("Should convert CatalogItemDto to CatalogItem")
     void shouldConvertDtoToCatalogItem() {
-        // Given
         when(catalogItemMapper.toEntity(catalogItemDto)).thenReturn(catalogItem);
         
-        // When
         CatalogItem result = catalogItemMapper.toEntity(catalogItemDto);
 
-        // Then
         assertEquals(catalogItemDto.getId(), result.getId());
         assertEquals(catalogItemDto.getTitle(), result.getTitle());
         assertEquals(catalogItemDto.getType(), result.getType());
@@ -127,15 +118,12 @@ public class CatalogItemMapperTest {
     @Test
     @DisplayName("Should convert list of CatalogItem to list of CatalogItemDto")
     void shouldConvertCatalogItemListToDtoList() {
-        // Given
         List<CatalogItem> catalogItems = Arrays.asList(catalogItem);
         List<CatalogItemDto> expected = Arrays.asList(catalogItemDto);
         when(catalogItemMapper.toDtoList(catalogItems)).thenReturn(expected);
 
-        // When
         List<CatalogItemDto> result = catalogItemMapper.toDtoList(catalogItems);
 
-        // Then
         assertEquals(1, result.size());
         assertEquals(catalogItems.get(0).getId(), result.get(0).getId());
         assertEquals(catalogItems.get(0).getTitle(), result.get(0).getTitle());
@@ -144,13 +132,10 @@ public class CatalogItemMapperTest {
     @Test
     @DisplayName("Should convert Review to ReviewDto")
     void shouldConvertReviewToDto() {
-        // Given
         when(catalogItemMapper.toDto(review)).thenReturn(reviewDto);
         
-        // When
         ReviewDto result = catalogItemMapper.toDto(review);
 
-        // Then
         assertEquals(review.getReviewerName(), result.getReviewerName());
         assertEquals(review.getText(), result.getText());
         assertEquals(review.getRating(), result.getRating());
@@ -159,13 +144,10 @@ public class CatalogItemMapperTest {
     @Test
     @DisplayName("Should convert ReviewDto to Review")
     void shouldConvertDtoToReview() {
-        // Given
         when(catalogItemMapper.toEntity(reviewDto)).thenReturn(review);
         
-        // When
         Review result = catalogItemMapper.toEntity(reviewDto);
 
-        // Then
         assertEquals(reviewDto.getReviewerName(), result.getReviewerName());
         assertEquals(reviewDto.getText(), result.getText());
         assertEquals(reviewDto.getRating(), result.getRating());
@@ -174,13 +156,10 @@ public class CatalogItemMapperTest {
     @Test
     @DisplayName("Should convert EmbeddedPerson to EmbeddedPersonDto")
     void shouldConvertEmbeddedPersonToDto() {
-        // Given
         when(catalogItemMapper.toDto(person)).thenReturn(personDto);
         
-        // When
         EmbeddedPersonDto result = catalogItemMapper.toDto(person);
 
-        // Then
         assertEquals(person.getName(), result.getName());
         assertEquals(person.getRole(), result.getRole());
     }
@@ -188,13 +167,10 @@ public class CatalogItemMapperTest {
     @Test
     @DisplayName("Should convert EmbeddedPersonDto to EmbeddedPerson")
     void shouldConvertDtoToEmbeddedPerson() {
-        // Given
         when(catalogItemMapper.toEntity(personDto)).thenReturn(person);
         
-        // When
         EmbeddedPerson result = catalogItemMapper.toEntity(personDto);
 
-        // Then
         assertEquals(personDto.getName(), result.getName());
         assertEquals(personDto.getRole(), result.getRole());
     }
@@ -202,7 +178,6 @@ public class CatalogItemMapperTest {
     @Test
     @DisplayName("Should handle null values properly")
     void shouldHandleNullValues() {
-        // Given
         when(catalogItemMapper.toDto((CatalogItem)null)).thenReturn(null);
         when(catalogItemMapper.toEntity((CatalogItemDto)null)).thenReturn(null);
         when(catalogItemMapper.toDto((Review)null)).thenReturn(null);
@@ -211,7 +186,6 @@ public class CatalogItemMapperTest {
         when(catalogItemMapper.toEntity((EmbeddedPersonDto)null)).thenReturn(null);
         when(catalogItemMapper.toDtoList(null)).thenReturn(List.of());
 
-        // When & Then
         assertNull(catalogItemMapper.toDto((CatalogItem)null));
         assertNull(catalogItemMapper.toEntity((CatalogItemDto)null));
         assertNull(catalogItemMapper.toDto((Review)null));
