@@ -23,8 +23,8 @@ public class BookController {
 
     @GetMapping
     public List<CatalogItemDto> searchBooks(BookFilterRequest filter,
-                                            @RequestParam int page,
-                                            @RequestParam int size) {
+                                            @RequestParam(name = "page") int page,
+                                            @RequestParam(name = "size") int size) {
         List<CatalogItem> books = catalogItemService.searchBooks(filter, page, size);
         return catalogItemMapper.toDtoList(books);
     }
