@@ -21,11 +21,14 @@ export interface Series {
   providedIn: 'root',
 })
 export class SeriesService {
-  private readonly apiUrl = 'http://localhost:8080/series';
+  private readonly apiUrl = 'http://localhost:8080/series/search';
 
   private http = inject(HttpClient);
 
   getSeries(): Observable<Series[]> {
-    return this.http.get<Series[]>(`${this.apiUrl}?page=0&size=0`);
+    return this.http.post<Series[]>(
+      `${this.apiUrl}?page=0&size=0`,
+      {}
+    );
   }
 }

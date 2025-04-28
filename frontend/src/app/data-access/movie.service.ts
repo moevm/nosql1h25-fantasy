@@ -21,11 +21,14 @@ export interface Movie {
   providedIn: 'root',
 })
 export class MovieService {
-  private readonly apiUrl = 'http://localhost:8080/movies';
+  private readonly apiUrl = 'http://localhost:8080/movies/search';
 
   private http = inject(HttpClient);
 
   getMovies(): Observable<Movie[]> {
-    return this.http.get<Movie[]>(`${this.apiUrl}?page=0&size=0`);
+    return this.http.post<Movie[]>(
+      `${this.apiUrl}?page=0&size=0`,
+      {}
+    );
   }
 }

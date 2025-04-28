@@ -21,11 +21,11 @@ export interface Book {
   providedIn: 'root',
 })
 export class BookService {
-  private readonly apiUrl = 'http://localhost:8080/books';
+  private readonly apiUrl = 'http://localhost:8080/books/search';
 
   private http = inject(HttpClient);
 
   getBooks(): Observable<Book[]> {
-    return this.http.get<Book[]>(`${this.apiUrl}?page=0&size=0`);
+    return this.http.post<Book[]>(`${this.apiUrl}?page=0&size=0`, {});
   }
 }
