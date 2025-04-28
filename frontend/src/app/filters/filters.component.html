@@ -157,7 +157,9 @@
     </div>
 
     <div class="filters-wrapper">
-      <fieldset tuiTextfieldSize="m" class="filter-block">
+      <fieldset
+        [disabled]="form.getRawValue().typeFilter?.length && !form.getRawValue().typeFilter?.includes('Book')"
+        tuiTextfieldSize="m" class="filter-block">
         <div class="filter-header">
           <h3 tuiTitle>Author</h3>
         </div>
@@ -170,7 +172,10 @@
         </tui-textfield>
       </fieldset>
 
-      <fieldset tuiTextfieldSize="m" class="filter-block">
+      <fieldset
+        [disabled]="form.getRawValue().typeFilter?.length
+      && !form.getRawValue().typeFilter?.includes('Film') && !form.getRawValue().typeFilter?.includes('Series')"
+        tuiTextfieldSize="m" class="filter-block">
         <div class="filter-header">
           <h3 tuiTitle>Director</h3>
         </div>
@@ -184,7 +189,10 @@
       </fieldset>
 
 
-      <fieldset tuiTextfieldSize="m" class="filter-block">
+      <fieldset
+        [disabled]="form.getRawValue().typeFilter?.length
+      && !form.getRawValue().typeFilter?.includes('Film') && !form.getRawValue().typeFilter?.includes('Series')"
+        tuiTextfieldSize="m" class="filter-block">
         <div class="filter-header">
           <h3 tuiTitle>Actors</h3>
         </div>
