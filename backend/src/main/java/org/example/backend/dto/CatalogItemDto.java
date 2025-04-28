@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.example.backend.model.Country;
 import org.example.backend.model.ItemType;
-import org.example.backend.model.Tag;
 
 import java.util.List;
 
