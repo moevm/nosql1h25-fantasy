@@ -83,30 +83,22 @@ export class FiltersComponent {
   });
 
   protected readonly tagFilters = [
+    'Action',
+    'Adventure',
     'Fantasy',
+    'Horror',
+    'Mystery',
     'Science fiction',
-    'Drama',
-    'Hollywood',
-    'Family',
   ];
 
   protected readonly typeFilters = ['Book', 'Film', 'Series'];
 
   protected readonly items = [
-    'USA',
-    'UK',
-    'Germany',
     'France',
-    'Italy',
-    'Spain',
-    'Canada',
-    'Australia',
+    'Germany',
     'Japan',
-    'South Korea',
-    'India',
-    'China',
-    'Russia',
-    'Brazil',
+    'UK',
+    'USA',
   ];
 
   selectAllTags(): void {
@@ -138,7 +130,7 @@ export class FiltersComponent {
       ratingTo: rating[1],
       startYearFrom: year[0],
       startYearTo: year[1],
-      country: country,
+      country: country === null ? null : country.toUpperCase(),
     };
 
     const movieBody = {
