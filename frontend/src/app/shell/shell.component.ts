@@ -20,7 +20,8 @@ export class ShellComponent {
   });
 
   protected showDialog(): void {
-    this.dialog().subscribe({
+    const data = undefined;
+    this.dialog(data).subscribe({
       complete: () => {
         console.info('Dialog closed');
       },

@@ -5,6 +5,8 @@ import {
 } from '@angular/core';
 import {
   TuiButton,
+  TuiDialogContext,
+  TuiDialogService,
   TuiError,
   TuiTextfield,
   TuiTextfieldComponent,
@@ -38,6 +40,7 @@ import {
   TuiSlider,
 } from '@taiga-ui/kit';
 import { TuiForm } from '@taiga-ui/layout';
+import { injectContext } from '@taiga-ui/polymorpheus';
 import { AsyncPipe, NgForOf, NgIf } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 
@@ -73,14 +76,30 @@ import { HttpClient } from '@angular/common/http';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddDataModalComponent {
+  private readonly dialogs = inject(TuiDialogService);
+  public readonly context = injectContext<TuiDialogContext>();
+
   private http = inject(HttpClient);
   private url = 'http://localhost:8080/catalog';
+
+  protected search = '';
+  protected readonly types = ['BOOK', 'SERIES', 'FILM'];
+
   private allowedTags = [
+    'ACTION',
+    'ADVENTURE',
     'FANTASY',
+    'HORROR',
+    'MYSTERY',
     'SCIENCE FICTION',
-    'DRAMA',
-    'HOLLYWOOD',
-    'FAMILY',
+  ];
+
+  protected readonly countries = [
+    'France',
+    'Germany',
+    'Japan',
+    'UK',
+    'USA',
   ];
 
   readonly form = new FormGroup({
@@ -110,26 +129,6 @@ export class AddDataModalComponent {
     directors: new FormControl<string[]>(['ExampleDirector']),
     actors: new FormControl<string[]>(['ExampleActor']),
   });
-
-  protected readonly types = ['BOOK', 'SERIES', 'FILM'];
-  protected search = '';
-
-  protected readonly countries = [
-    'USA',
-    'UK',
-    'Germany',
-    'France',
-    'Italy',
-    'Spain',
-    'Canada',
-    'Australia',
-    'Japan',
-    'South Korea',
-    'India',
-    'China',
-    'Russia',
-    'Brazil',
-  ];
 
   protected get filtered(): readonly string[] {
     return this.filterBy(
@@ -189,9 +188,32 @@ export class AddDataModalComponent {
 
       this.http
         .post(this.url, newObject, { observe: 'response' })
-        .subscribe(res => {
-          console.log('Response status:', res.status);
-          console.log('Response body:', res.body);
+        .subscribe({
+          next: res => {
+            this.dialogs
+              .open(`Success! Response status: ${res.status}`, {
+                label: 'Submitted',
+                size: 's',
+                data: { button: 'Ok' },
+              })
+              .subscribe({
+                complete: () => this.context.completeWith(),
+              });
+          },
+          error: err => {
+            this.dialogs
+              .open(
+                `Error with status ${err.status}!\nMessage: ${err.message}`,
+                {
+                  label: 'Submitted',
+                  size: 's',
+                  data: { button: 'Ok' },
+                }
+              )
+              .subscribe({
+                complete: () => this.context.completeWith(),
+              });
+          },
         });
     }
   }
