@@ -45,7 +45,8 @@ export class FooterComponent {
 
   private readonly http = inject(HttpClient);
 
-  private readonly url = 'http://localhost:8080/catalog/import';
+  private readonly urlImport = 'http://localhost:8080/catalog/import';
+  private readonly urlExport = 'http://localhost:8080/catalog/export';
 
   protected showDialog(): void {
     this.open = true;
@@ -99,7 +100,7 @@ export class FooterComponent {
       switchMap(text => {
         try {
           const json = JSON.parse(text);
-          return this.http.post(this.url, json).pipe(
+          return this.http.post(this.urlImport, json).pipe(
             map(() => file),
             catchError(() => {
               this.failedFiles$.next(file);
@@ -117,7 +118,7 @@ export class FooterComponent {
   }
 
   protected exportData() {
-    this.http.get(this.url).subscribe({
+    this.http.get(this.urlExport).subscribe({
       next: (data: any) => {
         const jsonString = JSON.stringify(data, null, 2);
         const blob = new Blob([jsonString], {
