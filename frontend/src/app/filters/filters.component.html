@@ -110,6 +110,10 @@
       <fieldset class="filter-block">
         <div class="filter-header">
           <h3 tuiTitle>Duration (min)</h3>
+          <tui-icon
+            tuiHintDirection="right"
+            tuiTooltip="This filter only affects movies."
+          />
         </div>
         <tui-input-range
           formControlName="duration"
@@ -126,6 +130,10 @@
       <fieldset class="filter-block">
         <div class="filter-header">
           <h3 tuiTitle>Quantity pages</h3>
+          <tui-icon
+            tuiHintDirection="right"
+            tuiTooltip="This filter only affects books."
+          />
         </div>
         <tui-input-range
           formControlName="quantity"
@@ -142,6 +150,10 @@
       <fieldset class="filter-block">
         <div class="filter-header">
           <h3 tuiTitle>Seasons</h3>
+          <tui-icon
+            tuiHintDirection="right"
+            tuiTooltip="This filter only affects series."
+          />
         </div>
         <tui-input-range
           formControlName="seasons"
@@ -163,11 +175,16 @@
         <div class="filter-header">
           <h3 tuiTitle>Author</h3>
         </div>
-        <tui-textfield iconEnd="@tui.search" class="search-input" style="min-width: 8rem;">
+        <tui-textfield class="search-input" style="min-width: 8rem;margin-bottom: 1px">
           <input
             formControlName="author"
             placeholder="Enter author"
             tuiTextfield
+
+          />
+          <tui-icon
+            tuiHintDirection="right"
+            tuiTooltip="This filter only affects books."
           />
         </tui-textfield>
       </fieldset>
@@ -178,11 +195,15 @@
         <div class="filter-header">
           <h3 tuiTitle>Director</h3>
         </div>
-        <tui-textfield iconEnd="@tui.search" class="search-input" style="min-width: 8rem;">
+        <tui-textfield class="search-input" style="min-width: 8rem;">
           <input
             formControlName="director"
             placeholder="Enter director"
             tuiTextfield
+          />
+          <tui-icon
+            tuiHintDirection="right"
+            tuiTooltip="This filter affects movies and series."
           />
         </tui-textfield>
       </fieldset>
@@ -194,11 +215,15 @@
         <div class="filter-header">
           <h3 tuiTitle>Actors</h3>
         </div>
-        <tui-textfield iconEnd="@tui.search" class="search-input" style="min-width: 8rem;">
+        <tui-textfield class="search-input" style="min-width: 8rem;">
           <input
             formControlName="actors"
             placeholder="Enter actors"
             tuiTextfield
+          />
+          <tui-icon
+            tuiHintDirection="right"
+            tuiTooltip="This filter affects movies and series."
           />
         </tui-textfield>
       </fieldset>

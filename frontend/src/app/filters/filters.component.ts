@@ -17,7 +17,12 @@ import {
   TuiTextfield,
   TuiTitle,
 } from '@taiga-ui/core';
-import { TuiAvatar, TuiChevron, TuiFilter } from '@taiga-ui/kit';
+import {
+  TuiAvatar,
+  TuiChevron,
+  TuiFilter,
+  TuiTooltip,
+} from '@taiga-ui/kit';
 import {
   TuiInputDateModule,
   TuiInputDateRangeModule,
@@ -58,6 +63,7 @@ import { zip } from 'rxjs';
     TuiCardMedium,
     TuiIcon,
     DetailsComponent,
+    TuiTooltip,
   ],
   templateUrl: './filters.component.html',
   styleUrl: './filters.component.less',
