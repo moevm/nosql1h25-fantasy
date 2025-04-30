@@ -1,4 +1,9 @@
-import { ChangeDetectorRef, Component, inject } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  inject,
+  OnInit,
+} from '@angular/core';
 import { TuiCardMedium, TuiForm, TuiHeader } from '@taiga-ui/layout';
 import {
   FormControl,
@@ -58,13 +63,15 @@ import { zip } from 'rxjs';
   styleUrl: './filters.component.less',
   standalone: true,
 })
-export class FiltersComponent {
+export class FiltersComponent implements OnInit {
   constructor(private cdr: ChangeDetectorRef) {}
 
   private http = inject(HttpClient);
   private url = 'http://localhost:8080';
 
-  result: (Book | Movie | Series)[] = [];
+  books: Book[] = [];
+  movies: Movie[] = [];
+  series: Series[] = [];
   selectedResult: Book | Movie | Series | null = null;
 
   protected readonly form = new FormGroup({
@@ -100,6 +107,29 @@ export class FiltersComponent {
     'UK',
     'USA',
   ];
+
+  ngOnInit() {
+    this.books = [];
+    this.movies = [];
+    this.series = [];
+    this.form.controls['typeFilter'].valueChanges.subscribe(value => {
+      if (value?.length === 0 || value?.length === 3) {
+        this.form.controls['duration'].enable();
+        this.form.controls['quantity'].enable();
+        this.form.controls['seasons'].enable();
+      } else {
+        if (value?.includes('Book'))
+          this.form.controls['quantity'].enable();
+        else this.form.controls['quantity'].disable();
+        if (value?.includes('Film'))
+          this.form.controls['duration'].enable();
+        else this.form.controls['duration'].disable();
+        if (value?.includes('Series'))
+          this.form.controls['seasons'].enable();
+        else this.form.controls['seasons'].disable();
+      }
+    });
+  }
 
   selectAllTags(): void {
     this.form.get('tagFilter')?.setValue(this.tagFilters);
@@ -193,13 +223,24 @@ export class FiltersComponent {
       );
     }
 
-    this.result = [];
+    this.books = [];
+    this.movies = [];
+    this.series = [];
     zip(...tasks$).subscribe(results => {
-      results.forEach(
-        res => (this.result = [...this.result, ...res])
-      );
+      let i = 0;
+      if (!types.length || types.includes('Book'))
+        this.books = results[i++] as Book[];
+      if (!types.length || types.includes('Film'))
+        this.movies = results[i++] as Movie[];
+      if (!types.length || types.includes('Series'))
+        this.series = results[i++] as Series[];
       this.cdr.detectChanges();
     });
+  }
+
+  protected isTypeSelected(type: string): boolean {
+    const selectedTypes = this.form.getRawValue().typeFilter;
+    return !selectedTypes?.length || selectedTypes.includes(type);
   }
 
   protected selectResult(res: Book | Movie | Series) {
@@ -211,9 +252,19 @@ export class FiltersComponent {
   }
 
   protected handleUpdated(updated: Book | Movie | Series) {
-    if (this.result) {
-      this.result = this.result.map(item =>
-        item.id === updated.id ? updated : item
+    if (updated.type === 'BOOK' && this.books) {
+      this.books = this.books.map(item =>
+        item.id === updated.id ? (updated as Book) : item
+      );
+    }
+    if (updated.type === 'FILM' && this.movies) {
+      this.movies = this.movies.map(item =>
+        item.id === updated.id ? (updated as Movie) : item
+      );
+    }
+    if (updated.type === 'SERIES' && this.series) {
+      this.series = this.series.map(item =>
+        item.id === updated.id ? (updated as Series) : item
       );
     }
   }

@@ -37,7 +37,7 @@
 </footer>
 
 <ng-template
-  [tuiDialogOptions]="{label: 'Импорт/Экспорт', size: 's'}"
+  [tuiDialogOptions]="{label: 'Import/Export', size: 's'}"
   [(tuiDialog)]="open"
 >
   <div class="dialog__elements">
@@ -59,7 +59,7 @@
         [file]="file"
         (remove)="removeFile()"
       >
-        <span tuiLabel tuiAppearance="warning">Файл должен быть в формате JSON</span>
+        <span tuiLabel tuiAppearance="warning">The file must be in JSON format.</span>
       </tui-file>
 
       <tui-file

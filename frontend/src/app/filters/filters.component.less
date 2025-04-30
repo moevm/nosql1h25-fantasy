@@ -59,33 +59,36 @@ form {
   }
 }
 
-.results {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  max-width: 50rem;
+.results-block {
 
-  .result__title {
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    display: block;
-    width: 100%;
-  }
-
-  .result-rating {
+  .results {
     display: flex;
-    align-items: center;
-    gap: 10px; /* Расстояние между иконкой, рейтингом и кнопкой */
-    margin-top: 10px;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    max-width: 50rem;
 
-    .rating-icon {
-      color: var(--tui-background-accent-2);
+    .result__title {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      display: block;
+      width: 100%;
     }
 
-    .rating-value {
-      font-size: 14px;
-      font-weight: 500;
+    .result-rating {
+      display: flex;
+      align-items: center;
+      gap: 10px; /* Расстояние между иконкой, рейтингом и кнопкой */
+      margin-top: 10px;
+
+      .rating-icon {
+        color: var(--tui-background-accent-2);
+      }
+
+      .rating-value {
+        font-size: 14px;
+        font-weight: 500;
+      }
     }
   }
 }
