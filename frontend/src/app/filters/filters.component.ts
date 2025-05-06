@@ -80,6 +80,10 @@ export class FiltersComponent implements OnInit {
   series: Series[] = [];
   selectedResult: Book | Movie | Series | null = null;
 
+  MAX_DURATION = 300;
+  MAX_QUANTITY = 2000;
+  MAX_SEASONS = 20;
+
   protected readonly form = new FormGroup({
     search: new FormControl(''),
     tagFilter: new FormControl<string[]>([]),
@@ -114,25 +118,34 @@ export class FiltersComponent implements OnInit {
     'USA',
   ];
 
+  protected disableAllNonCommonFields() {
+    this.form.controls['duration'].disable();
+    this.form.controls['quantity'].disable();
+    this.form.controls['seasons'].disable();
+    this.form.controls['author'].disable();
+    this.form.controls['director'].disable();
+    this.form.controls['actors'].disable();
+  }
+
   ngOnInit() {
     this.books = [];
     this.movies = [];
     this.series = [];
+    this.disableAllNonCommonFields();
     this.form.controls['typeFilter'].valueChanges.subscribe(value => {
-      if (value?.length === 0 || value?.length === 3) {
-        this.form.controls['duration'].enable();
-        this.form.controls['quantity'].enable();
-        this.form.controls['seasons'].enable();
-      } else {
-        if (value?.includes('Book'))
+      this.disableAllNonCommonFields();
+      if (value?.length === 1) {
+        if (value[0] === 'Book') {
           this.form.controls['quantity'].enable();
-        else this.form.controls['quantity'].disable();
-        if (value?.includes('Film'))
+          this.form.controls['author'].enable();
+        } else if (value[0] === 'Film')
           this.form.controls['duration'].enable();
-        else this.form.controls['duration'].disable();
-        if (value?.includes('Series'))
+        else if (value[0] === 'Series')
           this.form.controls['seasons'].enable();
-        else this.form.controls['seasons'].disable();
+      }
+      if (!this.isTypeSelected('Book')) {
+        this.form.controls['director'].enable();
+        this.form.controls['actors'].enable();
       }
     });
   }
@@ -171,25 +184,41 @@ export class FiltersComponent implements OnInit {
 
     const movieBody = {
       ...generalBody,
-      durationFrom: duration[0],
-      durationTo: duration[1],
-      directors: [director],
-      actors: [actors],
+      durationFrom: this.form.controls['duration'].enabled
+        ? duration[0]
+        : 0,
+      durationTo: this.form.controls['duration'].enabled
+        ? duration[1]
+        : this.MAX_DURATION,
+      directors: this.form.controls['director'].enabled
+        ? [director]
+        : [],
+      actors: this.form.controls['actors'].enabled ? [actors] : [],
     };
 
     const bookBody = {
       ...generalBody,
-      quantityPagesFrom: quantity[0],
-      quantityPagesTo: quantity[1],
-      authors: [author],
+      quantityPagesFrom: this.form.controls['quantity'].enabled
+        ? quantity[0]
+        : 0,
+      quantityPagesTo: this.form.controls['quantity'].enabled
+        ? quantity[1]
+        : this.MAX_QUANTITY,
+      authors: this.form.controls['author'].enabled ? [author] : [],
     };
 
     const seriesBody = {
       ...generalBody,
-      seasonsFrom: seasons[0],
-      seasonsTo: seasons[1],
-      directors: [director],
-      actors: [actors],
+      seasonsFrom: this.form.controls['seasons'].enabled
+        ? seasons[0]
+        : 0,
+      seasonsTo: this.form.controls['seasons'].enabled
+        ? seasons[1]
+        : this.MAX_SEASONS,
+      directors: this.form.controls['director'].enabled
+        ? [director]
+        : [],
+      actors: this.form.controls['actors'].enabled ? [actors] : [],
     };
 
     console.log(

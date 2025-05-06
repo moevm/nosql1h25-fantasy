@@ -109,26 +109,6 @@
 
       <fieldset class="filter-block">
         <div class="filter-header">
-          <h3 tuiTitle>Duration (min)</h3>
-          <tui-icon
-            tuiHintDirection="right"
-            tuiTooltip="This filter only affects movies."
-          />
-        </div>
-        <tui-input-range
-          formControlName="duration"
-          [min]="0"
-          [max]="300"
-          [steps]="30"
-          [quantum]="1"
-          [tuiTextfieldSize]="'m'"
-          [tuiTextfieldLabelOutside]="true"
-          style="min-width: 7rem;"
-        />
-      </fieldset>
-
-      <fieldset class="filter-block">
-        <div class="filter-header">
           <h3 tuiTitle>Quantity pages</h3>
           <tui-icon
             tuiHintDirection="right"
@@ -141,6 +121,26 @@
           [max]="2000"
           [steps]="20"
           [quantum]="10"
+          [tuiTextfieldSize]="'m'"
+          [tuiTextfieldLabelOutside]="true"
+          style="min-width: 7rem;"
+        />
+      </fieldset>
+
+      <fieldset class="filter-block">
+        <div class="filter-header">
+          <h3 tuiTitle>Duration (min)</h3>
+          <tui-icon
+            tuiHintDirection="right"
+            tuiTooltip="This filter only affects movies."
+          />
+        </div>
+        <tui-input-range
+          formControlName="duration"
+          [min]="0"
+          [max]="300"
+          [steps]="30"
+          [quantum]="1"
           [tuiTextfieldSize]="'m'"
           [tuiTextfieldLabelOutside]="true"
           style="min-width: 7rem;"
@@ -170,7 +170,6 @@
 
     <div class="filters-wrapper">
       <fieldset
-        [disabled]="!isTypeSelected('Book')"
         tuiTextfieldSize="m" class="filter-block">
         <div class="filter-header">
           <h3 tuiTitle>Author</h3>
@@ -190,7 +189,6 @@
       </fieldset>
 
       <fieldset
-        [disabled]="!isTypeSelected('Film') && !isTypeSelected('Series')"
         tuiTextfieldSize="m" class="filter-block">
         <div class="filter-header">
           <h3 tuiTitle>Director</h3>
@@ -210,7 +208,6 @@
 
 
       <fieldset
-        [disabled]="!isTypeSelected('Film') && !isTypeSelected('Series')"
         tuiTextfieldSize="m" class="filter-block">
         <div class="filter-header">
           <h3 tuiTitle>Actors</h3>
