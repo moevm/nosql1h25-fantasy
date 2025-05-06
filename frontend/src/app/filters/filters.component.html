@@ -249,7 +249,7 @@
   <div class="results-block"
        *ngIf="!selectedResult && this.books?.length"
   >
-    <h2>Books:</h2>
+    <h2>Books (found {{ this.books.length }}):</h2>
     <div class="results">
       @for(res of this.books; track res.id) {
         <button
@@ -291,7 +291,7 @@
   <div class="results-block"
        *ngIf="!selectedResult && this.movies?.length"
   >
-    <h2 >Movies:</h2>
+    <h2 >Movies (found {{ this.movies.length }}):</h2>
     <div class="results">
       @for(res of this.movies; track res.id) {
         <button
@@ -333,7 +333,7 @@
   <div class="results-block"
        *ngIf="!selectedResult && this.series?.length"
   >
-    <h2 >Series:</h2>
+    <h2 >Series (found {{ this.series.length }}):</h2>
     <div class="results">
       @for(res of this.series; track res.id) {
         <button
