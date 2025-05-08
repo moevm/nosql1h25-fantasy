@@ -7,12 +7,7 @@ import {
 } from '../store/root-store/root.selectors';
 import { rootActions } from '../store/root-store/root.actions';
 import { TuiAvatar } from '@taiga-ui/kit';
-import {
-  TuiAppearance,
-  TuiButton,
-  TuiIcon,
-  TuiTitle,
-} from '@taiga-ui/core';
+import { TuiAppearance, TuiIcon, TuiTitle } from '@taiga-ui/core';
 import { TuiCard } from '@taiga-ui/layout';
 import { Book } from '../data-access/book.service';
 import { DetailsComponent } from '../details/details.component';
@@ -26,7 +21,6 @@ import { NgIf } from '@angular/common';
     TuiCard,
     TuiTitle,
     TuiIcon,
-    TuiButton,
     DetailsComponent,
     NgIf,
   ],

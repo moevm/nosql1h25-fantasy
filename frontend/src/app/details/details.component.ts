@@ -16,6 +16,7 @@ import { Series } from '../data-access/series.service';
 import { Movie } from '../data-access/movie.service';
 import { NgIf } from '@angular/common';
 import {
+  TuiAlertService,
   TuiButton,
   TuiDialog,
   TuiTextfield,
@@ -26,6 +27,7 @@ import {
   FormControl,
   FormGroup,
   ReactiveFormsModule,
+  Validators,
 } from '@angular/forms';
 import {
   TuiInputModule,
@@ -63,6 +65,7 @@ export class DetailsComponent implements AfterViewInit {
   private url = 'http://localhost:8080/catalog';
   private http = inject(HttpClient);
   private store = inject(Store);
+  protected readonly alerts = inject(TuiAlertService);
 
   private localObject = signal<Book | Series | Movie | undefined>(
     undefined
@@ -117,7 +120,10 @@ export class DetailsComponent implements AfterViewInit {
       personsFormArray.push(
         new FormGroup({
           role: new FormControl(person.role),
-          name: new FormControl(person.name),
+          name: new FormControl(person.name, [
+            Validators.required,
+            Validators.minLength(1),
+          ]),
         })
       );
     });
@@ -150,12 +156,40 @@ export class DetailsComponent implements AfterViewInit {
   }
 
   protected showDialog(): void {
+    this.ensureEssentialRoles();
     this.open = true;
+  }
+
+  private ensureEssentialRoles(): void {
+    const currentRoles = this.editPersons.controls.map(
+      ctrl => ctrl.get('role')?.value
+    );
+    for (const role of this.getEssentialRoles()) {
+      if (!currentRoles.includes(role)) {
+        this.addPerson(role);
+      }
+    }
+  }
+
+  private getEssentialRoles(): string[] {
+    const type = this.object()?.type;
+    switch (type) {
+      case 'BOOK':
+        return ['AUTHOR'];
+      case 'FILM':
+      case 'SERIES':
+        return ['DIRECTOR', 'ACTOR'];
+      default:
+        return [];
+    }
   }
 
   protected addPerson(role: string): void {
     const personGroup = new FormGroup({
-      name: new FormControl(''),
+      name: new FormControl('', [
+        Validators.required,
+        Validators.minLength(1),
+      ]),
       role: new FormControl(role),
     });
     this.editPersons.push(personGroup);
@@ -167,7 +201,15 @@ export class DetailsComponent implements AfterViewInit {
 
   protected submitEdit(): void {
     if (this.editForm.invalid) {
-      console.warn('Форма заполнена некорректно!');
+      this.alerts
+        .open(
+          `Форма не корректна, заполните или удалите режиссеров/актеров/авторов`,
+          {
+            appearance: 'warning',
+            autoClose: 5000,
+          }
+        )
+        .subscribe();
       return;
     }
 

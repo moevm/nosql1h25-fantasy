@@ -13,12 +13,7 @@ import {
   selectSearchQuery,
 } from '../store/root-store/root.selectors';
 import { TuiAvatar } from '@taiga-ui/kit';
-import {
-  TuiAppearance,
-  TuiButton,
-  TuiIcon,
-  TuiTitle,
-} from '@taiga-ui/core';
+import { TuiAppearance, TuiIcon, TuiTitle } from '@taiga-ui/core';
 import { TuiCard } from '@taiga-ui/layout';
 import { Movie } from '../data-access/movie.service';
 import { DetailsComponent } from '../details/details.component';
@@ -32,7 +27,6 @@ import { NgIf } from '@angular/common';
     TuiCard,
     TuiTitle,
     TuiIcon,
-    TuiButton,
     DetailsComponent,
     NgIf,
   ],
