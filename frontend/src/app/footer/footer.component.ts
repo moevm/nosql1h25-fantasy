@@ -1,8 +1,14 @@
-import { Component, inject } from '@angular/core';
 import {
+  Component,
+  inject,
+  TemplateRef,
+  ViewChild,
+} from '@angular/core';
+import {
+  TuiAlertService,
   TuiAppearance,
   TuiButton,
-  TuiDialog,
+  TuiDialogService,
   TuiGroup,
 } from '@taiga-ui/core';
 import {
@@ -23,7 +29,6 @@ import { Observable, of, Subject, switchMap } from 'rxjs';
   imports: [
     TuiGroup,
     TuiButton,
-    TuiDialog,
     ReactiveFormsModule,
     TuiInputModule,
     TuiFiles,
@@ -36,7 +41,8 @@ import { Observable, of, Subject, switchMap } from 'rxjs';
   styleUrl: './footer.component.less',
 })
 export class FooterComponent {
-  protected open = false;
+  @ViewChild('importExportDialog')
+  private readonly importExportDialog?: TemplateRef<unknown>;
 
   protected readonly control = new FormControl<TuiFileLike | null>(
     null,
@@ -44,12 +50,25 @@ export class FooterComponent {
   );
 
   private readonly http = inject(HttpClient);
+  protected readonly alerts = inject(TuiAlertService);
+  private readonly dialogService = inject(TuiDialogService);
 
   private readonly urlImport = 'http://localhost:8080/catalog/import';
   private readonly urlExport = 'http://localhost:8080/catalog/export';
 
   protected showDialog(): void {
-    this.open = true;
+    if (!this.importExportDialog) return;
+
+    this.dialogService
+      .open(this.importExportDialog, {
+        label: 'Import/Export',
+        size: 's',
+      })
+      .subscribe({
+        complete: () => {
+          this.resetDialogState();
+        },
+      });
   }
 
   protected readonly failedFiles$ = new Subject<TuiFileLike | null>();
@@ -58,6 +77,12 @@ export class FooterComponent {
   protected readonly loadedFiles$ = this.control.valueChanges.pipe(
     switchMap(file => this.processFile(file))
   );
+
+  private resetDialogState(): void {
+    this.control.reset();
+    this.failedFiles$.next(null);
+    this.loadingFiles$.next(null);
+  }
 
   protected removeFile(): void {
     this.control.setValue(null);
@@ -101,7 +126,18 @@ export class FooterComponent {
         try {
           const json = JSON.parse(text);
           return this.http.post(this.urlImport, json).pipe(
-            map(() => file),
+            map(response => {
+              this.alerts
+                .open(
+                  `Импорт успешно выполнен. Импортировано записей: ${response}`,
+                  {
+                    appearance: 'positive',
+                    autoClose: 5000,
+                  }
+                )
+                .subscribe();
+              return file;
+            }),
             catchError(() => {
               this.failedFiles$.next(file);
               return of(null);

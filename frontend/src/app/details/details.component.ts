@@ -15,14 +15,22 @@ import { Book } from '../data-access/book.service';
 import { Series } from '../data-access/series.service';
 import { Movie } from '../data-access/movie.service';
 import { NgIf } from '@angular/common';
-import { TuiButton, TuiDialog } from '@taiga-ui/core';
+import {
+  TuiButton,
+  TuiDialog,
+  TuiTextfield,
+  TuiTextfieldDirective,
+} from '@taiga-ui/core';
 import {
   FormArray,
   FormControl,
   FormGroup,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { TuiInputModule } from '@taiga-ui/legacy';
+import {
+  TuiInputModule,
+  TuiTextfieldControllerModule,
+} from '@taiga-ui/legacy';
 import { TuiAutoFocus } from '@taiga-ui/cdk';
 import { HttpClient } from '@angular/common/http';
 import { rootActions } from '../store/root-store/root.actions';
@@ -37,6 +45,9 @@ import { Store } from '@ngrx/store';
     TuiInputModule,
     TuiAutoFocus,
     TuiButton,
+    TuiTextfieldControllerModule,
+    TuiTextfieldDirective,
+    TuiTextfield,
   ],
   templateUrl: './details.component.html',
   styleUrl: './details.component.less',
@@ -140,6 +151,18 @@ export class DetailsComponent implements AfterViewInit {
 
   protected showDialog(): void {
     this.open = true;
+  }
+
+  protected addPerson(role: string): void {
+    const personGroup = new FormGroup({
+      name: new FormControl(''),
+      role: new FormControl(role),
+    });
+    this.editPersons.push(personGroup);
+  }
+
+  protected removePerson(index: number): void {
+    this.editPersons.removeAt(index);
   }
 
   protected submitEdit(): void {

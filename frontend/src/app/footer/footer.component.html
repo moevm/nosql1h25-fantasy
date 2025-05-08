@@ -36,10 +36,7 @@
   </nav>
 </footer>
 
-<ng-template
-  [tuiDialogOptions]="{label: 'Import/Export', size: 's'}"
-  [(tuiDialog)]="open"
->
+<ng-template #importExportDialog>
   <div class="dialog__elements">
     <label
       *ngIf="!control.value"

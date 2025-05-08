@@ -86,7 +86,37 @@
     <div formArrayName="editPersons" class="edit-form">
       @for(personGroup of editPersons.controls; let i = $index; track personGroup.value){
         <div formGroupName="{{i}}">
-          <tui-input formControlName="name">{{personGroup.value.role}}</tui-input>
+          <label tuiLabel>
+            {{personGroup.value.role}}
+
+            <tui-textfield  [tuiTextfieldCleaner]="false">
+              <input
+                tuiTextfield
+                formControlName="name"
+                placeholder="{{personGroup.value.role}}"
+              />
+
+              <button
+                tuiIconButton
+                appearance="flat"
+                iconEnd="plus"
+                size="xs"
+                type="button"
+                (click)="addPerson(personGroup.value.role)"
+                aria-label="Добавить"
+              ></button>
+
+              <button
+                tuiIconButton
+                appearance="flat"
+                iconEnd="trash"
+                size="xs"
+                type="button"
+                (click)="removePerson(i)"
+                aria-label="Удалить"
+              ></button>
+            </tui-textfield>
+          </label>
         </div>
       }
     </div>
