@@ -154,6 +154,26 @@ export class FiltersComponent implements OnInit {
     this.form.get('tagFilter')?.setValue(this.tagFilters);
   }
 
+  protected isFieldClear(fieldName: string): boolean {
+    const field = this.form.get(fieldName);
+    if (!field) return false;
+    return field.value === '' || field.value === null;
+  }
+
+  protected isSearchedFor(type: string): boolean {
+    if (!this.isTypeSelected(type)) return false;
+    const isBook = this.isTypeSelected('Book');
+    const isFilm = this.isTypeSelected('Film');
+    const isSeries = this.isTypeSelected('Series');
+    if (type === 'Book')
+      return !(
+        (isFilm || isSeries) &&
+        (!this.isFieldClear('director') ||
+          !this.isFieldClear('actors'))
+      );
+    return !(isBook && !this.isFieldClear('author'));
+  }
+
   search(): void {
     const title: string = this.form.get('search')?.getRawValue();
     const tags = this.form.get('tagFilter')?.getRawValue();
@@ -232,14 +252,14 @@ export class FiltersComponent implements OnInit {
 
     const tasks$ = [];
 
-    if (!types.length || types.includes('Book')) {
+    if (this.isSearchedFor('Book')) {
       tasks$.push(
         this.http.post<Book[]>(this.url + '/books/search', bookBody, {
           params: { page: 0, size: 0 },
         })
       );
     }
-    if (!types.length || types.includes('Film')) {
+    if (this.isSearchedFor('Film')) {
       tasks$.push(
         this.http.post<Movie[]>(
           this.url + '/movies/search',
@@ -248,7 +268,7 @@ export class FiltersComponent implements OnInit {
         )
       );
     }
-    if (!types.length || types.includes('Series')) {
+    if (this.isSearchedFor('Series')) {
       tasks$.push(
         this.http.post<Series[]>(
           this.url + '/series/search',
@@ -263,11 +283,11 @@ export class FiltersComponent implements OnInit {
     this.series = [];
     zip(...tasks$).subscribe(results => {
       let i = 0;
-      if (!types.length || types.includes('Book'))
+      if (this.isSearchedFor('Book'))
         this.books = results[i++] as Book[];
-      if (!types.length || types.includes('Film'))
+      if (this.isSearchedFor('Film'))
         this.movies = results[i++] as Movie[];
-      if (!types.length || types.includes('Series'))
+      if (this.isSearchedFor('Series'))
         this.series = results[i++] as Series[];
       this.cdr.detectChanges();
     });
