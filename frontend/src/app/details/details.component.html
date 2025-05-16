@@ -6,7 +6,16 @@
     <li class="tui-list__item">Start year: {{ object()?.startYear }}</li>
     <li class="tui-list__item">End year: {{ object()?.endYear }}</li>
     <li class="tui-list__item">Tags: {{ object()?.tags }}</li>
-    <li class="tui-list__item">Rating: {{ object()?.rating }}</li>
+    <li class="tui-list__item">
+      Rating: {{ object()?.rating | number:'1.2-2'}}
+      <div class="rating-wrapper">
+        <tui-rating
+          [max]="10"
+          [(ngModel)]="userRating"
+        />
+        <button tuiButton size="m" appearance="secondary-grayscale" (click)="rate()">Rate</button>
+      </div>
+    </li>
     <li class="tui-list__item">Country: {{ object()?.country }}</li>
     <li *ngIf="getBook()" class="tui-list__item">Number of pages: {{ getBook()?.quantityPages }}</li>
     <li *ngIf="getMovie()" class="tui-list__item">Duration: {{ getMovie()?.duration }}</li>
@@ -22,6 +31,8 @@
   </ul>
   <button tuiButton size="m" appearance="secondary-grayscale" (click)="goBack()">Back to list</button>
   <button tuiButton size="m" appearance="secondary-grayscale" (click)="showDialog()">Edit</button>
+
+
 </div>
 
 <ng-template

@@ -14,7 +14,7 @@ import {
 import { Book } from '../data-access/book.service';
 import { Series } from '../data-access/series.service';
 import { Movie } from '../data-access/movie.service';
-import { NgIf } from '@angular/common';
+import { DecimalPipe, NgIf } from '@angular/common';
 import {
   TuiAlertService,
   TuiButton,
@@ -26,6 +26,7 @@ import {
   FormArray,
   FormControl,
   FormGroup,
+  FormsModule,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
@@ -37,6 +38,7 @@ import { TuiAutoFocus } from '@taiga-ui/cdk';
 import { HttpClient } from '@angular/common/http';
 import { rootActions } from '../store/root-store/root.actions';
 import { Store } from '@ngrx/store';
+import { TuiRating } from '@taiga-ui/kit';
 
 @Component({
   selector: 'app-details',
@@ -50,6 +52,9 @@ import { Store } from '@ngrx/store';
     TuiTextfieldControllerModule,
     TuiTextfieldDirective,
     TuiTextfield,
+    TuiRating,
+    FormsModule,
+    DecimalPipe,
   ],
   templateUrl: './details.component.html',
   styleUrl: './details.component.less',
@@ -66,6 +71,7 @@ export class DetailsComponent implements AfterViewInit {
   private http = inject(HttpClient);
   private store = inject(Store);
   protected readonly alerts = inject(TuiAlertService);
+  protected userRating = 8.5;
 
   private localObject = signal<Book | Series | Movie | undefined>(
     undefined
@@ -108,6 +114,8 @@ export class DetailsComponent implements AfterViewInit {
       });
 
       this.populatePersons();
+
+      this.userRating = this.object()?.rating as number;
     }
   }
 
@@ -261,5 +269,47 @@ export class DetailsComponent implements AfterViewInit {
           console.error('Ошибка при отправке формы:', err);
         },
       });
+  }
+
+  protected rate(): void {
+    const obj: Book | Series | Movie = JSON.parse(
+      JSON.stringify(this.object())
+    );
+    if (obj) {
+      obj.reviews.push({
+        rating: this.userRating,
+        reviewerName: '',
+        text: '',
+      });
+      let sum = 0;
+      obj.reviews.forEach(review => (sum += review.rating));
+      obj.rating = sum / obj.reviews.length;
+      this.http
+        .put<Book | Series | Movie>(`${this.url}/${obj.id}`, obj)
+        .subscribe({
+          next: (updatedObject: Book | Series | Movie) => {
+            this.localObject.set(updatedObject);
+            this.store.dispatch(
+              rootActions.objectUpdated({ updatedObject })
+            );
+            this.updated.emit(updatedObject);
+            this.alerts
+              .open(`Rating successfully added!`, {
+                appearance: 'positive',
+                autoClose: 5000,
+              })
+              .subscribe();
+          },
+          error: (err: unknown) => {
+            console.error('Ошибка при отправке рейтинга:', err);
+            this.alerts
+              .open(`Error adding rating!`, {
+                appearance: 'negative',
+                autoClose: 5000,
+              })
+              .subscribe();
+          },
+        });
+    }
   }
 }
