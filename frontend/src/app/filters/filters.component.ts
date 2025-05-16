@@ -131,19 +131,19 @@ export class FiltersComponent implements OnInit {
     this.books = [];
     this.movies = [];
     this.series = [];
-    this.disableAllNonCommonFields();
     this.form.controls['typeFilter'].valueChanges.subscribe(value => {
       this.disableAllNonCommonFields();
-      if (value?.length === 1) {
-        if (value[0] === 'Book') {
-          this.form.controls['quantity'].enable();
-          this.form.controls['author'].enable();
-        } else if (value[0] === 'Film')
-          this.form.controls['duration'].enable();
-        else if (value[0] === 'Series')
-          this.form.controls['seasons'].enable();
+      if (value?.length === 0 || value?.includes('Book')) {
+        this.form.controls['quantity'].enable();
+        this.form.controls['author'].enable();
       }
-      if (!this.isTypeSelected('Book')) {
+      if (value?.length === 0 || value?.includes('Film')) {
+        this.form.controls['duration'].enable();
+        this.form.controls['director'].enable();
+        this.form.controls['actors'].enable();
+      }
+      if (value?.length === 0 || value?.includes('Series')) {
+        this.form.controls['seasons'].enable();
         this.form.controls['director'].enable();
         this.form.controls['actors'].enable();
       }
