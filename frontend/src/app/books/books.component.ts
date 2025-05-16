@@ -11,7 +11,7 @@ import { TuiAppearance, TuiIcon, TuiTitle } from '@taiga-ui/core';
 import { TuiCard } from '@taiga-ui/layout';
 import { Book } from '../data-access/book.service';
 import { DetailsComponent } from '../details/details.component';
-import { NgIf } from '@angular/common';
+import { DecimalPipe, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-books',
@@ -23,6 +23,7 @@ import { NgIf } from '@angular/common';
     TuiIcon,
     DetailsComponent,
     NgIf,
+    DecimalPipe,
   ],
   templateUrl: './books.component.html',
   styleUrl: './books.component.less',

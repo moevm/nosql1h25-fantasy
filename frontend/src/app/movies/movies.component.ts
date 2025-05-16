@@ -17,7 +17,7 @@ import { TuiAppearance, TuiIcon, TuiTitle } from '@taiga-ui/core';
 import { TuiCard } from '@taiga-ui/layout';
 import { Movie } from '../data-access/movie.service';
 import { DetailsComponent } from '../details/details.component';
-import { NgIf } from '@angular/common';
+import { DecimalPipe, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-movies',
@@ -29,6 +29,7 @@ import { NgIf } from '@angular/common';
     TuiIcon,
     DetailsComponent,
     NgIf,
+    DecimalPipe,
   ],
   templateUrl: './movies.component.html',
   styleUrl: './movies.component.less',

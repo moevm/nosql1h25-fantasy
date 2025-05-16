@@ -20,7 +20,7 @@
           [style.color]="'var(--tui-background-accent-2)'"
           class="rating-icon"
         ></tui-icon>
-        <span class="rating-value">{{ book.rating }}</span>
+        <span class="rating-value">{{ book.rating | number:'1.2-2'}}</span>
       </div>
     </button>
   }
