@@ -1,26 +1,27 @@
 <div class="details">
   <h1>{{ object()?.title }}</h1>
-  <ul>
-    <li>Type: {{ object()?.type }}</li>
-    <li>Description: {{ object()?.description }}</li>
-    <li>Start year: {{ object()?.startYear }}</li>
-    <li>End year: {{ object()?.endYear }}</li>
-    <li>Tags: {{ object()?.tags }}</li>
-    <li>Rating: {{ object()?.rating }}</li>
-    <li>Country: {{ object()?.country }}</li>
-    <li *ngIf="getBook()">Number of pages: {{ getBook()?.quantityPages }}</li>
-    <li *ngIf="getMovie()">Duration: {{ getMovie()?.duration }}</li>
-    <li *ngIf="getSeries()">Seasons: {{ getSeries()?.seasons }}</li>
-    <li class="li-wo-dot">
-      <ul>
+  <ul class="tui-list">
+    <li class="tui-list__item">Type: {{ object()?.type }}</li>
+    <li class="tui-list__item">Description: {{ object()?.description }}</li>
+    <li class="tui-list__item">Start year: {{ object()?.startYear }}</li>
+    <li class="tui-list__item">End year: {{ object()?.endYear }}</li>
+    <li class="tui-list__item">Tags: {{ object()?.tags }}</li>
+    <li class="tui-list__item">Rating: {{ object()?.rating }}</li>
+    <li class="tui-list__item">Country: {{ object()?.country }}</li>
+    <li *ngIf="getBook()" class="tui-list__item">Number of pages: {{ getBook()?.quantityPages }}</li>
+    <li *ngIf="getMovie()" class="tui-list__item">Duration: {{ getMovie()?.duration }}</li>
+    <li *ngIf="getSeries()" class="tui-list__item">Seasons: {{ getSeries()?.seasons }}</li>
+    <li *ngIf="object()?.persons?.length" class="tui-list__item">Persons:</li>
+    <li class="li-wo-dot" >
+      <ul class="tui-list tui-list_linear tui-list_nested">
         @for (person of object()?.persons; track person.name) {
-          <li>{{ person.role }}: {{ person.name }}</li>
+          <li class="tui-list__item">{{ person.role }}: {{ person.name }}</li>
         }
       </ul>
     </li>
   </ul>
-  <button (click)="goBack()">Back to list</button>
-  <button (click)="showDialog()">Edit</button>
+  <button tuiButton size="m" appearance="secondary-grayscale" (click)="goBack()">Back to list</button>
+  <button tuiButton size="m" appearance="secondary-grayscale" (click)="showDialog()">Edit</button>
 </div>
 
 <ng-template
