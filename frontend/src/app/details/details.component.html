@@ -47,51 +47,116 @@
   >
     <div class="form-field">
       <tui-input formControlName="editTitle" tuiAutoFocus>Title</tui-input>
+      <tui-error
+        formControlName="editTitle"
+        [error]="[] | tuiFieldError | async"
+      />
     </div>
+
 
     <div class="form-field">
       <tui-input formControlName="editDescription">Description</tui-input>
+      <tui-error
+        formControlName="editDescription"
+        [error]="[] | tuiFieldError | async"
+      />
     </div>
 
 
     <div class="form-field">
       <tui-input formControlName="editStartYear">Start Year</tui-input>
+      <tui-error
+        formControlName="editStartYear"
+        [error]="[] | tuiFieldError | async"
+      />
     </div>
 
     <div class="form-field">
       <tui-input formControlName="editEndYear">End Year</tui-input>
+      <tui-error
+        formControlName="editEndYear"
+        [error]="[] | tuiFieldError | async"
+      />
     </div>
 
-    <div class="form-field">
-      <tui-input formControlName="editType">Type</tui-input>
-    </div>
+    <tui-combo-box
+      formControlName="editType"
+    >
+      Type
+      <tui-data-list-wrapper
+        *tuiDataList
+        [items]="types | tuiFilterByInput"
+      />
+      <tui-error
+        formControlName="editType"
+        [error]="[] | tuiFieldError | async"
+      />
+    </tui-combo-box>
 
-    <div class="form-field">
-      <tui-input formControlName="editTags">Tags</tui-input>
-    </div>
+    <tui-multi-select
+      formControlName="editTags"
+    >
+      Tags
+      <tui-data-list-wrapper
+        *tuiDataList
+        tuiMultiSelectGroup
+        [items]="allowedTags"
+      />
+      <tui-error
+        formControlName="editTags"
+        [error]="[] | tuiFieldError | async"
+      />
+    </tui-multi-select>
 
     <div class="form-field">
       <tui-input formControlName="editRating">Rating</tui-input>
+      <tui-error
+        formControlName="editRating"
+        [error]="[] | tuiFieldError | async"
+      />
     </div>
-    <div class="form-field">
-      <tui-input formControlName="editCountry">Country</tui-input>
-    </div>
+
+    <tui-combo-box
+      formControlName="editCountry"
+    >
+      Country
+      <tui-data-list-wrapper
+        *tuiDataList
+        [items]="countries | tuiFilterByInput"
+      />
+      <tui-error
+        formControlName="editCountry"
+        [error]="[] | tuiFieldError | async"
+      />
+    </tui-combo-box>
 
     @if(getBook()) {
       <div class="form-field">
         <tui-input formControlName="editQuantityPages">Pages</tui-input>
+        <tui-error
+          formControlName="editQuantityPages"
+          [error]="[] | tuiFieldError | async"
+        />
       </div>
     }
 
     @if(getSeries()) {
       <div class="form-field">
         <tui-input formControlName="editSeasons">Seasons</tui-input>
+        <tui-error
+          formControlName="editSeasons"
+          [error]="[] | tuiFieldError | async"
+        />
       </div>
     }
 
     @if(getMovie()) {
       <div class="form-field">
         <tui-input formControlName="editDuration">Duration</tui-input>
+        <tui-error
+          formControlName="editDuration"
+          [error]="[] | tuiFieldError | async"
+        />
       </div>
     }
 
@@ -128,6 +193,11 @@
                 aria-label="Удалить"
               ></button>
             </tui-textfield>
+
+            <tui-error
+              formControlName="name"
+              [error]="[] | tuiFieldError | async"
+            />
           </label>
         </div>
       }
