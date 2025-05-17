@@ -7,7 +7,12 @@ import { AddDataModalComponent } from '../add-data-modal/add-data-modal.componen
 
 @Component({
   selector: 'app-shell',
-  imports: [AppHeaderComponent, FooterComponent, RouterOutlet, TuiButton],
+  imports: [
+    AppHeaderComponent,
+    FooterComponent,
+    RouterOutlet,
+    TuiButton,
+  ],
   templateUrl: './shell.component.html',
   styleUrl: './shell.component.less',
   changeDetection: ChangeDetectionStrategy.OnPush,

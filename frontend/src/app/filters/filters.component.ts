@@ -8,11 +8,15 @@ import { TuiCardMedium, TuiForm, TuiHeader } from '@taiga-ui/layout';
 import {
   FormControl,
   FormGroup,
+  FormsModule,
   ReactiveFormsModule,
+  Validators,
 } from '@angular/forms';
 import {
   TuiAppearance,
   TuiButton,
+  TuiDialog,
+  TuiError,
   TuiIcon,
   TuiTextfield,
   TuiTitle,
@@ -20,12 +24,16 @@ import {
 import {
   TuiAvatar,
   TuiChevron,
+  TuiFieldErrorPipe,
   TuiFilter,
+  TuiFilterByInputPipe,
   TuiTooltip,
 } from '@taiga-ui/kit';
 import {
+  TuiComboBoxModule,
   TuiInputDateModule,
   TuiInputDateRangeModule,
+  TuiInputModule,
   TuiInputPhoneModule,
   TuiInputRangeModule,
   TuiSelectModule,
@@ -33,11 +41,12 @@ import {
 } from '@taiga-ui/legacy';
 import { HttpClient } from '@angular/common/http';
 import { DetailsComponent } from '../details/details.component';
-import { NgIf } from '@angular/common';
+import { AsyncPipe, NgIf } from '@angular/common';
 import { Movie } from '../data-access/movie.service';
 import { Book } from '../data-access/book.service';
 import { Series } from '../data-access/series.service';
 import { zip } from 'rxjs';
+import { BarChartModule } from '@swimlane/ngx-charts';
 
 @Component({
   selector: 'app-filters',
@@ -64,6 +73,15 @@ import { zip } from 'rxjs';
     TuiIcon,
     DetailsComponent,
     TuiTooltip,
+    TuiDialog,
+    TuiInputModule,
+    FormsModule,
+    AsyncPipe,
+    TuiComboBoxModule,
+    TuiError,
+    TuiFieldErrorPipe,
+    TuiFilterByInputPipe,
+    BarChartModule,
   ],
   templateUrl: './filters.component.html',
   styleUrl: './filters.component.less',
@@ -322,5 +340,86 @@ export class FiltersComponent implements OnInit {
         item.id === updated.id ? (updated as Series) : item
       );
     }
+  }
+
+  protected open = false;
+
+  protected showDialog(): void {
+    this.open = true;
+    this.search();
+  }
+
+  protected axisForm = new FormGroup({
+    axisX: new FormControl('tags', Validators.required),
+    axisY: new FormControl('type', Validators.required),
+  });
+
+  protected readonly chartOptions = [
+    'type',
+    'tags',
+    'startYear',
+    'endYear',
+    'quantityPages',
+    'seasons',
+    'duration',
+  ];
+
+  chartData: {
+    series: { name: string; value: number }[];
+    name: string;
+  }[] = [];
+  view: [number, number] = [800, 600];
+
+  updateChart(): void {
+    const { axisX, axisY } = this.axisForm.value;
+    if (!axisX || !axisY) return;
+
+    const allResults = [
+      ...this.books,
+      ...this.movies,
+      ...this.series,
+    ];
+
+    // Получаем уникальные значения для осей
+    const xValues = this.getUniqueValues(allResults, axisX);
+    const yValues = this.getUniqueValues(allResults, axisY);
+
+    // Формируем данные для графика
+    this.chartData = xValues.map(x => ({
+      name: x,
+      series: yValues.map(y => ({
+        name: y,
+        value: this.countCombinations(allResults, axisX, x, axisY, y),
+      })),
+    }));
+
+    this.cdr.detectChanges();
+  }
+
+  private countCombinations(
+    items: any[],
+    xKey: string,
+    xValue: string,
+    yKey: string,
+    yValue: string
+  ): number {
+    return items.filter(item => {
+      const itemX = this.normalizeValues(item[xKey]);
+      const itemY = this.normalizeValues(item[yKey]);
+      return itemX.includes(xValue) && itemY.includes(yValue);
+    }).length;
+  }
+
+  private normalizeValues(value: any): string[] {
+    if (Array.isArray(value)) {
+      return value.map(String).filter(v => v !== 'N/A');
+    }
+    return [String(value || 'N/A')];
+  }
+
+  private getUniqueValues(items: any[], key: string): string[] {
+    return Array.from(
+      new Set(items.flatMap(item => this.normalizeValues(item[key])))
+    ).sort();
   }
 }

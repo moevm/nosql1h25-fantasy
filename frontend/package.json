@@ -23,6 +23,7 @@
     "@ngrx/router-store": "^19.1.0",
     "@ngrx/store": "^19.1.0",
     "@ngrx/store-devtools": "^19.1.0",
+    "@swimlane/ngx-charts": "^22.0.0",
     "@taiga-ui/addon-charts": "^4.33.0",
     "@taiga-ui/addon-commerce": "^4.33.0",
     "@taiga-ui/addon-doc": "^4.33.0",

@@ -32,6 +32,17 @@
       >
         Search
       </button>
+
+      <button
+        size="s"
+        tuiButton
+        type="button"
+        appearance="secondary-grayscale"
+        class="search-button"
+        (click)="showDialog()"
+      >
+        See statistic
+      </button>
     </fieldset>
 
     <div class="filters-wrapper">
@@ -380,3 +391,72 @@
     ></app-details>
   </div>
 </div>
+
+<ng-template
+  let-observer
+  [tuiDialogOptions]="{label: 'Statistics', size: 'l'}"
+  [(tuiDialog)]="open"
+>
+  <form
+    class="edit-form"
+    [formGroup]="axisForm"
+  >
+    <tui-combo-box
+      formControlName="axisX"
+    >
+      Axis X
+      <tui-data-list-wrapper
+        *tuiDataList
+        [items]="chartOptions | tuiFilterByInput"
+      />
+      <tui-error
+        formControlName="axisX"
+        [error]="[] | tuiFieldError | async"
+      />
+    </tui-combo-box>
+
+    <tui-combo-box
+      formControlName="axisY"
+    >
+      Axis Y
+      <tui-data-list-wrapper
+        *tuiDataList
+        [items]="chartOptions | tuiFilterByInput"
+      />
+      <tui-error
+        formControlName="axisY"
+        [error]="[] | tuiFieldError | async"
+      />
+    </tui-combo-box>
+
+    <div class="form-actions">
+      <button
+        tuiButton
+        type="submit"
+        (click)="updateChart()"
+      >
+        Update chart
+      </button>
+    </div>
+  </form>
+
+  <div class="chart-container">
+    <ngx-charts-bar-vertical-stacked
+      [view]="view"
+      [results]="chartData"
+      [xAxis]="true"
+      [yAxis]="true"
+      [legend]="true"
+      [showXAxisLabel]="true"
+      [showYAxisLabel]="true"
+      [xAxisLabel]="axisForm.value.axisX || ''"
+      [yAxisLabel]="axisForm.value.axisY || ''"
+      [animations]="true">
+      <ng-template let-model="model">
+        <div class="tooltip">
+          {{ model.name }} ({{ model.series.name }}): {{ model.value }}
+        </div>
+      </ng-template>
+    </ngx-charts-bar-vertical-stacked>
+  </div>
+</ng-template>
