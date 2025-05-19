@@ -41,7 +41,7 @@ import {
 } from '@taiga-ui/legacy';
 import { HttpClient } from '@angular/common/http';
 import { DetailsComponent } from '../details/details.component';
-import { AsyncPipe, NgIf } from '@angular/common';
+import { AsyncPipe, DecimalPipe, NgIf } from '@angular/common';
 import { Movie } from '../data-access/movie.service';
 import { Book } from '../data-access/book.service';
 import { Series } from '../data-access/series.service';
@@ -82,6 +82,7 @@ import { BarChartModule } from '@swimlane/ngx-charts';
     TuiFieldErrorPipe,
     TuiFilterByInputPipe,
     BarChartModule,
+    DecimalPipe,
   ],
   templateUrl: './filters.component.html',
   styleUrl: './filters.component.less',
