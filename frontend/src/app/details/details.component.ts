@@ -147,12 +147,6 @@ export class DetailsComponent implements AfterViewInit {
       Validators.max(2025),
     ]),
     editTags: new FormControl<string[]>([], [Validators.required]),
-    editRating: new FormControl('', [
-      Validators.required,
-      Validators.min(0),
-      Validators.max(10),
-      Validators.pattern(/^\d+(\.\d{1,2})?$/),
-    ]),
     editCountry: new FormControl('', [
       Validators.required,
       Validators.maxLength(50),
@@ -172,7 +166,6 @@ export class DetailsComponent implements AfterViewInit {
         editStartYear: this.object()?.startYear.toString() ?? '',
         editEndYear: this.object()?.endYear.toString() ?? '',
         editTags: this.object()?.tags ?? [],
-        editRating: this.object()?.rating.toString() ?? '',
         editCountry: this.object()?.country ?? '',
         editQuantityPages:
           this.getBook()?.quantityPages?.toString() ?? '',
@@ -330,7 +323,7 @@ export class DetailsComponent implements AfterViewInit {
       startYear: Number(this.editForm.value.editStartYear),
       endYear: Number(this.editForm.value.editEndYear),
       tags: this.editForm.value.editTags ?? [],
-      rating: Number(this.editForm.value.editRating),
+      rating: this.object()?.rating,
       country: this.editForm.value.editCountry?.toUpperCase(),
       quantityPages: this.editForm.value.editQuantityPages
         ? Number(this.editForm.value.editQuantityPages)
