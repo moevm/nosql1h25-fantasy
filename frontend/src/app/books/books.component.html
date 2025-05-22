@@ -26,6 +26,19 @@
   }
 </div>
 
+<div class="pagination" *ngIf="!selectedBook">
+  <button tuiButton size="s" appearance="secondary-grayscale"
+          style="margin-right: 5px"
+          (click)="prevPage()" [disabled]="currentPage() === 0">Назад
+  </button>
+  <span>Страница {{ currentPage() + 1 }}</span>
+  <button tuiButton size="s" appearance="secondary-grayscale"
+          style="margin-left: 5px"
+          (click)="nextPage()"
+          [disabled]="isLastPage()">Вперёд
+  </button>
+</div>
+
 <div *ngIf="selectedBook">
   <app-details [inputObject]="selectedBook" (back)="backToList()"></app-details>
 </div>

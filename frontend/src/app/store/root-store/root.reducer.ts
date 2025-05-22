@@ -4,7 +4,7 @@ import {
   Movie,
   MOVIE_PAGE_SIZE,
 } from '../../data-access/movie.service';
-import { Book } from '../../data-access/book.service';
+import { Book, BOOK_PAGE_SIZE } from '../../data-access/book.service';
 import {
   Series,
   SERIES_PAGE_SIZE,
@@ -19,6 +19,8 @@ export interface RootState {
   moviePageSize: number;
   currentSeriesPage: number;
   seriesPageSize: number;
+  currentBookPage: number;
+  bookPageSize: number;
 }
 
 export const initialState: RootState = {
@@ -30,6 +32,8 @@ export const initialState: RootState = {
   moviePageSize: MOVIE_PAGE_SIZE,
   currentSeriesPage: 0,
   seriesPageSize: SERIES_PAGE_SIZE,
+  currentBookPage: 0,
+  bookPageSize: BOOK_PAGE_SIZE,
 };
 
 export const rootReducers = createReducer(
@@ -108,6 +112,15 @@ export const rootReducers = createReducer(
       series: content,
       currentSeriesPage: page,
       seriesPageSize: pageSize,
+    })
+  ),
+  on(
+    rootActions.bookPageFetched,
+    (state, { content, page, pageSize }) => ({
+      ...state,
+      books: content,
+      currentBookPage: page,
+      bookPageSize: pageSize,
     })
   )
 );

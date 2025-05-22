@@ -3,8 +3,14 @@ import { inject } from '@angular/core';
 import { rootActions } from './root.actions';
 import { switchMap } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { MOVIE_PAGE_SIZE, MovieService } from '../../data-access/movie.service';
-import { BookService } from '../../data-access/book.service';
+import {
+  MOVIE_PAGE_SIZE,
+  MovieService,
+} from '../../data-access/movie.service';
+import {
+  BOOK_PAGE_SIZE,
+  BookService,
+} from '../../data-access/book.service';
 import {
   SERIES_PAGE_SIZE,
   SeriesService,
@@ -110,6 +116,29 @@ export const seriesPageChanged$ = createEffect(
               content: series,
               page,
               pageSize: SERIES_PAGE_SIZE,
+            })
+          )
+        )
+      )
+    );
+  },
+  { functional: true }
+);
+
+export const bookPageChanged$ = createEffect(
+  (
+    actions$ = inject(Actions),
+    movieService = inject(BookService)
+  ) => {
+    return actions$.pipe(
+      ofType(rootActions.bookPageChanged),
+      switchMap(({ page }) =>
+        movieService.getBooks(page, BOOK_PAGE_SIZE).pipe(
+          map(books =>
+            rootActions.bookPageFetched({
+              content: books,
+              page,
+              pageSize: BOOK_PAGE_SIZE,
             })
           )
         )

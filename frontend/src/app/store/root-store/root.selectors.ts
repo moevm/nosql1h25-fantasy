@@ -88,3 +88,13 @@ export const selectIsLastSeriesPage = createSelector(
   selectRootState,
   state => state.series.length < state.seriesPageSize
 );
+
+export const selectCurrentBookPage = createSelector(
+  selectRootState,
+  (state: RootState) => state.currentBookPage
+);
+
+export const selectIsLastBookPage = createSelector(
+  selectRootState,
+  state => state.books.length < state.bookPageSize
+);

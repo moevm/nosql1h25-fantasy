@@ -2,6 +2,8 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+export const BOOK_PAGE_SIZE = 10;
+
 export interface Book {
   id: string;
   title: string;
@@ -25,7 +27,10 @@ export class BookService {
 
   private http = inject(HttpClient);
 
-  getBooks(): Observable<Book[]> {
-    return this.http.post<Book[]>(`${this.apiUrl}?page=0&size=0`, {});
+  getBooks(page = 0, size = 0): Observable<Book[]> {
+    return this.http.post<Book[]>(
+      `${this.apiUrl}?page=${page}&size=${size}`,
+      {}
+    );
   }
 }
