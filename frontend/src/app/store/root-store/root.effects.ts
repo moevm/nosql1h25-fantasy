@@ -69,3 +69,26 @@ export const seriesInit$ = createEffect(
   },
   { functional: true }
 );
+
+export const moviePageChanged$ = createEffect(
+  (
+    actions$ = inject(Actions),
+    movieService = inject(MovieService)
+  ) => {
+    return actions$.pipe(
+      ofType(rootActions.moviePageChanged),
+      switchMap(({ page }) =>
+        movieService.getMovies(page, 10).pipe(
+          map(movies =>
+            rootActions.moviePageFetched({
+              content: movies,
+              page,
+              pageSize: 10,
+            })
+          )
+        )
+      )
+    );
+  },
+  { functional: true }
+);

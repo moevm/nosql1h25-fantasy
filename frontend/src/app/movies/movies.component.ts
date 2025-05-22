@@ -11,9 +11,16 @@ import {
   selectFilteredMovies,
   selectMovies,
   selectSearchQuery,
+  selectCurrentMoviePage,
+  selectIsLastPage,
 } from '../store/root-store/root.selectors';
 import { TuiAvatar } from '@taiga-ui/kit';
-import { TuiAppearance, TuiIcon, TuiTitle } from '@taiga-ui/core';
+import {
+  TuiAppearance,
+  TuiButton,
+  TuiIcon,
+  TuiTitle,
+} from '@taiga-ui/core';
 import { TuiCard } from '@taiga-ui/layout';
 import { Movie } from '../data-access/movie.service';
 import { DetailsComponent } from '../details/details.component';
@@ -30,6 +37,7 @@ import { DecimalPipe, NgIf } from '@angular/common';
     DetailsComponent,
     NgIf,
     DecimalPipe,
+    TuiButton,
   ],
   templateUrl: './movies.component.html',
   styleUrl: './movies.component.less',
@@ -40,6 +48,9 @@ export class MoviesComponent implements OnInit {
   private store = inject(Store);
 
   selectedMovie: Movie | null = null;
+
+  currentPage = this.store.selectSignal(selectCurrentMoviePage);
+  isLastPage = this.store.selectSignal(selectIsLastPage);
 
   protected filteredMovies = this.store.selectSignal(
     selectFilteredMovies
@@ -57,7 +68,7 @@ export class MoviesComponent implements OnInit {
   });
 
   ngOnInit() {
-    this.store.dispatch(rootActions.movieInit());
+    this.store.dispatch(rootActions.moviePageChanged({ page: 0 }));
   }
 
   protected selectMovie(movie: Movie) {
@@ -66,5 +77,20 @@ export class MoviesComponent implements OnInit {
 
   protected backToList() {
     this.selectedMovie = null;
+  }
+
+  nextPage() {
+    this.store.dispatch(
+      rootActions.moviePageChanged({ page: this.currentPage() + 1 })
+    );
+  }
+
+  prevPage() {
+    const current = this.currentPage();
+    if (current > 0) {
+      this.store.dispatch(
+        rootActions.moviePageChanged({ page: current - 1 })
+      );
+    }
   }
 }

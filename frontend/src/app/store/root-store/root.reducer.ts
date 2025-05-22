@@ -9,6 +9,8 @@ export interface RootState {
   books: Book[];
   series: Series[];
   searchQuery: string;
+  currentMoviePage: number;
+  moviePageSize: number;
 }
 
 export const initialState: RootState = {
@@ -16,6 +18,8 @@ export const initialState: RootState = {
   books: [],
   series: [],
   searchQuery: '',
+  currentMoviePage: 0,
+  moviePageSize: 10,
 };
 
 export const rootReducers = createReducer(
@@ -73,5 +77,18 @@ export const rootReducers = createReducer(
     }
 
     return state;
-  })
+  }),
+  on(rootActions.moviePageChanged, (state, { page }) => ({
+    ...state,
+    currentMoviePage: page,
+  })),
+  on(
+    rootActions.moviePageFetched,
+    (state, { content, page, pageSize }) => ({
+      ...state,
+      movies: content,
+      currentMoviePage: page,
+      moviePageSize: pageSize,
+    })
+  )
 );

@@ -25,9 +25,9 @@ export class MovieService {
 
   private http = inject(HttpClient);
 
-  getMovies(): Observable<Movie[]> {
+  getMovies(page = 0, size = 0): Observable<Movie[]> {
     return this.http.post<Movie[]>(
-      `${this.apiUrl}?page=0&size=0`,
+      `${this.apiUrl}?page=${page}&size=${size}`,
       {}
     );
   }

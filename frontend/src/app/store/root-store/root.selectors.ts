@@ -68,3 +68,13 @@ export const selectFilteredSeries = createSelector(
     );
   }
 );
+
+export const selectCurrentMoviePage = createSelector(
+  selectRootState,
+  (state: RootState) => state.currentMoviePage
+);
+
+export const selectIsLastPage = createSelector(
+  selectRootState,
+  state => state.movies.length < state.moviePageSize
+);
