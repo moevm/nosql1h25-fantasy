@@ -3,9 +3,12 @@ import { inject } from '@angular/core';
 import { rootActions } from './root.actions';
 import { switchMap } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { MovieService } from '../../data-access/movie.service';
+import { MOVIE_PAGE_SIZE, MovieService } from '../../data-access/movie.service';
 import { BookService } from '../../data-access/book.service';
-import { SeriesService } from '../../data-access/series.service';
+import {
+  SERIES_PAGE_SIZE,
+  SeriesService,
+} from '../../data-access/series.service';
 
 export const moviesInit$ = createEffect(
   (
@@ -78,12 +81,35 @@ export const moviePageChanged$ = createEffect(
     return actions$.pipe(
       ofType(rootActions.moviePageChanged),
       switchMap(({ page }) =>
-        movieService.getMovies(page, 10).pipe(
+        movieService.getMovies(page, MOVIE_PAGE_SIZE).pipe(
           map(movies =>
             rootActions.moviePageFetched({
               content: movies,
               page,
-              pageSize: 10,
+              pageSize: MOVIE_PAGE_SIZE,
+            })
+          )
+        )
+      )
+    );
+  },
+  { functional: true }
+);
+
+export const seriesPageChanged$ = createEffect(
+  (
+    actions$ = inject(Actions),
+    movieService = inject(SeriesService)
+  ) => {
+    return actions$.pipe(
+      ofType(rootActions.seriesPageChanged),
+      switchMap(({ page }) =>
+        movieService.getSeries(page, SERIES_PAGE_SIZE).pipe(
+          map(series =>
+            rootActions.seriesPageFetched({
+              content: series,
+              page,
+              pageSize: SERIES_PAGE_SIZE,
             })
           )
         )

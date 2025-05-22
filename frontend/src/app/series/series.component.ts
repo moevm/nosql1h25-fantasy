@@ -1,13 +1,20 @@
 import { Component, computed, inject, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import {
+  selectCurrentSeriesPage,
   selectFilteredSeries,
+  selectIsLastSeriesPage,
   selectSearchQuery,
   selectSeries,
 } from '../store/root-store/root.selectors';
 import { rootActions } from '../store/root-store/root.actions';
 import { TuiAvatar } from '@taiga-ui/kit';
-import { TuiAppearance, TuiIcon, TuiTitle } from '@taiga-ui/core';
+import {
+  TuiAppearance,
+  TuiButton,
+  TuiIcon,
+  TuiTitle,
+} from '@taiga-ui/core';
 import { TuiCard } from '@taiga-ui/layout';
 import { Series } from '../data-access/series.service';
 import { DetailsComponent } from '../details/details.component';
@@ -24,6 +31,7 @@ import { DecimalPipe, NgIf } from '@angular/common';
     DetailsComponent,
     NgIf,
     DecimalPipe,
+    TuiButton,
   ],
   templateUrl: './series.component.html',
   styleUrl: './series.component.less',
@@ -33,6 +41,9 @@ export class SeriesComponent implements OnInit {
   private store = inject(Store);
 
   selectedShow: Series | null = null;
+
+  currentPage = this.store.selectSignal(selectCurrentSeriesPage);
+  isLastPage = this.store.selectSignal(selectIsLastSeriesPage);
 
   protected filteredSeries = this.store.selectSignal(
     selectFilteredSeries
@@ -50,7 +61,7 @@ export class SeriesComponent implements OnInit {
   });
 
   ngOnInit() {
-    this.store.dispatch(rootActions.seriesInit());
+    this.store.dispatch(rootActions.seriesPageChanged({ page: 0 }));
   }
 
   protected selectShow(show: Series) {
@@ -59,5 +70,20 @@ export class SeriesComponent implements OnInit {
 
   protected backToList() {
     this.selectedShow = null;
+  }
+
+  nextPage() {
+    this.store.dispatch(
+      rootActions.seriesPageChanged({ page: this.currentPage() + 1 })
+    );
+  }
+
+  prevPage() {
+    const current = this.currentPage();
+    if (current > 0) {
+      this.store.dispatch(
+        rootActions.seriesPageChanged({ page: current - 1 })
+      );
+    }
   }
 }

@@ -2,6 +2,8 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+export const SERIES_PAGE_SIZE = 10;
+
 export interface Series {
   id: string;
   title: string;
@@ -25,9 +27,9 @@ export class SeriesService {
 
   private http = inject(HttpClient);
 
-  getSeries(): Observable<Series[]> {
+  getSeries(page = 0, size = 0): Observable<Series[]> {
     return this.http.post<Series[]>(
-      `${this.apiUrl}?page=0&size=0`,
+      `${this.apiUrl}?page=${page}&size=${size}`,
       {}
     );
   }

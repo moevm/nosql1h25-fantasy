@@ -12,7 +12,7 @@ import {
   selectMovies,
   selectSearchQuery,
   selectCurrentMoviePage,
-  selectIsLastPage,
+  selectIsLastMoviePage,
 } from '../store/root-store/root.selectors';
 import { TuiAvatar } from '@taiga-ui/kit';
 import {
@@ -50,7 +50,7 @@ export class MoviesComponent implements OnInit {
   selectedMovie: Movie | null = null;
 
   currentPage = this.store.selectSignal(selectCurrentMoviePage);
-  isLastPage = this.store.selectSignal(selectIsLastPage);
+  isLastPage = this.store.selectSignal(selectIsLastMoviePage);
 
   protected filteredMovies = this.store.selectSignal(
     selectFilteredMovies

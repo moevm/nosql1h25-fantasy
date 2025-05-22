@@ -2,6 +2,8 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+export const MOVIE_PAGE_SIZE = 10;
+
 export interface Movie {
   id: string;
   title: string;

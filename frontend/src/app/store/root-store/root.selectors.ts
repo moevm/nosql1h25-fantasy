@@ -74,7 +74,17 @@ export const selectCurrentMoviePage = createSelector(
   (state: RootState) => state.currentMoviePage
 );
 
-export const selectIsLastPage = createSelector(
+export const selectIsLastMoviePage = createSelector(
   selectRootState,
   state => state.movies.length < state.moviePageSize
+);
+
+export const selectCurrentSeriesPage = createSelector(
+  selectRootState,
+  (state: RootState) => state.currentSeriesPage
+);
+
+export const selectIsLastSeriesPage = createSelector(
+  selectRootState,
+  state => state.series.length < state.seriesPageSize
 );

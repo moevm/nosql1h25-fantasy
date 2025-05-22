@@ -1,8 +1,14 @@
 import { createReducer, on } from '@ngrx/store';
 import { rootActions } from './root.actions';
-import { Movie } from '../../data-access/movie.service';
+import {
+  Movie,
+  MOVIE_PAGE_SIZE,
+} from '../../data-access/movie.service';
 import { Book } from '../../data-access/book.service';
-import { Series } from '../../data-access/series.service';
+import {
+  Series,
+  SERIES_PAGE_SIZE,
+} from '../../data-access/series.service';
 
 export interface RootState {
   movies: Movie[];
@@ -11,6 +17,8 @@ export interface RootState {
   searchQuery: string;
   currentMoviePage: number;
   moviePageSize: number;
+  currentSeriesPage: number;
+  seriesPageSize: number;
 }
 
 export const initialState: RootState = {
@@ -19,7 +27,9 @@ export const initialState: RootState = {
   series: [],
   searchQuery: '',
   currentMoviePage: 0,
-  moviePageSize: 10,
+  moviePageSize: MOVIE_PAGE_SIZE,
+  currentSeriesPage: 0,
+  seriesPageSize: SERIES_PAGE_SIZE,
 };
 
 export const rootReducers = createReducer(
@@ -89,6 +99,15 @@ export const rootReducers = createReducer(
       movies: content,
       currentMoviePage: page,
       moviePageSize: pageSize,
+    })
+  ),
+  on(
+    rootActions.seriesPageFetched,
+    (state, { content, page, pageSize }) => ({
+      ...state,
+      series: content,
+      currentSeriesPage: page,
+      seriesPageSize: pageSize,
     })
   )
 );
